@@ -4,25 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ffce8e0-82c7-48f7-b876-3fe216f734a7" name="Changes" comment="🐛 fix(phpstan): Add explicit type hint to resolve undefined property warning 🛡️&#10;&#10;Resolved a PHPStan warning (`Access to an undefined property App\Models\BotButton::$id`) in `BotButtonsRelationManager.php`.&#10;&#10;The issue was fixed by adding an explicit type hint (`\App\Models\BotButton`) to the `$button` argument within the `mapWithKeys` closure, allowing static analysis to correctly infer the model's properties.">
-      <change afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.github/workflows/build-push.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.github/workflows/deploy-raspi.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/UniSoul.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.junie/mcp/mcp.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mcp.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dockerfile.production" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boost.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/compose.override.raspberry.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/readme/DEPLOYMENT.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/readme/chat.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="9ffce8e0-82c7-48f7-b876-3fe216f734a7" name="Changes" comment="ci: add new GitHub Actions workflow for automated testing and build&#10;&#10;- Introduced GitHub Actions CI pipeline&#10;- Added workflow file to run tests on push and pull requests&#10;- Included steps for setting up PHP, Composer, and Laravel environment&#10;- Added Sail/Docker service configuration (MySQL) for integration tests&#10;- Ensured caching for Composer dependencies to speed up builds&#10;- Updated README with initial CI instructions (if applicable)&#10;- Verified compatibility with Laravel 12 and Telegram bot components">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/build-push.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/build-push.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -265,6 +249,7 @@
       <recent name="$PROJECT_DIR$/lang/uk" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/docker/production" />
       <recent name="$PROJECT_DIR$/readme" />
       <recent name="$PROJECT_DIR$/app/Filament/Resources/Confessions/RelationManagers" />
       <recent name="$PROJECT_DIR$" />
@@ -318,7 +303,7 @@
       <workItem from="1762978442770" duration="720000" />
       <workItem from="1762981474823" duration="372000" />
       <workItem from="1763021880937" duration="8877000" />
-      <workItem from="1764094705640" duration="1889000" />
+      <workItem from="1764094705640" duration="2860000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -424,7 +409,15 @@
       <option name="project" value="LOCAL" />
       <updated>1763024774193</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="ci: add new GitHub Actions workflow for automated testing and build&#10;&#10;- Introduced GitHub Actions CI pipeline&#10;- Added workflow file to run tests on push and pull requests&#10;- Included steps for setting up PHP, Composer, and Laravel environment&#10;- Added Sail/Docker service configuration (MySQL) for integration tests&#10;- Ensured caching for Composer dependencies to speed up builds&#10;- Updated README with initial CI instructions (if applicable)&#10;- Verified compatibility with Laravel 12 and Telegram bot components">
+      <option name="closed" value="true" />
+      <created>1764096909840</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1764096909840</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -452,7 +445,8 @@
     <MESSAGE value="I can create a great commit message for that\! It clearly outlines the new continuous integration setup and the tools used.&#10;&#10;Here is the detailed, emoji-friendly commit message:&#10;&#10;```&#10;✨ feat: Setup GitHub Actions workflow for PHP linting&#10;&#10;Introduces the initial CI/CD workflow (`.github/workflows/lint.yml`) to automatically enforce code quality and style standards on push and pull requests to the `main` and `develop` branches.&#10;&#10;The workflow includes the following tools:&#10;&#10;-  **PHP CS Fixer:** Automated code style fixing.&#10;-  **PHPStan:** Static analysis for bug detection and type validation.&#10;-  **Pint:** Laravel code style checking.&#10;&#10;The job runs on PHP 8.2 and utilizes caching for faster dependency installation.&#10;```" />
     <MESSAGE value="✨ feat: Setup GitHub Actions workflow for PHP linting&#10;&#10;Introduces the initial CI/CD workflow (`.github/workflows/lint.yml`) to automatically enforce code quality and style standards on push and pull requests to the `main` and `develop` branches.&#10;&#10;The workflow includes the following tools:&#10;&#10;-  **PHP CS Fixer:** Automated code style fixing.&#10;-  **PHPStan:** Static analysis for bug detection and type validation.&#10;-  **Pint:** Laravel code style checking." />
     <MESSAGE value=" fix(phpstan): Add explicit type hint to resolve undefined property warning ️&#10;&#10;Resolved a PHPStan warning (`Access to an undefined property App\Models\BotButton::$id`) in `BotButtonsRelationManager.php`.&#10;&#10;The issue was fixed by adding an explicit type hint (`\App\Models\BotButton`) to the `$button` argument within the `mapWithKeys` closure, allowing static analysis to correctly infer the model's properties." />
-    <option name="LAST_COMMIT_MESSAGE" value=" fix(phpstan): Add explicit type hint to resolve undefined property warning ️&#10;&#10;Resolved a PHPStan warning (`Access to an undefined property App\Models\BotButton::$id`) in `BotButtonsRelationManager.php`.&#10;&#10;The issue was fixed by adding an explicit type hint (`\App\Models\BotButton`) to the `$button` argument within the `mapWithKeys` closure, allowing static analysis to correctly infer the model's properties." />
+    <MESSAGE value="ci: add new GitHub Actions workflow for automated testing and build&#10;&#10;- Introduced GitHub Actions CI pipeline&#10;- Added workflow file to run tests on push and pull requests&#10;- Included steps for setting up PHP, Composer, and Laravel environment&#10;- Added Sail/Docker service configuration (MySQL) for integration tests&#10;- Ensured caching for Composer dependencies to speed up builds&#10;- Updated README with initial CI instructions (if applicable)&#10;- Verified compatibility with Laravel 12 and Telegram bot components" />
+    <option name="LAST_COMMIT_MESSAGE" value="ci: add new GitHub Actions workflow for automated testing and build&#10;&#10;- Introduced GitHub Actions CI pipeline&#10;- Added workflow file to run tests on push and pull requests&#10;- Included steps for setting up PHP, Composer, and Laravel environment&#10;- Added Sail/Docker service configuration (MySQL) for integration tests&#10;- Ensured caching for Composer dependencies to speed up builds&#10;- Updated README with initial CI instructions (if applicable)&#10;- Verified compatibility with Laravel 12 and Telegram bot components" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

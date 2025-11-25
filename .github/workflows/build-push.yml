@@ -18,6 +18,10 @@ jobs:
   build-and-push:
     name: Build and Push Docker Image
     runs-on: ubuntu-latest
+    environment: raspberry
+    permissions:
+      contents: read
+      packages: write
 
     steps:
       - name: Checkout code
