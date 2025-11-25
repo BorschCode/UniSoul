@@ -1,0 +1,156 @@
+name: Deploy to Raspberry Pi
+
+on:
+  workflow_dispatch:
+    inputs:
+      image_tag:
+        description: 'Docker image tag to deploy'
+        required: true
+        default: 'latest'
+
+jobs:
+  deploy:
+    name: Deploy UniSoul to Raspberry Pi
+    runs-on: [self-hosted, linux, ARM64]
+
+    steps:
+      - name: Extract image tag
+        id: image_tag
+        run: |
+          TAG="${{ github.event.inputs.image_tag }}"
+          echo "tag=${TAG}" >> $GITHUB_OUTPUT
+          echo "Deploying image tag: ${TAG}"
+
+      - name: Clean workspace
+        run: |
+          docker run --rm -v ${{ github.workspace }}:/workspace alpine:latest \
+            sh -c "cd /workspace && ls -A | grep -v '.git' | xargs rm -rf"
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Pull latest image
+        run: |
+          docker pull ${{ secrets.DOCKER_USERNAME }}/unisoul:${{ steps.image_tag.outputs.tag }}
+
+      - name: Stop and remove old container
+        run: |
+          docker compose -f compose.override.raspberry.yml down || true
+          docker image prune -af --filter "label=app=unisoul"
+
+      - name: Create .env file
+        run: |
+          cat > .env << 'EOF'
+          APP_NAME=UniSoul
+          APP_ENV=production
+          APP_KEY=${{ secrets.APP_KEY }}
+          APP_DEBUG=false
+          APP_URL=${{ secrets.APP_URL }}
+
+          APP_LOCALE=en
+          APP_FALLBACK_LOCALE=en
+
+          LOG_CHANNEL=stack
+          LOG_STACK=daily
+          LOG_LEVEL=warning
+
+          DB_CONNECTION=mysql
+          DB_HOST=host.docker.internal
+          DB_PORT=3306
+          DB_DATABASE=${{ secrets.DB_DATABASE }}
+          DB_USERNAME=${{ secrets.DB_USERNAME }}
+          DB_PASSWORD=${{ secrets.DB_PASSWORD }}
+
+          SESSION_DRIVER=database
+          SESSION_LIFETIME=120
+
+          CACHE_STORE=redis
+          QUEUE_CONNECTION=redis
+
+          REDIS_HOST=host.docker.internal
+          REDIS_PASSWORD=${{ secrets.REDIS_PASSWORD }}
+          REDIS_PORT=6379
+
+          MAIL_MAILER=${{ secrets.MAIL_MAILER }}
+          MAIL_HOST=${{ secrets.MAIL_HOST }}
+          MAIL_PORT=${{ secrets.MAIL_PORT }}
+          MAIL_USERNAME=${{ secrets.MAIL_USERNAME }}
+          MAIL_PASSWORD=${{ secrets.MAIL_PASSWORD }}
+          MAIL_FROM_ADDRESS=${{ secrets.MAIL_FROM_ADDRESS }}
+          MAIL_FROM_NAME="${APP_NAME}"
+
+          MODEL_SETTINGS_PERSISTENT=true
+
+          SUPPORTED_LANGUAGES=uk,en,ro,de,ka
+
+          TELEGRAM_TOKEN=${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_BOT_USERNAME=${{ secrets.TELEGRAM_BOT_USERNAME }}
+
+          DEVELOPER_ID=${{ secrets.DEVELOPER_ID }}
+          DEVELOPER_NAME=${{ secrets.DEVELOPER_NAME }}
+          DEVELOPER_USERNAME=${{ secrets.DEVELOPER_USERNAME }}
+          DEVELOPER_EMAIL=${{ secrets.DEVELOPER_EMAIL }}
+          DEVELOPER_WEBSITE=${{ secrets.DEVELOPER_WEBSITE }}
+
+          OWNER_ID=${{ secrets.OWNER_ID }}
+          OWNER_CHANNEL=${{ secrets.OWNER_CHANNEL }}
+          OWNER_SUPPORT=${{ secrets.OWNER_SUPPORT }}
+
+          GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}
+          EOF
+
+      - name: Deploy with Docker Compose
+        run: |
+          docker compose -f compose.override.raspberry.yml up -d --no-deps
+          echo "Container started successfully"
+
+      - name: Run database migrations
+        run: |
+          docker compose -f compose.override.raspberry.yml exec -T app php artisan config:clear
+          docker compose -f compose.override.raspberry.yml exec -T app php artisan cache:clear
+          docker compose -f compose.override.raspberry.yml exec -T app php artisan migrate --force
+          echo "Migrations completed"
+
+      - name: Optimize application
+        run: |
+          docker compose -f compose.override.raspberry.yml exec -T app php artisan config:cache
+          docker compose -f compose.override.raspberry.yml exec -T app php artisan route:cache
+          docker compose -f compose.override.raspberry.yml exec -T app php artisan view:cache
+          echo "Application optimized for production"
+
+      - name: Verify Redis connectivity
+        run: |
+          echo "Testing Redis connection..."
+          docker compose -f compose.override.raspberry.yml exec -T app php artisan tinker --execute="
+            try {
+              \Illuminate\Support\Facades\Redis::ping();
+              echo 'Redis PING: OK\n';
+              \Illuminate\Support\Facades\Redis::set('test_key', 'test_value');
+              \$value = \Illuminate\Support\Facades\Redis::get('test_key');
+              echo 'Redis READ/WRITE: ' . (\$value === 'test_value' ? 'OK' : 'FAILED') . '\n';
+              \Illuminate\Support\Facades\Redis::del('test_key');
+            } catch (\Exception \$e) {
+              echo 'Redis connection failed: ' . \$e->getMessage() . '\n';
+              echo 'Please check if Redis is running on the host machine\n';
+              exit(1);
+            }
+          "
+
+      - name: Health check
+        run: |
+          echo "Running health checks..."
+          docker compose -f compose.override.raspberry.yml ps
+          docker compose -f compose.override.raspberry.yml exec -T app php artisan --version
+          docker compose -f compose.override.raspberry.yml exec -T app php artisan db:show
+          echo "Deployment completed successfully!"
+
+      - name: Cleanup old images
+        run: |
+          docker image prune -af --filter "until=168h"
+          echo "Old images cleaned up"

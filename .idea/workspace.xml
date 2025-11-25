@@ -5,23 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ffce8e0-82c7-48f7-b876-3fe216f734a7" name="Changes" comment="🐛 fix(phpstan): Add explicit type hint to resolve undefined property warning 🛡️&#10;&#10;Resolved a PHPStan warning (`Access to an undefined property App\Models\BotButton::$id`) in `BotButtonsRelationManager.php`.&#10;&#10;The issue was fixed by adding an explicit type hint (`\App\Models\BotButton`) to the `$button` argument within the `mapWithKeys` closure, allowing static analysis to correctly infer the model's properties.">
+      <change afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.github/workflows/build-push.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.github/workflows/deploy-raspi.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/UniSoul.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.junie/mcp/mcp.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.mcp.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dockerfile.production" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boost.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/compose.override.raspberry.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/readme/DEPLOYMENT.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/readme/chat.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Console/Commands/TelegramSetWebhook.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/TelegramSetWebhook.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/BotButton.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/BotButton.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Branch.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Branch.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Chat.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Chat.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Confession.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Confession.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Employee.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Employee.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Statistic.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Statistic.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/SupportManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/SupportManager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/SupportSession.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/SupportSession.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Telegram/Conversations/BaseConversation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Telegram/Conversations/BaseConversation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Telegram/Conversations/ConfessionConversation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Telegram/Conversations/ConfessionConversation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Telegram/Conversations/SupportConversation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Telegram/Conversations/SupportConversation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Telegram/DTOs/CallbackData.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Telegram/DTOs/CallbackData.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/nutgram.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/nutgram.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +49,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -219,6 +220,9 @@
       <path value="$PROJECT_DIR$/vendor/laracraft-tech/laravel-date-scopes" />
       <path value="$PROJECT_DIR$/vendor/ryangjchandler/blade-capture-directive" />
       <path value="$PROJECT_DIR$/vendor/webpatser/laravel-countries" />
+      <path value="$PROJECT_DIR$/vendor/laravel/roster" />
+      <path value="$PROJECT_DIR$/vendor/laravel/boost" />
+      <path value="$PROJECT_DIR$/vendor/laravel/mcp" />
     </include_path>
   </component>
   <component name="ProjectColorInfo">{
@@ -229,38 +233,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/media/serega/256-m2-ssd/projects_archive/task_planner.api&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;php.override.implement.member.chooser.php.doc&quot;: &quot;NONE&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "develop",
+    "last_opened_file_path": "/mnt/256-m2/projects/UniSoul",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "php.override.implement.member.chooser.php.doc": "NONE",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/lang/de" />
       <recent name="$PROJECT_DIR$/lang/ru" />
       <recent name="$PROJECT_DIR$/lang/ro" />
       <recent name="$PROJECT_DIR$/lang/uk" />
-      <recent name="$PROJECT_DIR$/lang/ka" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/readme" />
       <recent name="$PROJECT_DIR$/app/Filament/Resources/Confessions/RelationManagers" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/app" />
@@ -275,8 +280,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-PS-252.27397.112" />
-        <option value="bundled-php-predefined-a98d8de5180a-b35feea871ed-com.jetbrains.php.sharedIndexes-PS-252.27397.112" />
+        <option value="bundled-js-predefined-d6986cc7102b-a71380e98a7c-JavaScript-PS-252.28238.9" />
+        <option value="bundled-php-predefined-a98d8de5180a-58f58c5035b3-com.jetbrains.php.sharedIndexes-PS-252.28238.9" />
       </set>
     </attachedChunks>
   </component>
@@ -313,6 +318,7 @@
       <workItem from="1762978442770" duration="720000" />
       <workItem from="1762981474823" duration="372000" />
       <workItem from="1763021880937" duration="8877000" />
+      <workItem from="1764094705640" duration="1889000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
