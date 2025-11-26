@@ -96,6 +96,7 @@ jobs:
           SUPPORTED_LANGUAGES=uk,en,ro,de,ka
 
           TELEGRAM_TOKEN=${{ secrets.TELEGRAM_TOKEN }}
+          OWNER_ID=${{ secrets.OWNER_ID }}
 
           GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}
           EOF

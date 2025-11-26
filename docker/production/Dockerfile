@@ -62,9 +62,21 @@ COPY . .
 # Install PHP Dependencies
 RUN composer install --no-interaction --optimize-autoloader --no-dev
 
+# Copy supervisor config
+COPY docker/production/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+# Copy PHP config
+COPY docker/production/php.ini /etc/php/8.3/cli/conf.d/99-custom.ini
+
+# Copy and set up entrypoint
+COPY docker/production/entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
 # Permissions
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 775 /var/www/html/storage \
     && chmod -R 775 /var/www/html/bootstrap/cache
 
-ENTRYPOINT ["/var/www/html/docker/production/entrypoint.sh"]
+EXPOSE 80
+
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]

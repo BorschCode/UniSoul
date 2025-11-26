@@ -70,7 +70,7 @@ class FeedbackConversation extends Conversation
         // get the input
         $this->feedback = $bot->message()->text;
 
-        // send feedback to dev
+        // send feedback to owner
         $bot->sendMessage(
             text: message('feedback.received', [
                 'from' => "{$bot->user()?->first_name} {$bot->user()?->last_name}",
@@ -78,7 +78,7 @@ class FeedbackConversation extends Conversation
                 'user_id' => $bot->userId(),
                 'message' => $this->feedback,
             ]),
-            chat_id: config('developer.id'),
+            chat_id: config('owner.id'),
         );
 
         $this->success = true;
