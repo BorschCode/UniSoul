@@ -301,6 +301,7 @@
       <workItem from="1762981474823" duration="372000" />
       <workItem from="1763021880937" duration="8877000" />
       <workItem from="1764094705640" duration="4691000" />
+      <workItem from="1764143915567" duration="571000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -438,7 +439,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764098866302</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="ci: add new GitHub Actions workflow for automated testing and build&#10;&#10;- Introduced GitHub Actions CI pipeline&#10;- Added workflow file to run tests on push and pull requests&#10;- Included steps for setting up PHP, Composer, and Laravel environment&#10;- Added Sail/Docker service configuration (MySQL) for integration tests&#10;- Ensured caching for Composer dependencies to speed up builds&#10;- Updated README with initial CI instructions (if applicable)&#10;- Verified compatibility with Laravel 12 and Telegram bot components">
+      <option name="closed" value="true" />
+      <created>1764144166043</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1764144166043</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

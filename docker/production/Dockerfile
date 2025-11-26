@@ -1,10 +1,31 @@
-# Production Dockerfile for UniSoul Laravel Application (Raspberry Pi ARM64 compatible)
+# Multi-stage build for UniSoul Laravel Application (Raspberry Pi ARM64 compatible)
+
+# Stage 1: Build frontend assets
+FROM node:22-slim AS frontend-builder
+
+WORKDIR /app
+
+# Copy package files
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy source files needed for build
+COPY resources ./resources
+COPY public ./public
+COPY vite.config.js ./
+
+# Build assets
+RUN npm run build
+
+
+# Stage 2: Build production image
 FROM ubuntu:24.04
 
 LABEL maintainer="UniSoul Team"
 LABEL app="unisoul"
 
-ARG NODE_VERSION=22
 ARG MYSQL_CLIENT="mysql-client"
 ARG POSTGRES_VERSION=18
 
@@ -23,7 +44,7 @@ RUN echo "Acquire::http::Pipeline-Depth 0;" > /etc/apt/apt.conf.d/99custom && \
     echo "Acquire::http::No-Cache true;" >> /etc/apt/apt.conf.d/99custom && \
     echo "Acquire::BrokenProxy true;" >> /etc/apt/apt.conf.d/99custom
 
-# Install system dependencies, PHP 8.4, Composer, Node.js, MySQL/PostgreSQL clients
+# Install system dependencies, PHP 8.4, Composer, MySQL/PostgreSQL clients
 RUN apt-get update && apt-get upgrade -y \
     && mkdir -p /etc/apt/keyrings \
     && apt-get install -y gnupg gosu curl ca-certificates zip unzip git supervisor sqlite3 libcap2-bin libpng-dev dnsutils nano \
@@ -36,11 +57,6 @@ RUN apt-get update && apt-get upgrade -y \
        php8.4-soap php8.4-intl php8.4-readline php8.4-ldap php8.4-msgpack \
        php8.4-igbinary php8.4-redis php8.4-swoole php8.4-memcached \
     && curl -sLS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer \
-    && curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg \
-    && echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_VERSION.x nodistro main" > /etc/apt/sources.list.d/nodesource.list \
-    && apt-get update \
-    && apt-get install -y nodejs \
-    && npm install -g npm \
     && curl -sS https://www.postgresql.org/media/keys/ACCC4CF8.asc | gpg --dearmor | tee /etc/apt/keyrings/pgdg.gpg >/dev/null \
     && echo "deb [signed-by=/etc/apt/keyrings/pgdg.gpg] http://apt.postgresql.org/pub/repos/apt noble-pgdg main" > /etc/apt/sources.list.d/pgdg.list \
     && apt-get update \
@@ -55,13 +71,11 @@ RUN setcap "cap_net_bind_service=+ep" /usr/bin/php8.4
 # Copy application files
 COPY --chown=www-data:www-data . /var/www/html
 
-# Install Composer dependencies (production)
-RUN composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist
+# Copy built frontend assets from frontend-builder stage
+COPY --from=frontend-builder --chown=www-data:www-data /app/public/build /var/www/html/public/build
 
-# Install Node dependencies and build assets
-RUN npm install --omit=dev \
-    && npm run build \
-    && rm -rf node_modules
+# Install Composer dependencies (production only)
+RUN composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist
 
 # Permissions
 RUN chown -R www-data:www-data /var/www/html \
