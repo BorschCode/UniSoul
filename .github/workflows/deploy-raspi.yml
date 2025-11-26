@@ -95,17 +95,6 @@ jobs:
           SUPPORTED_LANGUAGES=uk,en,ro,de,ka
 
           TELEGRAM_TOKEN=${{ secrets.TELEGRAM_TOKEN }}
-          TELEGRAM_BOT_USERNAME=${{ vars.TELEGRAM_BOT_USERNAME }}
-
-          DEVELOPER_ID=${{ vars.DEVELOPER_ID }}
-          DEVELOPER_NAME=${{ vars.DEVELOPER_NAME }}
-          DEVELOPER_USERNAME=${{ vars.DEVELOPER_USERNAME }}
-          DEVELOPER_EMAIL=${{ vars.DEVELOPER_EMAIL }}
-          DEVELOPER_WEBSITE=${{ vars.DEVELOPER_WEBSITE }}
-
-          OWNER_ID=${{ vars.OWNER_ID }}
-          OWNER_CHANNEL=${{ vars.OWNER_CHANNEL }}
-          OWNER_SUPPORT=${{ vars.OWNER_SUPPORT }}
 
           GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}
           EOF

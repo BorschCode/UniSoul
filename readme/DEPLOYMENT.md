@@ -185,18 +185,6 @@ Add the following secrets:
 ### Telegram Bot Secrets
 
 - `TELEGRAM_TOKEN` - Your Telegram bot token from BotFather
-- `TELEGRAM_BOT_USERNAME` - Your bot username (without @)
-
-### Developer & Owner Secrets
-
-- `DEVELOPER_ID` - Telegram user ID of the developer
-- `DEVELOPER_NAME` - Developer name
-- `DEVELOPER_USERNAME` - Developer Telegram username (with @)
-- `DEVELOPER_EMAIL` - Developer email
-- `DEVELOPER_WEBSITE` - Developer website (optional)
-- `OWNER_ID` - Telegram user ID of the owner
-- `OWNER_CHANNEL` - Owner's Telegram channel URL
-- `OWNER_SUPPORT` - Support Telegram group/channel URL
 
 ### AI Service Secrets
 
@@ -463,8 +451,6 @@ docker compose -f compose.override.raspberry.yml logs -f
 
 For issues and questions:
 - GitHub Issues: https://github.com/YOUR_USERNAME/UniSoul/issues
-- Developer: ${DEVELOPER_EMAIL}
-- Telegram Support: ${OWNER_SUPPORT}
 
 ---
 
