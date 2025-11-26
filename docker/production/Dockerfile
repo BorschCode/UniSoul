@@ -16,7 +16,7 @@ WORKDIR /var/www/html
 # Fix timezone
 RUN ln -snf /usr/share/zoneinfo/UTC /etc/localtime && echo UTC > /etc/timezone
 
-# CRITICAL FIX: Added --fix-missing and --no-install-recommends to prevent 404 errors
+# Install base dependencies and PHP with all required extensions
 RUN apt-get update && apt-get install -y --no-install-recommends --fix-missing \
     gnupg \
     gosu \
@@ -29,9 +29,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends --fix-missing \
     sqlite3 \
     libcap2-bin \
     libpng-dev \
+    libpq-dev \
     dnsutils \
     php8.3-cli \
     php8.3-fpm \
+    php8.3-pgsql \
     php8.3-mysql \
     php8.3-sqlite3 \
     php8.3-curl \
@@ -47,6 +49,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends --fix-missing \
     php8.3-msgpack \
     php8.3-igbinary \
     php8.3-redis \
+    php8.3-swoole \
     && mkdir -p /etc/apt/keyrings \
     && php -r "readfile('https://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer \
     && apt-get -y autoremove \
