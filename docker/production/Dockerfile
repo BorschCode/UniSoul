@@ -58,7 +58,7 @@ COPY --chown=www-data:www-data . /var/www/html
 # Install Composer dependencies (production)
 RUN composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist
 
-# Install Node dependencies and build assets (npm ci → FIXED)
+# Install Node dependencies and build assets
 RUN npm install --omit=dev \
     && npm run build \
     && rm -rf node_modules
@@ -76,4 +76,19 @@ COPY docker/8.4/php.ini /etc/php/8.4/cli/conf.d/99-sail.ini
 
 # Start script
 RUN echo '#!/usr/bin/env bash\n\
-if [ ! -d /.co]()
+if [ ! -d /.composer ]; then\n\
+    mkdir /.composer\n\
+fi\n\
+\n\
+chmod -R ugo+rw /.composer\n\
+\n\
+if [ $# -gt 0 ]; then\n\
+    exec gosu www-data "$@"\n\
+else\n\
+    exec /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf\n\
+fi' > /usr/local/bin/start-container \
+    && chmod +x /usr/local/bin/start-container
+
+EXPOSE 80/tcp
+
+ENTRYPOINT ["start-container"]
