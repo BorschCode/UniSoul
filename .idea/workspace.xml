@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ffce8e0-82c7-48f7-b876-3fe216f734a7" name="Changes" comment="ci: add new GitHub Actions workflow for automated testing and build and deploy&#10;&#10; Triggers:&#10;  - Push to main or develop branches&#10;  - Push tags matching v* pattern (e.g., v1.0.0)&#10;  - Manual trigger via workflow_dispatch&#10;&#10;  What it does:&#10;  - Builds multi-platform Docker image (linux/amd64, linux/arm64)&#10;  - Pushes to Docker Hub with appropriate tags&#10;  - Automatically triggers deployment when a release tag is pushed&#10;&#10;  Tags created:&#10;  - Branch pushes: branch-name (e.g., develop, main)&#10;  - Version tags: v1.0.0, 1.0, 1 (semantic versioning)&#10;  - Git SHA: sha-abc1234&#10;  - latest tag for main branch">
+    <list default="true" id="9ffce8e0-82c7-48f7-b876-3fe216f734a7" name="Changes" comment="ci(workflow): ⚡️ Optimize CI triggers and enforce branch protection&#10;&#10;Updates workflow triggers to enforce best practices:&#10;- Linting (`lint` job) is now triggered only on Pull/Merge Requests (`pull_request`), providing immediate feedback before merging.&#10;- The resource-intensive Docker build and push (`build_push_image`) is strictly limited to runs on the `main` branch after a successful merge or when a new `release` is published.&#10;- This ensures that only fully reviewed code results in a deployable artifact.">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/build-push.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/build-push.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/deploy-raspi.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/deploy-raspi.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -303,7 +305,7 @@
       <workItem from="1762981474823" duration="372000" />
       <workItem from="1763021880937" duration="8877000" />
       <workItem from="1764094705640" duration="4691000" />
-      <workItem from="1764143915567" duration="2498000" />
+      <workItem from="1764143915567" duration="5300000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -465,7 +467,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764148121351</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="ci(workflow): ⚡️ Optimize CI triggers and enforce branch protection&#10;&#10;Updates workflow triggers to enforce best practices:&#10;- Linting (`lint` job) is now triggered only on Pull/Merge Requests (`pull_request`), providing immediate feedback before merging.&#10;- The resource-intensive Docker build and push (`build_push_image`) is strictly limited to runs on the `main` branch after a successful merge or when a new `release` is published.&#10;- This ensures that only fully reviewed code results in a deployable artifact.">
+      <option name="closed" value="true" />
+      <created>1764148931916</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1764148931916</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -495,7 +505,8 @@
     <MESSAGE value=" fix(phpstan): Add explicit type hint to resolve undefined property warning ️&#10;&#10;Resolved a PHPStan warning (`Access to an undefined property App\Models\BotButton::$id`) in `BotButtonsRelationManager.php`.&#10;&#10;The issue was fixed by adding an explicit type hint (`\App\Models\BotButton`) to the `$button` argument within the `mapWithKeys` closure, allowing static analysis to correctly infer the model's properties." />
     <MESSAGE value="ci: add new GitHub Actions workflow for automated testing and build&#10;&#10;- Introduced GitHub Actions CI pipeline&#10;- Added workflow file to run tests on push and pull requests&#10;- Included steps for setting up PHP, Composer, and Laravel environment&#10;- Added Sail/Docker service configuration (MySQL) for integration tests&#10;- Ensured caching for Composer dependencies to speed up builds&#10;- Updated README with initial CI instructions (if applicable)&#10;- Verified compatibility with Laravel 12 and Telegram bot components" />
     <MESSAGE value="ci: add new GitHub Actions workflow for automated testing and build and deploy&#10;&#10; Triggers:&#10;  - Push to main or develop branches&#10;  - Push tags matching v* pattern (e.g., v1.0.0)&#10;  - Manual trigger via workflow_dispatch&#10;&#10;  What it does:&#10;  - Builds multi-platform Docker image (linux/amd64, linux/arm64)&#10;  - Pushes to Docker Hub with appropriate tags&#10;  - Automatically triggers deployment when a release tag is pushed&#10;&#10;  Tags created:&#10;  - Branch pushes: branch-name (e.g., develop, main)&#10;  - Version tags: v1.0.0, 1.0, 1 (semantic versioning)&#10;  - Git SHA: sha-abc1234&#10;  - latest tag for main branch" />
-    <option name="LAST_COMMIT_MESSAGE" value="ci: add new GitHub Actions workflow for automated testing and build and deploy&#10;&#10; Triggers:&#10;  - Push to main or develop branches&#10;  - Push tags matching v* pattern (e.g., v1.0.0)&#10;  - Manual trigger via workflow_dispatch&#10;&#10;  What it does:&#10;  - Builds multi-platform Docker image (linux/amd64, linux/arm64)&#10;  - Pushes to Docker Hub with appropriate tags&#10;  - Automatically triggers deployment when a release tag is pushed&#10;&#10;  Tags created:&#10;  - Branch pushes: branch-name (e.g., develop, main)&#10;  - Version tags: v1.0.0, 1.0, 1 (semantic versioning)&#10;  - Git SHA: sha-abc1234&#10;  - latest tag for main branch" />
+    <MESSAGE value="ci(workflow): ⚡️ Optimize CI triggers and enforce branch protection&#10;&#10;Updates workflow triggers to enforce best practices:&#10;- Linting (`lint` job) is now triggered only on Pull/Merge Requests (`pull_request`), providing immediate feedback before merging.&#10;- The resource-intensive Docker build and push (`build_push_image`) is strictly limited to runs on the `main` branch after a successful merge or when a new `release` is published.&#10;- This ensures that only fully reviewed code results in a deployable artifact." />
+    <option name="LAST_COMMIT_MESSAGE" value="ci(workflow): ⚡️ Optimize CI triggers and enforce branch protection&#10;&#10;Updates workflow triggers to enforce best practices:&#10;- Linting (`lint` job) is now triggered only on Pull/Merge Requests (`pull_request`), providing immediate feedback before merging.&#10;- The resource-intensive Docker build and push (`build_push_image`) is strictly limited to runs on the `main` branch after a successful merge or when a new `release` is published.&#10;- This ensures that only fully reviewed code results in a deployable artifact." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

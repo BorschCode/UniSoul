@@ -56,7 +56,7 @@ jobs:
           APP_ENV=production
           APP_KEY=${{ secrets.APP_KEY }}
           APP_DEBUG=false
-          APP_URL=${{ secrets.APP_URL }}
+          APP_URL=${{ vars.APP_URL }}
 
           APP_LOCALE=en
           APP_FALLBACK_LOCALE=en
@@ -68,8 +68,8 @@ jobs:
           DB_CONNECTION=mysql
           DB_HOST=host.docker.internal
           DB_PORT=3306
-          DB_DATABASE=${{ secrets.DB_DATABASE }}
-          DB_USERNAME=${{ secrets.DB_USERNAME }}
+          DB_DATABASE=${{ vars.DB_DATABASE }}
+          DB_USERNAME=${{ vars.DB_USERNAME }}
           DB_PASSWORD=${{ secrets.DB_PASSWORD }}
 
           SESSION_DRIVER=database
@@ -82,12 +82,12 @@ jobs:
           REDIS_PASSWORD=${{ secrets.REDIS_PASSWORD }}
           REDIS_PORT=6379
 
-          MAIL_MAILER=${{ secrets.MAIL_MAILER }}
-          MAIL_HOST=${{ secrets.MAIL_HOST }}
-          MAIL_PORT=${{ secrets.MAIL_PORT }}
-          MAIL_USERNAME=${{ secrets.MAIL_USERNAME }}
+          MAIL_MAILER=${{ vars.MAIL_MAILER }}
+          MAIL_HOST=${{ vars.MAIL_HOST }}
+          MAIL_PORT=${{ vars.MAIL_PORT }}
+          MAIL_USERNAME=${{ vars.MAIL_USERNAME }}
           MAIL_PASSWORD=${{ secrets.MAIL_PASSWORD }}
-          MAIL_FROM_ADDRESS=${{ secrets.MAIL_FROM_ADDRESS }}
+          MAIL_FROM_ADDRESS=${{ vars.MAIL_FROM_ADDRESS }}
           MAIL_FROM_NAME="${APP_NAME}"
 
           MODEL_SETTINGS_PERSISTENT=true
@@ -95,17 +95,17 @@ jobs:
           SUPPORTED_LANGUAGES=uk,en,ro,de,ka
 
           TELEGRAM_TOKEN=${{ secrets.TELEGRAM_TOKEN }}
-          TELEGRAM_BOT_USERNAME=${{ secrets.TELEGRAM_BOT_USERNAME }}
+          TELEGRAM_BOT_USERNAME=${{ vars.TELEGRAM_BOT_USERNAME }}
 
-          DEVELOPER_ID=${{ secrets.DEVELOPER_ID }}
-          DEVELOPER_NAME=${{ secrets.DEVELOPER_NAME }}
-          DEVELOPER_USERNAME=${{ secrets.DEVELOPER_USERNAME }}
-          DEVELOPER_EMAIL=${{ secrets.DEVELOPER_EMAIL }}
-          DEVELOPER_WEBSITE=${{ secrets.DEVELOPER_WEBSITE }}
+          DEVELOPER_ID=${{ vars.DEVELOPER_ID }}
+          DEVELOPER_NAME=${{ vars.DEVELOPER_NAME }}
+          DEVELOPER_USERNAME=${{ vars.DEVELOPER_USERNAME }}
+          DEVELOPER_EMAIL=${{ vars.DEVELOPER_EMAIL }}
+          DEVELOPER_WEBSITE=${{ vars.DEVELOPER_WEBSITE }}
 
-          OWNER_ID=${{ secrets.OWNER_ID }}
-          OWNER_CHANNEL=${{ secrets.OWNER_CHANNEL }}
-          OWNER_SUPPORT=${{ secrets.OWNER_SUPPORT }}
+          OWNER_ID=${{ vars.OWNER_ID }}
+          OWNER_CHANNEL=${{ vars.OWNER_CHANNEL }}
+          OWNER_SUPPORT=${{ vars.OWNER_SUPPORT }}
 
           GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}
           EOF
