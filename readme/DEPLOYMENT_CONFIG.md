@@ -55,21 +55,6 @@ These values are non-sensitive and should be stored as **Variables**:
 - `MAIL_USERNAME` - Mail account username/email
 - `MAIL_FROM_ADDRESS` - Email sender address
 
-### Telegram
-- `TELEGRAM_BOT_USERNAME` - Telegram bot username (e.g., `@YourBot`)
-
-### Developer Information
-- `DEVELOPER_ID` - Developer Telegram ID
-- `DEVELOPER_NAME` - Developer full name
-- `DEVELOPER_USERNAME` - Developer Telegram username
-- `DEVELOPER_EMAIL` - Developer email address
-- `DEVELOPER_WEBSITE` - Developer website URL
-
-### Owner Information
-- `OWNER_ID` - Owner Telegram ID
-- `OWNER_CHANNEL` - Owner Telegram channel
-- `OWNER_SUPPORT` - Owner support contact
-
 ---
 
 ## Summary
@@ -81,11 +66,9 @@ These values are non-sensitive and should be stored as **Variables**:
 | Database | 1                   | 2                         |
 | Redis    | 1                   | 0                         |
 | Mail     | 1                   | 5                         |
-| Telegram | 1                   | 1                         |
+| Telegram | 1                   | 0                         |
 | APIs     | 1                   | 0                         |
-| Developer| 0                   | 5                         |
-| Owner    | 0                   | 3                         |
-| **Total**| **9 Secrets**       | **17 Variables**          |
+| **Total**| **8 Secrets**       | **8 Variables**           |
 
 ---
 
