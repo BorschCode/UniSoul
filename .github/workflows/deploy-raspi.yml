@@ -49,6 +49,7 @@ jobs:
         run: |
           echo "DOCKER_USERNAME=${{ secrets.DOCKER_USERNAME }}" >> $GITHUB_ENV
           echo "IMAGE_TAG=${{ steps.image_tag.outputs.tag }}" >> $GITHUB_ENV
+          echo "APP_PORT=${{ vars.APP_PORT }}" >> $GITHUB_ENV
 
       - name: Create .env file
         run: |
@@ -58,6 +59,8 @@ jobs:
           APP_KEY=${{ secrets.APP_KEY }}
           APP_DEBUG=false
           APP_URL=${{ vars.APP_URL }}
+          APP_PORT=${{ vars.APP_PORT }}
+
 
           APP_LOCALE=en
           APP_FALLBACK_LOCALE=en
