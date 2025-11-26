@@ -11,7 +11,7 @@ on:
 jobs:
   deploy:
     name: Deploy UniSoul to Raspberry Pi
-    runs-on: [self-hosted, linux, ARM64]
+    runs-on: [self-hosted, Linux, ARM]
 
     steps:
       - name: Extract image tag
