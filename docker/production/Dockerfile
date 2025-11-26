@@ -39,31 +39,40 @@ ENV SUPERVISOR_PHP_USER="www-data"
 # Set timezone
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-# APT performance optimization
-RUN echo "Acquire::http::Pipeline-Depth 0;" > /etc/apt/apt.conf.d/99custom && \
-    echo "Acquire::http::No-Cache true;" >> /etc/apt/apt.conf.d/99custom && \
-    echo "Acquire::BrokenProxy true;" >> /etc/apt/apt.conf.d/99custom
-
-# Install system dependencies, PHP 8.4, Composer, MySQL/PostgreSQL clients
-RUN apt-get update && apt-get upgrade -y \
+# Install base dependencies
+RUN apt-get update \
+    && apt-get install -y gnupg gosu curl ca-certificates zip unzip git supervisor sqlite3 libcap2-bin libpng-dev dnsutils \
     && mkdir -p /etc/apt/keyrings \
-    && apt-get install -y gnupg gosu curl ca-certificates zip unzip git supervisor sqlite3 libcap2-bin libpng-dev dnsutils nano \
-    && curl -sS 'https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xb8dc7e53946656efbce4c1dd71daeaab4ad4cab6' | gpg --dearmor | tee /etc/apt/keyrings/ppa_ondrej_php.gpg > /dev/null \
-    && echo "deb [signed-by=/etc/apt/keyrings/ppa_ondrej_php.gpg] https://ppa.launchpadcontent.net/ondrej/php/ubuntu noble main" > /etc/apt/sources.list.d/ppa_ondrej_php.list \
-    && apt-get update \
+    && rm -rf /var/lib/apt/lists/*
+
+# Add PHP repository
+RUN curl -sS 'https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x14aa40ec0831756756d7f66c4f4ea0aae5267a6c' | gpg --dearmor | tee /etc/apt/keyrings/ppa_ondrej_php.gpg > /dev/null \
+    && echo "deb [signed-by=/etc/apt/keyrings/ppa_ondrej_php.gpg] https://ppa.launchpadcontent.net/ondrej/php/ubuntu noble main" > /etc/apt/sources.list.d/ppa_ondrej_php.list
+
+# Install PHP 8.4 and extensions
+RUN apt-get update \
     && apt-get install -y \
-       php8.4-cli php8.4-dev php8.4-pgsql php8.4-sqlite3 php8.4-gd php8.4-curl \
-       php8.4-imap php8.4-mysql php8.4-mbstring php8.4-xml php8.4-zip php8.4-bcmath \
-       php8.4-soap php8.4-intl php8.4-readline php8.4-ldap php8.4-msgpack \
-       php8.4-igbinary php8.4-redis php8.4-swoole php8.4-memcached \
-    && curl -sLS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer \
-    && curl -sS https://www.postgresql.org/media/keys/ACCC4CF8.asc | gpg --dearmor | tee /etc/apt/keyrings/pgdg.gpg >/dev/null \
+       php8.4-cli php8.4-dev \
+       php8.4-pgsql php8.4-sqlite3 php8.4-gd \
+       php8.4-curl php8.4-imap php8.4-mysql \
+       php8.4-mbstring php8.4-xml php8.4-zip \
+       php8.4-bcmath php8.4-soap php8.4-intl \
+       php8.4-readline php8.4-ldap \
+       php8.4-msgpack php8.4-igbinary \
+       php8.4-redis php8.4-swoole php8.4-memcached \
+    && php -v \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Composer
+RUN curl -sLS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer \
+    && composer --version
+
+# Add PostgreSQL repository and install database clients
+RUN curl -sS https://www.postgresql.org/media/keys/ACCC4CF8.asc | gpg --dearmor | tee /etc/apt/keyrings/pgdg.gpg >/dev/null \
     && echo "deb [signed-by=/etc/apt/keyrings/pgdg.gpg] http://apt.postgresql.org/pub/repos/apt noble-pgdg main" > /etc/apt/sources.list.d/pgdg.list \
     && apt-get update \
     && apt-get install -y $MYSQL_CLIENT postgresql-client-$POSTGRES_VERSION \
-    && apt-get autoremove -y \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    && rm -rf /var/lib/apt/lists/*
 
 # Allow PHP to bind to port 80
 RUN setcap "cap_net_bind_service=+ep" /usr/bin/php8.4
