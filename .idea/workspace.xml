@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ffce8e0-82c7-48f7-b876-3fe216f734a7" name="Changes" comment="dockerfile: refactor install steps, add Composer, and improve PG repo setup&#10;&#10;- Added Composer installation with version check&#10;- Added PostgreSQL APT repository (pgdg) and installed client packages&#10;- Split the previous large RUN block into smaller, isolated layers&#10;- Improved GPG key handling for PostgreSQL repository&#10;- Removed unnecessary apt-get autoremove/clean commands&#10;- Ensured apt lists are cleaned properly to keep image size smaller&#10;- Added php -v and composer --version validation steps for easier debugging&#10;- Improved build reliability and layer caching">
-      <change afterPath="$PROJECT_DIR$/SECURITY.md" afterDir="false" />
+    <list default="true" id="9ffce8e0-82c7-48f7-b876-3fe216f734a7" name="Changes" comment="Fix port conflict error and improve security version table&#10;&#10;- Resolve &quot;failed to bind host port 0.0.0.0:80/tcp: address already in use&quot;&#10;- Replace hardcoded port mapping (80:80) with dynamic APP_PORT variable&#10;- Update compose.override.raspberry.yml to use &quot;${APP_PORT:-8050}:80&quot;&#10;- Ensure GitHub Actions deployment sets APP_PORT=8050&#10;- Add improved supported versions table in SECURITY.md&#10;- Add comprehensive versioning reference file SECURITY_VERSIONS_EXAMPLES.md">
       <change beforePath="$PROJECT_DIR$/.github/workflows/deploy-raspi.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/deploy-raspi.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compose.override.raspberry.yml" beforeDir="false" afterPath="$PROJECT_DIR$/compose.override.raspberry.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -308,7 +305,7 @@
       <workItem from="1764094705640" duration="4691000" />
       <workItem from="1764143915567" duration="11434000" />
       <workItem from="1764168181298" duration="5065000" />
-      <workItem from="1764173387469" duration="1035000" />
+      <workItem from="1764173387469" duration="1877000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -558,7 +555,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764172892031</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Fix port conflict error and improve security version table&#10;&#10;- Resolve &quot;failed to bind host port 0.0.0.0:80/tcp: address already in use&quot;&#10;- Replace hardcoded port mapping (80:80) with dynamic APP_PORT variable&#10;- Update compose.override.raspberry.yml to use &quot;${APP_PORT:-8050}:80&quot;&#10;- Ensure GitHub Actions deployment sets APP_PORT=8050&#10;- Add improved supported versions table in SECURITY.md&#10;- Add comprehensive versioning reference file SECURITY_VERSIONS_EXAMPLES.md">
+      <option name="closed" value="true" />
+      <created>1764174632542</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1764174632542</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -592,7 +597,8 @@
     <MESSAGE value="fix(ci): update workflow permissions and runner labels&#10;&#10;   - Add actions:write permission to trigger-deploy job&#10;   - Change runner labels from ARM64 to ARM to match actual runner&#10;   - Move non-critical env vars from secrets to variables&#10;   - Add deployment configuration documentation" />
     <MESSAGE value="docs(deployment): remove deprecated Telegram, developer and owner variables&#10;&#10;- Removed unused environment variables from readme/DEPLOYMENT.md:&#10;  - TELEGRAM_BOT_USERNAME&#10;  - DEVELOPER_* and OWNER_* fields&#10;- Cleaned support section by removing developer email and support links&#10;- Updated DEPLOYMENT_CONFIG.md to match new simplified set of secrets/variables&#10;- Reflects current minimal deployment requirements and removes outdated fields" />
     <MESSAGE value="dockerfile: refactor install steps, add Composer, and improve PG repo setup&#10;&#10;- Added Composer installation with version check&#10;- Added PostgreSQL APT repository (pgdg) and installed client packages&#10;- Split the previous large RUN block into smaller, isolated layers&#10;- Improved GPG key handling for PostgreSQL repository&#10;- Removed unnecessary apt-get autoremove/clean commands&#10;- Ensured apt lists are cleaned properly to keep image size smaller&#10;- Added php -v and composer --version validation steps for easier debugging&#10;- Improved build reliability and layer caching" />
-    <option name="LAST_COMMIT_MESSAGE" value="dockerfile: refactor install steps, add Composer, and improve PG repo setup&#10;&#10;- Added Composer installation with version check&#10;- Added PostgreSQL APT repository (pgdg) and installed client packages&#10;- Split the previous large RUN block into smaller, isolated layers&#10;- Improved GPG key handling for PostgreSQL repository&#10;- Removed unnecessary apt-get autoremove/clean commands&#10;- Ensured apt lists are cleaned properly to keep image size smaller&#10;- Added php -v and composer --version validation steps for easier debugging&#10;- Improved build reliability and layer caching" />
+    <MESSAGE value="Fix port conflict error and improve security version table&#10;&#10;- Resolve &quot;failed to bind host port 0.0.0.0:80/tcp: address already in use&quot;&#10;- Replace hardcoded port mapping (80:80) with dynamic APP_PORT variable&#10;- Update compose.override.raspberry.yml to use &quot;${APP_PORT:-8050}:80&quot;&#10;- Ensure GitHub Actions deployment sets APP_PORT=8050&#10;- Add improved supported versions table in SECURITY.md&#10;- Add comprehensive versioning reference file SECURITY_VERSIONS_EXAMPLES.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix port conflict error and improve security version table&#10;&#10;- Resolve &quot;failed to bind host port 0.0.0.0:80/tcp: address already in use&quot;&#10;- Replace hardcoded port mapping (80:80) with dynamic APP_PORT variable&#10;- Update compose.override.raspberry.yml to use &quot;${APP_PORT:-8050}:80&quot;&#10;- Ensure GitHub Actions deployment sets APP_PORT=8050&#10;- Add improved supported versions table in SECURITY.md&#10;- Add comprehensive versioning reference file SECURITY_VERSIONS_EXAMPLES.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
