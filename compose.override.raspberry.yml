@@ -6,7 +6,7 @@ services:
     labels:
       - "app=unisoul"
     ports:
-      - "80:80"
+      - "${APP_PORT:-8050}:80"
     volumes: !reset []
     extra_hosts:
       - "host.docker.internal:host-gateway"
