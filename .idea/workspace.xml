@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ffce8e0-82c7-48f7-b876-3fe216f734a7" name="Changes" comment="ci(workflow): ⚡️ Optimize CI triggers and enforce branch protection&#10;&#10;Updates workflow triggers to enforce best practices:&#10;- Linting (`lint` job) is now triggered only on Pull/Merge Requests (`pull_request`), providing immediate feedback before merging.&#10;- The resource-intensive Docker build and push (`build_push_image`) is strictly limited to runs on the `main` branch after a successful merge or when a new `release` is published.&#10;- This ensures that only fully reviewed code results in a deployable artifact.">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/build-push.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/build-push.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.github/workflows/deploy-raspi.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/deploy-raspi.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -305,7 +303,7 @@
       <workItem from="1762981474823" duration="372000" />
       <workItem from="1763021880937" duration="8877000" />
       <workItem from="1764094705640" duration="4691000" />
-      <workItem from="1764143915567" duration="5300000" />
+      <workItem from="1764143915567" duration="5974000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -475,7 +473,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764148931916</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="ci(workflow): ⚡️ Optimize CI triggers and enforce branch protection&#10;&#10;Updates workflow triggers to enforce best practices:&#10;- Linting (`lint` job) is now triggered only on Pull/Merge Requests (`pull_request`), providing immediate feedback before merging.&#10;- The resource-intensive Docker build and push (`build_push_image`) is strictly limited to runs on the `main` branch after a successful merge or when a new `release` is published.&#10;- This ensures that only fully reviewed code results in a deployable artifact.">
+      <option name="closed" value="true" />
+      <created>1764154170448</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1764154170448</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
