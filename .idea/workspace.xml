@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ffce8e0-82c7-48f7-b876-3fe216f734a7" name="Changes" comment="docs(deployment): remove deprecated Telegram, developer and owner variables&#10;&#10;- Removed unused environment variables from readme/DEPLOYMENT.md:&#10;  - TELEGRAM_BOT_USERNAME&#10;  - DEVELOPER_* and OWNER_* fields&#10;- Cleaned support section by removing developer email and support links&#10;- Updated DEPLOYMENT_CONFIG.md to match new simplified set of secrets/variables&#10;- Reflects current minimal deployment requirements and removes outdated fields" />
+    <list default="true" id="9ffce8e0-82c7-48f7-b876-3fe216f734a7" name="Changes" comment="docs(deployment): remove deprecated Telegram, developer and owner variables&#10;&#10;- Removed unused environment variables from readme/DEPLOYMENT.md:&#10;  - TELEGRAM_BOT_USERNAME&#10;  - DEVELOPER_* and OWNER_* fields&#10;- Cleaned support section by removing developer email and support links&#10;- Updated DEPLOYMENT_CONFIG.md to match new simplified set of secrets/variables&#10;- Reflects current minimal deployment requirements and removes outdated fields">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/build-push.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/build-push.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -301,7 +304,7 @@
       <workItem from="1762981474823" duration="372000" />
       <workItem from="1763021880937" duration="8877000" />
       <workItem from="1764094705640" duration="4691000" />
-      <workItem from="1764143915567" duration="9060000" />
+      <workItem from="1764143915567" duration="10064000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -503,7 +506,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764164480690</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="docs(deployment): remove deprecated Telegram, developer and owner variables&#10;&#10;- Removed unused environment variables from readme/DEPLOYMENT.md:&#10;  - TELEGRAM_BOT_USERNAME&#10;  - DEVELOPER_* and OWNER_* fields&#10;- Cleaned support section by removing developer email and support links&#10;- Updated DEPLOYMENT_CONFIG.md to match new simplified set of secrets/variables&#10;- Reflects current minimal deployment requirements and removes outdated fields">
+      <option name="closed" value="true" />
+      <created>1764164787549</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1764164787549</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
