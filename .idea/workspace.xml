@@ -4,25 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ffce8e0-82c7-48f7-b876-3fe216f734a7" name="Changes" comment="🐛 fix(phpstan): Add explicit type hint to resolve undefined property warning 🛡️&#10;&#10;Resolved a PHPStan warning (`Access to an undefined property App\Models\BotButton::$id`) in `BotButtonsRelationManager.php`.&#10;&#10;The issue was fixed by adding an explicit type hint (`\App\Models\BotButton`) to the `$button` argument within the `mapWithKeys` closure, allowing static analysis to correctly infer the model's properties.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Console/Commands/TelegramSetWebhook.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/TelegramSetWebhook.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/BotButton.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/BotButton.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Branch.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Branch.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Chat.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Chat.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Confession.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Confession.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Employee.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Employee.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Statistic.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Statistic.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/SupportManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/SupportManager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/SupportSession.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/SupportSession.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Telegram/Conversations/BaseConversation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Telegram/Conversations/BaseConversation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Telegram/Conversations/ConfessionConversation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Telegram/Conversations/ConfessionConversation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Telegram/Conversations/SupportConversation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Telegram/Conversations/SupportConversation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Telegram/DTOs/CallbackData.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Telegram/DTOs/CallbackData.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/nutgram.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/nutgram.php" afterDir="false" />
-    </list>
+    <list default="true" id="9ffce8e0-82c7-48f7-b876-3fe216f734a7" name="Changes" comment="ci: add new GitHub Actions workflow for automated testing and build&#10;&#10;- Introduced GitHub Actions CI pipeline&#10;- Added workflow file to run tests on push and pull requests&#10;- Included steps for setting up PHP, Composer, and Laravel environment&#10;- Added Sail/Docker service configuration (MySQL) for integration tests&#10;- Ensured caching for Composer dependencies to speed up builds&#10;- Updated README with initial CI instructions (if applicable)&#10;- Verified compatibility with Laravel 12 and Telegram bot components" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,7 +30,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -219,6 +201,9 @@
       <path value="$PROJECT_DIR$/vendor/laracraft-tech/laravel-date-scopes" />
       <path value="$PROJECT_DIR$/vendor/ryangjchandler/blade-capture-directive" />
       <path value="$PROJECT_DIR$/vendor/webpatser/laravel-countries" />
+      <path value="$PROJECT_DIR$/vendor/laravel/roster" />
+      <path value="$PROJECT_DIR$/vendor/laravel/boost" />
+      <path value="$PROJECT_DIR$/vendor/laravel/mcp" />
     </include_path>
   </component>
   <component name="ProjectColorInfo">{
@@ -236,8 +221,8 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/media/serega/256-m2-ssd/projects_archive/task_planner.api&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/mnt/256-m2/projects/UniSoul&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -254,13 +239,15 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/lang/de" />
       <recent name="$PROJECT_DIR$/lang/ru" />
       <recent name="$PROJECT_DIR$/lang/ro" />
       <recent name="$PROJECT_DIR$/lang/uk" />
-      <recent name="$PROJECT_DIR$/lang/ka" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/docker/production" />
+      <recent name="$PROJECT_DIR$/readme" />
       <recent name="$PROJECT_DIR$/app/Filament/Resources/Confessions/RelationManagers" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/app" />
@@ -275,8 +262,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-PS-252.27397.112" />
-        <option value="bundled-php-predefined-a98d8de5180a-b35feea871ed-com.jetbrains.php.sharedIndexes-PS-252.27397.112" />
+        <option value="bundled-js-predefined-d6986cc7102b-a71380e98a7c-JavaScript-PS-252.28238.9" />
+        <option value="bundled-php-predefined-a98d8de5180a-58f58c5035b3-com.jetbrains.php.sharedIndexes-PS-252.28238.9" />
       </set>
     </attachedChunks>
   </component>
@@ -313,6 +300,8 @@
       <workItem from="1762978442770" duration="720000" />
       <workItem from="1762981474823" duration="372000" />
       <workItem from="1763021880937" duration="8877000" />
+      <workItem from="1764094705640" duration="4691000" />
+      <workItem from="1764143915567" duration="571000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -418,7 +407,47 @@
       <option name="project" value="LOCAL" />
       <updated>1763024774193</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="ci: add new GitHub Actions workflow for automated testing and build&#10;&#10;- Introduced GitHub Actions CI pipeline&#10;- Added workflow file to run tests on push and pull requests&#10;- Included steps for setting up PHP, Composer, and Laravel environment&#10;- Added Sail/Docker service configuration (MySQL) for integration tests&#10;- Ensured caching for Composer dependencies to speed up builds&#10;- Updated README with initial CI instructions (if applicable)&#10;- Verified compatibility with Laravel 12 and Telegram bot components">
+      <option name="closed" value="true" />
+      <created>1764096909840</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1764096909840</updated>
+    </task>
+    <task id="LOCAL-00015" summary="ci: add new GitHub Actions workflow for automated testing and build&#10;&#10;- Introduced GitHub Actions CI pipeline&#10;- Added workflow file to run tests on push and pull requests&#10;- Included steps for setting up PHP, Composer, and Laravel environment&#10;- Added Sail/Docker service configuration (MySQL) for integration tests&#10;- Ensured caching for Composer dependencies to speed up builds&#10;- Updated README with initial CI instructions (if applicable)&#10;- Verified compatibility with Laravel 12 and Telegram bot components">
+      <option name="closed" value="true" />
+      <created>1764097568824</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1764097568824</updated>
+    </task>
+    <task id="LOCAL-00016" summary="ci: add new GitHub Actions workflow for automated testing and build&#10;&#10;- Introduced GitHub Actions CI pipeline&#10;- Added workflow file to run tests on push and pull requests&#10;- Included steps for setting up PHP, Composer, and Laravel environment&#10;- Added Sail/Docker service configuration (MySQL) for integration tests&#10;- Ensured caching for Composer dependencies to speed up builds&#10;- Updated README with initial CI instructions (if applicable)&#10;- Verified compatibility with Laravel 12 and Telegram bot components">
+      <option name="closed" value="true" />
+      <created>1764098461768</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1764098461768</updated>
+    </task>
+    <task id="LOCAL-00017" summary="ci: add new GitHub Actions workflow for automated testing and build&#10;&#10;- Introduced GitHub Actions CI pipeline&#10;- Added workflow file to run tests on push and pull requests&#10;- Included steps for setting up PHP, Composer, and Laravel environment&#10;- Added Sail/Docker service configuration (MySQL) for integration tests&#10;- Ensured caching for Composer dependencies to speed up builds&#10;- Updated README with initial CI instructions (if applicable)&#10;- Verified compatibility with Laravel 12 and Telegram bot components">
+      <option name="closed" value="true" />
+      <created>1764098866302</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1764098866302</updated>
+    </task>
+    <task id="LOCAL-00018" summary="ci: add new GitHub Actions workflow for automated testing and build&#10;&#10;- Introduced GitHub Actions CI pipeline&#10;- Added workflow file to run tests on push and pull requests&#10;- Included steps for setting up PHP, Composer, and Laravel environment&#10;- Added Sail/Docker service configuration (MySQL) for integration tests&#10;- Ensured caching for Composer dependencies to speed up builds&#10;- Updated README with initial CI instructions (if applicable)&#10;- Verified compatibility with Laravel 12 and Telegram bot components">
+      <option name="closed" value="true" />
+      <created>1764144166043</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1764144166043</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -446,7 +475,8 @@
     <MESSAGE value="I can create a great commit message for that\! It clearly outlines the new continuous integration setup and the tools used.&#10;&#10;Here is the detailed, emoji-friendly commit message:&#10;&#10;```&#10;✨ feat: Setup GitHub Actions workflow for PHP linting&#10;&#10;Introduces the initial CI/CD workflow (`.github/workflows/lint.yml`) to automatically enforce code quality and style standards on push and pull requests to the `main` and `develop` branches.&#10;&#10;The workflow includes the following tools:&#10;&#10;-  **PHP CS Fixer:** Automated code style fixing.&#10;-  **PHPStan:** Static analysis for bug detection and type validation.&#10;-  **Pint:** Laravel code style checking.&#10;&#10;The job runs on PHP 8.2 and utilizes caching for faster dependency installation.&#10;```" />
     <MESSAGE value="✨ feat: Setup GitHub Actions workflow for PHP linting&#10;&#10;Introduces the initial CI/CD workflow (`.github/workflows/lint.yml`) to automatically enforce code quality and style standards on push and pull requests to the `main` and `develop` branches.&#10;&#10;The workflow includes the following tools:&#10;&#10;-  **PHP CS Fixer:** Automated code style fixing.&#10;-  **PHPStan:** Static analysis for bug detection and type validation.&#10;-  **Pint:** Laravel code style checking." />
     <MESSAGE value=" fix(phpstan): Add explicit type hint to resolve undefined property warning ️&#10;&#10;Resolved a PHPStan warning (`Access to an undefined property App\Models\BotButton::$id`) in `BotButtonsRelationManager.php`.&#10;&#10;The issue was fixed by adding an explicit type hint (`\App\Models\BotButton`) to the `$button` argument within the `mapWithKeys` closure, allowing static analysis to correctly infer the model's properties." />
-    <option name="LAST_COMMIT_MESSAGE" value=" fix(phpstan): Add explicit type hint to resolve undefined property warning ️&#10;&#10;Resolved a PHPStan warning (`Access to an undefined property App\Models\BotButton::$id`) in `BotButtonsRelationManager.php`.&#10;&#10;The issue was fixed by adding an explicit type hint (`\App\Models\BotButton`) to the `$button` argument within the `mapWithKeys` closure, allowing static analysis to correctly infer the model's properties." />
+    <MESSAGE value="ci: add new GitHub Actions workflow for automated testing and build&#10;&#10;- Introduced GitHub Actions CI pipeline&#10;- Added workflow file to run tests on push and pull requests&#10;- Included steps for setting up PHP, Composer, and Laravel environment&#10;- Added Sail/Docker service configuration (MySQL) for integration tests&#10;- Ensured caching for Composer dependencies to speed up builds&#10;- Updated README with initial CI instructions (if applicable)&#10;- Verified compatibility with Laravel 12 and Telegram bot components" />
+    <option name="LAST_COMMIT_MESSAGE" value="ci: add new GitHub Actions workflow for automated testing and build&#10;&#10;- Introduced GitHub Actions CI pipeline&#10;- Added workflow file to run tests on push and pull requests&#10;- Included steps for setting up PHP, Composer, and Laravel environment&#10;- Added Sail/Docker service configuration (MySQL) for integration tests&#10;- Ensured caching for Composer dependencies to speed up builds&#10;- Updated README with initial CI instructions (if applicable)&#10;- Verified compatibility with Laravel 12 and Telegram bot components" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

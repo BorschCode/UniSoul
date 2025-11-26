@@ -30,3 +30,4 @@ Homestead.json
 auth.json
 /_ide_helper.php
 /.phpstorm.meta.php
+/compose.override.yml
