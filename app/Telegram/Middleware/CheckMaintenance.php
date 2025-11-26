@@ -13,7 +13,7 @@ class CheckMaintenance
         $chat = $bot->get(Chat::class);
 
         if (app()->isDownForMaintenance()) {
-            if ($chat->chat_id === config('developer.id')) {
+            if ($chat->chat_id === config('owner.id')) {
                 $bot->sendMessage(
                     text: '<b>⚠ MAINTENANCE MODE ENABLED ⚠</b>',
                     parse_mode: ParseMode::HTML,
