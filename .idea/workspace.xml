@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ffce8e0-82c7-48f7-b876-3fe216f734a7" name="Changes" comment="fix(ci): update workflow permissions and runner labels&#10;&#10;   - Add actions:write permission to trigger-deploy job&#10;   - Change runner labels from ARM64 to ARM to match actual runner&#10;   - Move non-critical env vars from secrets to variables&#10;   - Add deployment configuration documentation">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/deploy-raspi.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/deploy-raspi.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme/DEPLOYMENT.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme/DEPLOYMENT.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme/DEPLOYMENT_CONFIG.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme/DEPLOYMENT_CONFIG.md" afterDir="false" />
-    </list>
+    <list default="true" id="9ffce8e0-82c7-48f7-b876-3fe216f734a7" name="Changes" comment="docs(deployment): remove deprecated Telegram, developer and owner variables&#10;&#10;- Removed unused environment variables from readme/DEPLOYMENT.md:&#10;  - TELEGRAM_BOT_USERNAME&#10;  - DEVELOPER_* and OWNER_* fields&#10;- Cleaned support section by removing developer email and support links&#10;- Updated DEPLOYMENT_CONFIG.md to match new simplified set of secrets/variables&#10;- Reflects current minimal deployment requirements and removes outdated fields" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -306,7 +301,7 @@
       <workItem from="1762981474823" duration="372000" />
       <workItem from="1763021880937" duration="8877000" />
       <workItem from="1764094705640" duration="4691000" />
-      <workItem from="1764143915567" duration="7090000" />
+      <workItem from="1764143915567" duration="9060000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -492,7 +487,23 @@
       <option name="project" value="LOCAL" />
       <updated>1764161745297</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="docs(deployment): remove deprecated Telegram, developer and owner variables&#10;&#10;- Removed unused environment variables from readme/DEPLOYMENT.md:&#10;  - TELEGRAM_BOT_USERNAME&#10;  - DEVELOPER_* and OWNER_* fields&#10;- Cleaned support section by removing developer email and support links&#10;- Updated DEPLOYMENT_CONFIG.md to match new simplified set of secrets/variables&#10;- Reflects current minimal deployment requirements and removes outdated fields">
+      <option name="closed" value="true" />
+      <created>1764162828125</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1764162828125</updated>
+    </task>
+    <task id="LOCAL-00025" summary="docs(deployment): remove deprecated Telegram, developer and owner variables&#10;&#10;- Removed unused environment variables from readme/DEPLOYMENT.md:&#10;  - TELEGRAM_BOT_USERNAME&#10;  - DEVELOPER_* and OWNER_* fields&#10;- Cleaned support section by removing developer email and support links&#10;- Updated DEPLOYMENT_CONFIG.md to match new simplified set of secrets/variables&#10;- Reflects current minimal deployment requirements and removes outdated fields">
+      <option name="closed" value="true" />
+      <created>1764164480690</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1764164480690</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -524,7 +535,8 @@
     <MESSAGE value="ci: add new GitHub Actions workflow for automated testing and build and deploy&#10;&#10; Triggers:&#10;  - Push to main or develop branches&#10;  - Push tags matching v* pattern (e.g., v1.0.0)&#10;  - Manual trigger via workflow_dispatch&#10;&#10;  What it does:&#10;  - Builds multi-platform Docker image (linux/amd64, linux/arm64)&#10;  - Pushes to Docker Hub with appropriate tags&#10;  - Automatically triggers deployment when a release tag is pushed&#10;&#10;  Tags created:&#10;  - Branch pushes: branch-name (e.g., develop, main)&#10;  - Version tags: v1.0.0, 1.0, 1 (semantic versioning)&#10;  - Git SHA: sha-abc1234&#10;  - latest tag for main branch" />
     <MESSAGE value="ci(workflow): ⚡️ Optimize CI triggers and enforce branch protection&#10;&#10;Updates workflow triggers to enforce best practices:&#10;- Linting (`lint` job) is now triggered only on Pull/Merge Requests (`pull_request`), providing immediate feedback before merging.&#10;- The resource-intensive Docker build and push (`build_push_image`) is strictly limited to runs on the `main` branch after a successful merge or when a new `release` is published.&#10;- This ensures that only fully reviewed code results in a deployable artifact." />
     <MESSAGE value="fix(ci): update workflow permissions and runner labels&#10;&#10;   - Add actions:write permission to trigger-deploy job&#10;   - Change runner labels from ARM64 to ARM to match actual runner&#10;   - Move non-critical env vars from secrets to variables&#10;   - Add deployment configuration documentation" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix(ci): update workflow permissions and runner labels&#10;&#10;   - Add actions:write permission to trigger-deploy job&#10;   - Change runner labels from ARM64 to ARM to match actual runner&#10;   - Move non-critical env vars from secrets to variables&#10;   - Add deployment configuration documentation" />
+    <MESSAGE value="docs(deployment): remove deprecated Telegram, developer and owner variables&#10;&#10;- Removed unused environment variables from readme/DEPLOYMENT.md:&#10;  - TELEGRAM_BOT_USERNAME&#10;  - DEVELOPER_* and OWNER_* fields&#10;- Cleaned support section by removing developer email and support links&#10;- Updated DEPLOYMENT_CONFIG.md to match new simplified set of secrets/variables&#10;- Reflects current minimal deployment requirements and removes outdated fields" />
+    <option name="LAST_COMMIT_MESSAGE" value="docs(deployment): remove deprecated Telegram, developer and owner variables&#10;&#10;- Removed unused environment variables from readme/DEPLOYMENT.md:&#10;  - TELEGRAM_BOT_USERNAME&#10;  - DEVELOPER_* and OWNER_* fields&#10;- Cleaned support section by removing developer email and support links&#10;- Updated DEPLOYMENT_CONFIG.md to match new simplified set of secrets/variables&#10;- Reflects current minimal deployment requirements and removes outdated fields" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
