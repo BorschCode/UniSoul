@@ -16,8 +16,8 @@ WORKDIR /var/www/html
 # Fix timezone
 RUN ln -snf /usr/share/zoneinfo/UTC /etc/localtime && echo UTC > /etc/timezone
 
-# Install base dependencies and PHP with all required extensions
-RUN apt-get update && apt-get install -y --no-install-recommends --fix-missing \
+# Install base dependencies first
+RUN apt-get update && apt-get install -y --no-install-recommends \
     gnupg \
     gosu \
     curl \
@@ -31,26 +31,35 @@ RUN apt-get update && apt-get install -y --no-install-recommends --fix-missing \
     libpng-dev \
     libpq-dev \
     dnsutils \
-    php8.3-cli \
-    php8.3-fpm \
-    php8.3-pgsql \
-    php8.3-mysql \
-    php8.3-sqlite3 \
-    php8.3-curl \
-    php8.3-gd \
-    php8.3-mbstring \
-    php8.3-xml \
-    php8.3-zip \
-    php8.3-bcmath \
-    php8.3-soap \
-    php8.3-intl \
-    php8.3-readline \
-    php8.3-ldap \
-    php8.3-msgpack \
-    php8.3-igbinary \
-    php8.3-redis \
-    php8.3-swoole \
+    software-properties-common \
     && mkdir -p /etc/apt/keyrings \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Add ondrej/php repository for PHP 8.4
+RUN curl -sSL https://packages.sury.org/php/README.txt | bash -x \
+    && apt-get update
+
+# Install PHP 8.4 with all required extensions
+RUN apt-get install -y --no-install-recommends \
+    php8.4-cli \
+    php8.4-fpm \
+    php8.4-pgsql \
+    php8.4-mysql \
+    php8.4-sqlite3 \
+    php8.4-curl \
+    php8.4-gd \
+    php8.4-mbstring \
+    php8.4-xml \
+    php8.4-zip \
+    php8.4-bcmath \
+    php8.4-soap \
+    php8.4-intl \
+    php8.4-readline \
+    php8.4-ldap \
+    php8.4-msgpack \
+    php8.4-igbinary \
+    php8.4-redis \
     && php -r "readfile('https://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer \
     && apt-get -y autoremove \
     && apt-get clean \
@@ -69,7 +78,7 @@ RUN composer install --no-interaction --optimize-autoloader --no-dev
 COPY docker/production/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Copy PHP config
-COPY docker/production/php.ini /etc/php/8.3/cli/conf.d/99-custom.ini
+COPY docker/production/php.ini /etc/php/8.4/cli/conf.d/99-custom.ini
 
 # Copy and set up entrypoint
 COPY docker/production/entrypoint.sh /usr/local/bin/entrypoint.sh
