@@ -63,16 +63,23 @@ RUN apt-get install -y --no-install-recommends \
     && php -r "readfile('https://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer \
     && apt-get -y autoremove \
     && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/apt/archives/*
 
 # Copy Frontend Build
 COPY --from=frontend-builder /app/public/build public/build
 
+# Copy composer files first for better layer caching
+COPY composer.json composer.lock ./
+
+# Install PHP Dependencies (cache this layer)
+RUN composer install --no-interaction --optimize-autoloader --no-dev --no-scripts \
+    && rm -rf /root/.composer/cache
+
 # Copy App Files
 COPY . .
 
-# Install PHP Dependencies
-RUN composer install --no-interaction --optimize-autoloader --no-dev
+# Run post-install scripts
+RUN composer run-script post-autoload-dump
 
 # Copy supervisor config
 COPY docker/production/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
