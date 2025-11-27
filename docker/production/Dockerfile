@@ -1,5 +1,5 @@
 # Stage 1: Frontend Build
-FROM node:22-slim as frontend-builder
+FROM node:22-slim AS frontend-builder
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
@@ -37,8 +37,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Add ondrej/php repository for PHP 8.4
-RUN curl -fsSL https://packages.sury.org/php/apt.gpg -o /etc/apt/keyrings/php.gpg \
-    && echo "deb [signed-by=/etc/apt/keyrings/php.gpg] https://packages.sury.org/php/ noble main" > /etc/apt/sources.list.d/php.list \
+RUN LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php -y \
     && apt-get update
 
 # Install PHP 8.4 with all required extensions
