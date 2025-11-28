@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="9ffce8e0-82c7-48f7-b876-3fe216f734a7" name="Changes" comment="ci: reintroduce docker prune + sync + free/df diagnostics for Raspberry workflow stability">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compose.override.raspberry.yml" beforeDir="false" afterPath="$PROJECT_DIR$/compose.override.raspberry.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/production/supervisord.conf" beforeDir="false" afterPath="$PROJECT_DIR$/docker/production/supervisord.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Telegram/Conversations/ConfessionConversation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Telegram/Conversations/ConfessionConversation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/production/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/docker/production/Dockerfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -226,7 +228,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "develop",
-    "last_opened_file_path": "/mnt/256-m2/projects/ai-support-web-tg-bot",
+    "last_opened_file_path": "/mnt/256-m2/projects/UniSoul",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -309,6 +311,8 @@
       <workItem from="1764168181298" duration="5065000" />
       <workItem from="1764173387469" duration="1877000" />
       <workItem from="1764237755884" duration="10252000" />
+      <workItem from="1764311762358" duration="1612000" />
+      <workItem from="1764336679674" duration="1371000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />

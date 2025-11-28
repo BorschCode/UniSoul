@@ -506,8 +506,6 @@ class ConfessionConversation extends BaseConversation
             }
             throw $telegramException;
         }
-
-        $this->showMenu();
     }
 
     public function handleEmployerOpenMenu(Nutgram $bot): void
