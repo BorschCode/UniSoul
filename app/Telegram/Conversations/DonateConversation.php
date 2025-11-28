@@ -2,6 +2,7 @@
 
 namespace App\Telegram\Conversations;
 
+use App\Models\Donation;
 use SergiX44\Nutgram\Conversations\Conversation;
 use SergiX44\Nutgram\Nutgram;
 use SergiX44\Nutgram\Telegram\Properties\ParseMode;
@@ -9,6 +10,48 @@ use SergiX44\Nutgram\Telegram\Types\Payment\LabeledPrice;
 
 class DonateConversation extends Conversation
 {
+    /**
+     * Get all active donations, optionally filtered by confession or branch
+     */
+    public static function getDonations(?int $confessionId = null, ?int $branchId = null)
+    {
+        $query = Donation::query()->where('active', true);
+
+        if ($confessionId) {
+            $query->where('confession_id', $confessionId);
+        }
+
+        if ($branchId) {
+            $query->where('branch_id', $branchId);
+        }
+
+        return $query->orderBy('order')->get();
+    }
+
+    /**
+     * Get a specific donation by ID
+     */
+    public static function getDonationById(int $donationId): ?Donation
+    {
+        return Donation::query()->where('active', true)->find($donationId);
+    }
+
+    /**
+     * Get donations by purpose (e.g., 'candle', 'sorokoust', 'general')
+     */
+    public static function getDonationsByPurpose(string $purpose, ?int $confessionId = null)
+    {
+        $query = Donation::query()
+            ->where('active', true)
+            ->where('purpose', $purpose);
+
+        if ($confessionId) {
+            $query->where('confession_id', $confessionId);
+        }
+
+        return $query->orderBy('order')->get();
+    }
+
     public function start(Nutgram $bot): void
     {
         $bot->sendMessage(
