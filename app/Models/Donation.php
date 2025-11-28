@@ -11,6 +11,7 @@ class Donation extends Model
 {
     /** @use HasFactory<\Database\Factories\DonationFactory> */
     use HasFactory;
+
     use HasTranslations;
 
     protected $fillable = [
