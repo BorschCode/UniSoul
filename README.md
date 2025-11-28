@@ -111,7 +111,26 @@ This runs `tests/Feature/TelegramWebhookTest.php`, confirming that incoming upda
 
 -----
 
-## 4\. Compatibility Fixes Summary
+## 4\. Admin Panel (Filament)
+
+The project includes a Filament admin panel for managing users, confessions, bot buttons, and viewing statistics.
+
+**Access the admin panel at:** [http://localhost:8050/management](http://localhost:8050/management)
+
+Available resources:
+- **Users** - Manage bot users
+- **Confessions** - View and manage user confessions
+- **Bot Buttons** - Configure bot keyboard buttons
+- **Statistics** - View application statistics
+
+Login credentials should be created using:
+```bash
+./vendor/bin/sail artisan make:filament-user
+```
+
+-----
+
+## 5\. Compatibility Fixes Summary
 
 The following files were replaced/updated to ensure full **Laravel 12** compatibility and **PHP 8.2** type-hinting:
 
@@ -125,7 +144,7 @@ The following files were replaced/updated to ensure full **Laravel 12** compatib
 
 -----
 
-## 5\. Main Flow Examples
+## 6\. Main Flow Examples
 
 The `TelegramBotService` implements the following core user flows:
 

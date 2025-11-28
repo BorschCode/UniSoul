@@ -91,6 +91,9 @@ COPY docker/production/php.ini /etc/php/8.4/cli/conf.d/99-custom.ini
 COPY docker/production/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
+# Create PHP-FPM log file with proper permissions
+RUN install -o www-data -g www-data -m 664 /dev/null /var/log/php8.4-fpm.log
+
 # Permissions
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 775 /var/www/html/storage \
