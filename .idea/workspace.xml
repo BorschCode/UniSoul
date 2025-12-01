@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ffce8e0-82c7-48f7-b876-3fe216f734a7" name="Changes" comment="  feat: add Donation model with database structure and seeder&#10;&#10;  Add comprehensive donation management system to support various church donation types:&#10;&#10;  - Create donations table migration with translatable fields (name, description)&#10;  - Add Donation model with HasTranslations trait and relationships to Confession/Branch&#10;  - Implement DonationFactory for generating test data&#10;  - Create DonationSeeder with 5 donation types across all confessions:&#10;    * Light a Candle (🕯️)&#10;    * Sorokoust (🙏)&#10;    * General Support (⛪)&#10;    * Memorial Service (✝️)&#10;    * Unceasing Psalter (📿)&#10;  - Add static helper methods to DonateConversation for fetching donation data:&#10;    * getDonations() - fetch by confession/branch&#10;    * getDonationById() - fetch specific donation&#10;    * getDonationsByPurpose() - filter by purpose type">
-      <change afterPath="$PROJECT_DIR$/.github/workflows/deploy-raspi-arm64.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/build-push.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/build-push.yml" afterDir="false" />
+    <list default="true" id="9ffce8e0-82c7-48f7-b876-3fe216f734a7" name="Changes" comment="ci(workflows): add ARM64 deploy workflow trigger and update build-push.yml&#10;&#10;- Added new raspberry ARM64 deployment workflow file&#10;- Updated build-push.yml to trigger ARM deploy workflow using github-script&#10;- Renamed step to “Trigger raspberry deploy workflow (ARM)”&#10;- Added 18 new lines for version forwarding, tag extraction, and dispatch call&#10;- Removed old unused deploy trigger block">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/deploy-raspi-arm64.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/deploy-raspi-arm64.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -311,6 +310,7 @@
       <workItem from="1764237755884" duration="10252000" />
       <workItem from="1764311762358" duration="1612000" />
       <workItem from="1764336679674" duration="5641000" />
+      <workItem from="1764616282584" duration="916000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -632,7 +632,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764347013914</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="ci(workflows): add ARM64 deploy workflow trigger and update build-push.yml&#10;&#10;- Added new raspberry ARM64 deployment workflow file&#10;- Updated build-push.yml to trigger ARM deploy workflow using github-script&#10;- Renamed step to “Trigger raspberry deploy workflow (ARM)”&#10;- Added 18 new lines for version forwarding, tag extraction, and dispatch call&#10;- Removed old unused deploy trigger block">
+      <option name="closed" value="true" />
+      <created>1764612249638</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1764612249638</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -671,7 +679,8 @@
     <MESSAGE value="fix(ci): improve Raspberry Pi deployment reliability with pull retries and memory cleanup&#10;&#10;Enhances the deploy-raspi.yml workflow to prevent OOM failures during Docker image pulls on low-memory Raspberry Pi devices.&#10;&#10;Key improvements&#10;&#10;Added retry mechanism for image pulling (3 attempts with status logging)&#10;&#10;Added aggressive memory recovery steps between retries:&#10;&#10;docker system prune -af&#10;&#10;sync + drop kernel caches (echo 3 &gt; /proc/sys/vm/drop_caches)&#10;&#10;5-second cooldown&#10;&#10;Updated pull command to explicitly use --platform linux/arm64 to avoid multi-arch manifest extraction&#10;&#10;Improved logging for easier debugging of pull failures&#10;&#10;These changes significantly reduce the chance of exit code 137 (OOM killed) during deployments and make Raspberry Pi deployments more resilient." />
     <MESSAGE value="ci: reintroduce docker prune + sync + free/df diagnostics for Raspberry workflow stability" />
     <MESSAGE value="  feat: add Donation model with database structure and seeder&#10;&#10;  Add comprehensive donation management system to support various church donation types:&#10;&#10;  - Create donations table migration with translatable fields (name, description)&#10;  - Add Donation model with HasTranslations trait and relationships to Confession/Branch&#10;  - Implement DonationFactory for generating test data&#10;  - Create DonationSeeder with 5 donation types across all confessions:&#10;    * Light a Candle (️)&#10;    * Sorokoust ()&#10;    * General Support (⛪)&#10;    * Memorial Service (✝️)&#10;    * Unceasing Psalter ()&#10;  - Add static helper methods to DonateConversation for fetching donation data:&#10;    * getDonations() - fetch by confession/branch&#10;    * getDonationById() - fetch specific donation&#10;    * getDonationsByPurpose() - filter by purpose type" />
-    <option name="LAST_COMMIT_MESSAGE" value="  feat: add Donation model with database structure and seeder&#10;&#10;  Add comprehensive donation management system to support various church donation types:&#10;&#10;  - Create donations table migration with translatable fields (name, description)&#10;  - Add Donation model with HasTranslations trait and relationships to Confession/Branch&#10;  - Implement DonationFactory for generating test data&#10;  - Create DonationSeeder with 5 donation types across all confessions:&#10;    * Light a Candle (️)&#10;    * Sorokoust ()&#10;    * General Support (⛪)&#10;    * Memorial Service (✝️)&#10;    * Unceasing Psalter ()&#10;  - Add static helper methods to DonateConversation for fetching donation data:&#10;    * getDonations() - fetch by confession/branch&#10;    * getDonationById() - fetch specific donation&#10;    * getDonationsByPurpose() - filter by purpose type" />
+    <MESSAGE value="ci(workflows): add ARM64 deploy workflow trigger and update build-push.yml&#10;&#10;- Added new raspberry ARM64 deployment workflow file&#10;- Updated build-push.yml to trigger ARM deploy workflow using github-script&#10;- Renamed step to “Trigger raspberry deploy workflow (ARM)”&#10;- Added 18 new lines for version forwarding, tag extraction, and dispatch call&#10;- Removed old unused deploy trigger block" />
+    <option name="LAST_COMMIT_MESSAGE" value="ci(workflows): add ARM64 deploy workflow trigger and update build-push.yml&#10;&#10;- Added new raspberry ARM64 deployment workflow file&#10;- Updated build-push.yml to trigger ARM deploy workflow using github-script&#10;- Renamed step to “Trigger raspberry deploy workflow (ARM)”&#10;- Added 18 new lines for version forwarding, tag extraction, and dispatch call&#10;- Removed old unused deploy trigger block" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
