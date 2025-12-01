@@ -11,7 +11,7 @@ on:
 jobs:
   deploy:
     name: Deploy UniSoul to Raspberry Pi ARM64
-    runs-on: [self-hosted, Linux, ARM64, unisoul-arm64]
+    runs-on: [self-hosted, Linux, ARM64]
     environment: raspberry
 
     env:
