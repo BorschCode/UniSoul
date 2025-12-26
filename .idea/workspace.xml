@@ -4,9 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ffce8e0-82c7-48f7-b876-3fe216f734a7" name="Changes" comment="ci(workflows): add ARM64 deploy workflow trigger and update build-push.yml&#10;&#10;- Added new raspberry ARM64 deployment workflow file&#10;- Updated build-push.yml to trigger ARM deploy workflow using github-script&#10;- Renamed step to “Trigger raspberry deploy workflow (ARM)”&#10;- Added 18 new lines for version forwarding, tag extraction, and dispatch call&#10;- Removed old unused deploy trigger block">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/deploy-raspi-arm64.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/deploy-raspi-arm64.yml" afterDir="false" />
+    <list default="true" id="9ffce8e0-82c7-48f7-b876-3fe216f734a7" name="Changes" comment="ci(workflow): switch Raspberry Pi ARM64 deployment to `raspberry4` environment&#10;&#10;Updated `.github/workflows/deploy-raspi-arm64.yml` to use the new `raspberry4` environment&#10;instead of the previous `raspberry` environment. This ensures the workflow pulls environment-specific&#10;secrets and variables for the ARM64 Pi deployment.&#10;&#10;- Old ARMv7 Pi continues using `raspberry` environment.&#10;- New ARM64 Pi uses `raspberry4` environment with its own credentials and configuration.">
+      <change afterPath="$PROJECT_DIR$/.ai/mcp/mcp.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CLAUDE.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Providers/NutgramServiceProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Telegram/Middleware/DebugTelegramData.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/354ac40b-36d3-44a6-bed1-bf1f8714d504.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/354ac40b-36d3-44a6-bed1-bf1f8714d504.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4027f6bb-730c-433c-a338-4c69a1e42e5c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4027f6bb-730c-433c-a338-4c69a1e42e5c.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Telegram/Conversations/ConfessionConversation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Telegram/Conversations/ConfessionConversation.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +46,16 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="McpProjectServerCommands">
+    <commands>
+      <McpServerConfigurationProperties>
+        <option name="allowedToolsNames" />
+        <option name="enabled" value="false" />
+        <option name="name" value="laravel-boost" />
+      </McpServerConfigurationProperties>
+    </commands>
+    <urls />
   </component>
   <component name="PackageJsonUpdateNotifier">
     <dismissed value="$PROJECT_DIR$/package.json" />
@@ -217,29 +236,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/mnt/256-m2/projects/UniSoul&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;php.override.implement.member.chooser.php.doc&quot;: &quot;NONE&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "git-widget-placeholder": "develop",
+    "last_opened_file_path": "/mnt/256-m2/projects/UniSoul",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "php.override.implement.member.chooser.php.doc": "NONE",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/readme" />
@@ -265,8 +286,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-a71380e98a7c-JavaScript-PS-252.28238.9" />
-        <option value="bundled-php-predefined-a98d8de5180a-58f58c5035b3-com.jetbrains.php.sharedIndexes-PS-252.28238.9" />
+        <option value="bundled-php-predefined-a98d8de5180a-0e0d91225499-com.jetbrains.php.sharedIndexes-PS-253.29346.151" />
       </set>
     </attachedChunks>
   </component>
@@ -310,7 +330,9 @@
       <workItem from="1764237755884" duration="10252000" />
       <workItem from="1764311762358" duration="1612000" />
       <workItem from="1764336679674" duration="5641000" />
-      <workItem from="1764616282584" duration="916000" />
+      <workItem from="1764616282584" duration="1701000" />
+      <workItem from="1764772481042" duration="648000" />
+      <workItem from="1766759642947" duration="2039000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -640,7 +662,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764612249638</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="ci(workflow): switch Raspberry Pi ARM64 deployment to `raspberry4` environment&#10;&#10;Updated `.github/workflows/deploy-raspi-arm64.yml` to use the new `raspberry4` environment&#10;instead of the previous `raspberry` environment. This ensures the workflow pulls environment-specific&#10;secrets and variables for the ARM64 Pi deployment.&#10;&#10;- Old ARMv7 Pi continues using `raspberry` environment.&#10;- New ARM64 Pi uses `raspberry4` environment with its own credentials and configuration.">
+      <option name="closed" value="true" />
+      <created>1764617241147</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1764617241147</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -680,7 +710,8 @@
     <MESSAGE value="ci: reintroduce docker prune + sync + free/df diagnostics for Raspberry workflow stability" />
     <MESSAGE value="  feat: add Donation model with database structure and seeder&#10;&#10;  Add comprehensive donation management system to support various church donation types:&#10;&#10;  - Create donations table migration with translatable fields (name, description)&#10;  - Add Donation model with HasTranslations trait and relationships to Confession/Branch&#10;  - Implement DonationFactory for generating test data&#10;  - Create DonationSeeder with 5 donation types across all confessions:&#10;    * Light a Candle (️)&#10;    * Sorokoust ()&#10;    * General Support (⛪)&#10;    * Memorial Service (✝️)&#10;    * Unceasing Psalter ()&#10;  - Add static helper methods to DonateConversation for fetching donation data:&#10;    * getDonations() - fetch by confession/branch&#10;    * getDonationById() - fetch specific donation&#10;    * getDonationsByPurpose() - filter by purpose type" />
     <MESSAGE value="ci(workflows): add ARM64 deploy workflow trigger and update build-push.yml&#10;&#10;- Added new raspberry ARM64 deployment workflow file&#10;- Updated build-push.yml to trigger ARM deploy workflow using github-script&#10;- Renamed step to “Trigger raspberry deploy workflow (ARM)”&#10;- Added 18 new lines for version forwarding, tag extraction, and dispatch call&#10;- Removed old unused deploy trigger block" />
-    <option name="LAST_COMMIT_MESSAGE" value="ci(workflows): add ARM64 deploy workflow trigger and update build-push.yml&#10;&#10;- Added new raspberry ARM64 deployment workflow file&#10;- Updated build-push.yml to trigger ARM deploy workflow using github-script&#10;- Renamed step to “Trigger raspberry deploy workflow (ARM)”&#10;- Added 18 new lines for version forwarding, tag extraction, and dispatch call&#10;- Removed old unused deploy trigger block" />
+    <MESSAGE value="ci(workflow): switch Raspberry Pi ARM64 deployment to `raspberry4` environment&#10;&#10;Updated `.github/workflows/deploy-raspi-arm64.yml` to use the new `raspberry4` environment&#10;instead of the previous `raspberry` environment. This ensures the workflow pulls environment-specific&#10;secrets and variables for the ARM64 Pi deployment.&#10;&#10;- Old ARMv7 Pi continues using `raspberry` environment.&#10;- New ARM64 Pi uses `raspberry4` environment with its own credentials and configuration." />
+    <option name="LAST_COMMIT_MESSAGE" value="ci(workflow): switch Raspberry Pi ARM64 deployment to `raspberry4` environment&#10;&#10;Updated `.github/workflows/deploy-raspi-arm64.yml` to use the new `raspberry4` environment&#10;instead of the previous `raspberry` environment. This ensures the workflow pulls environment-specific&#10;secrets and variables for the ARM64 Pi deployment.&#10;&#10;- Old ARMv7 Pi continues using `raspberry` environment.&#10;- New ARM64 Pi uses `raspberry4` environment with its own credentials and configuration." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
