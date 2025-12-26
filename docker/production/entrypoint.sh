@@ -11,7 +11,6 @@ chmod -R ugo+rw /.composer
 # Run migrations and cache optimization
 php artisan migrate --force --no-interaction
 php artisan config:cache
-php artisan route:cache
 php artisan view:cache
 
 # If arguments are provided, execute them
