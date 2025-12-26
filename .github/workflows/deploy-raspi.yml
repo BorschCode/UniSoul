@@ -8,6 +8,9 @@ on:
         required: true
         default: "latest"
 
+permissions:
+  contents: read
+
 jobs:
   deploy:
     name: Deploy UniSoul to Raspberry Pi
