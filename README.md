@@ -65,35 +65,102 @@ Now that `composer install` has run, the `./vendor/bin/sail` executable is avail
 
 -----
 
-## 2\. Webhook Setup and Local Testing (via ngrok)
+## 2\. Bot Setup: Development vs Production
 
-For the Telegram bot to receive updates, you must register a publicly accessible HTTPS URL with the Telegram API.
+This project uses **Nutgram** for Telegram bot integration, which supports two modes of operation.
 
-\*\*
+### Development Mode (Polling)
 
-[Image of Main Page]
-\*\*
+For local development, the bot uses **polling mode** to fetch updates from Telegram.
+
+**Start the bot:**
+```bash
+./vendor/bin/sail artisan nutgram:run
+```
+
+The bot will continuously poll Telegram for updates. Keep this command running while developing.
+
+### Production Mode (Webhook)
+
+In production, the bot uses **webhooks** for receiving updates from Telegram. This is more efficient and doesn't require a continuously running process.
+
+#### Environment Configuration
+
+Your `.env` file in production should have:
+```env
+APP_ENV=production
+TELEGRAM_TOKEN=your_actual_bot_token
+```
+
+The `safe_mode` in `config/nutgram.php:10` will automatically enable webhook validation in production.
+
+#### Initial Webhook Setup
+
+After deploying your application to production, **run this command ONCE**:
+
+```bash
+php artisan nutgram:hook:set https://yourdomain.com/api/telegram/webhook
+```
+
+Replace `yourdomain.com` with your actual production domain.
+
+**Note:** The webhook endpoint is already configured at `/api/telegram/webhook` and excludes CSRF protection.
+
+#### Verify Webhook Status
+
+Check if the webhook is properly registered:
+
+```bash
+php artisan nutgram:hook:info
+```
+
+#### Development vs Production Workflow
+
+| Environment | Mode    | Command                                                      |
+|-------------|---------|--------------------------------------------------------------|
+| Development | Polling | `./vendor/bin/sail artisan nutgram:run` (run manually)      |
+| Production  | Webhook | No command needed after initial setup                        |
+
+**How It Works:**
+- **Development:** You manually run `nutgram:run` when working locally. The bot polls Telegram for updates.
+- **Production:** Telegram sends updates directly to your webhook URL. No manual command needed after deployment.
+
+#### CI/CD Integration (Optional)
+
+If you want to automate webhook registration in your deployment pipeline, add this to your deployment script:
+
+```bash
+if [ "$APP_ENV" = "production" ]; then
+    php artisan nutgram:hook:set https://yourdomain.com/api/telegram/webhook
+fi
+```
+
+#### Remove Webhook
+
+To switch back to polling or remove the webhook:
+
+```bash
+php artisan nutgram:hook:remove
+```
+
+**Important:** Once the webhook is set in production, you don't need to run any artisan commands after each deploy. The webhook stays active until you explicitly remove it.
+
+### Local Testing with ngrok (Optional)
+
+If you want to test webhook mode locally:
 
 1.  **Start ngrok:**
-    Expose your local Sail environment (which runs on port 80) to the public internet:
-
     ```bash
     ngrok http 80
     ```
 
-    Copy the public **HTTPS URL** (e.g., `https://<your-ngrok-id>.ngrok-free.app`).
-
-2.  **Set the Webhook:**
-    Use the custom Artisan command, replacing the URL placeholder with your ngrok HTTPS link:
-
+2.  **Set the webhook:**
     ```bash
-    ./vendor/bin/sail artisan telegram:set-webhook --url=https://<your-ngrok-id>.ngrok-free.app/telegram/webhook
+    ./vendor/bin/sail artisan nutgram:hook:set https://<your-ngrok-id>.ngrok-free.app/api/telegram/webhook
     ```
 
-    A confirmation message from the Telegram API confirms success.
-
 3.  **Test the Bot:**
-    Open Telegram, find your bot, and send the `/start` command. You should receive the main menu reply.
+    Open Telegram, find your bot, and send the `/start` command.
 
 -----
 

@@ -12,7 +12,6 @@ use Psr\SimpleCache\InvalidArgumentException;
 use SergiX44\Nutgram\Nutgram;
 use SergiX44\Nutgram\Telegram\Exceptions\TelegramException;
 use SergiX44\Nutgram\Telegram\Types\Keyboard\InlineKeyboardButton;
-use SergiX44\Nutgram\Telegram\Types\Keyboard\InlineKeyboardMarkup;
 
 class ConfessionConversation extends BaseConversation
 {
@@ -77,10 +76,9 @@ class ConfessionConversation extends BaseConversation
         /** @var Confession $confession */
         $locale = app()->getLocale();
         $this->clearButtons();
-        // Add timestamp to ensure content is different from previous calls
         $this->menuText(
             $confession->emoji.' '.$confession->getTranslation('name', $locale)."\n\n".
-            $confession->getTranslation('description', $locale)."\n\n📅 ".now()->format('H:i:s')
+            $confession->getTranslation('description', $locale)
         );
 
         /** @var BotButton|null $confessionRootButton */
@@ -125,7 +123,19 @@ class ConfessionConversation extends BaseConversation
             $bot->answerCallbackQuery();
         }
 
-        $this->showMenu();
+        try {
+            $this->showMenu();
+        } catch (TelegramException $telegramException) {
+            if (str_contains($telegramException->getMessage(), 'message is not modified')) {
+                return; // nothing changed — ignore
+            }
+            throw $telegramException;
+        } catch (InvalidArgumentException $telegramException) {
+            if (str_contains($telegramException->getMessage(), 'message is not modified')) {
+                return; // nothing changed — ignore
+            }
+            throw $telegramException;
+        }
     }
 
     public function handleLearnAboutConfession(Nutgram $bot): void
@@ -586,8 +596,11 @@ class ConfessionConversation extends BaseConversation
 
     public function handleDonate(Nutgram $bot): void
     {
-        // Оновлено: Перенаправлення на загальну дію пожертви
-        $this->handleConfessionAction($bot, 'donate');
+        if ($bot->isCallbackQuery()) {
+            $bot->answerCallbackQuery();
+        }
+
+        DonateConversation::begin($bot);
     }
 
     public function handleLearnVideosConfession(Nutgram $bot): void
@@ -630,33 +643,36 @@ class ConfessionConversation extends BaseConversation
             ->where('entity_id', $employee->id)
             ->first();
 
-        $this->clearButtons();
+        if ($bot->isCallbackQuery()) {
+            $bot->answerCallbackQuery();
+        }
 
         // 1. ПЕРЕВІРКА: Чи потрібна пожертва
         if ($button && $button->need_donations) {
             /** @var BotButton $button */
-            if ($bot->isCallbackQuery()) {
-                $bot->answerCallbackQuery();
-            }
+            $locale = app()->getLocale();
 
-            // Перенаправляємо на дію пожертви
-            $bot->sendMessage(
-                text: __('telegram.donation_required_message'),
-                reply_markup: InlineKeyboardMarkup::make()->addRow(
-                    InlineKeyboardButton::make(
-                        text: __('telegram.button_donate'),
-                        callback_data: $this->buildCallbackData(
-                            BotCallback::Donate->value,
-                            $confession->id,
-                            BotCallback::Donate->name,
-                            'handleDonate'
-                        )
+            $this->clearButtons();
+            $this->menuText(
+                __('telegram.donation_required_message')."\n\n".
+                '👤 '.$employee->getTranslation('name', $locale)."\n".
+                '📋 '.$employee->getTranslation('position', $locale)
+            );
+
+            // Кнопка пожертви
+            $this->addButtonRow(
+                InlineKeyboardButton::make(
+                    text: __('telegram.button_donate'),
+                    callback_data: $this->buildCallbackData(
+                        BotCallback::Donate->value,
+                        $confession->id,
+                        BotCallback::Donate->name,
+                        'handleDonate'
                     )
                 )
             );
 
-            // Показуємо меню назад для повернення
-            $this->menuText(__('telegram.select_action'));
+            // Кнопка назад
             $this->addButtonRow(
                 InlineKeyboardButton::make(
                     text: __('telegram.button_back'),
@@ -669,16 +685,25 @@ class ConfessionConversation extends BaseConversation
                     )
                 )
             );
-            $this->showMenu();
+
+            try {
+                $this->showMenu();
+            } catch (TelegramException $telegramException) {
+                if (str_contains($telegramException->getMessage(), 'message is not modified')) {
+                    return;
+                }
+                throw $telegramException;
+            } catch (InvalidArgumentException $telegramException) {
+                if (str_contains($telegramException->getMessage(), 'message is not modified')) {
+                    return;
+                }
+                throw $telegramException;
+            }
 
             return;
         }
 
         // 2. ДІЯ: Якщо пожертва не потрібна, починаємо розмову підтримки.
-        if ($bot->isCallbackQuery()) {
-            $bot->answerCallbackQuery();
-        }
-
         SupportConversation::beginWithParams($bot, $employee->branch_id, $employee->id);
     }
 
