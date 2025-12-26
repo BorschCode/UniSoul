@@ -4,18 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ffce8e0-82c7-48f7-b876-3fe216f734a7" name="Changes" comment="ci(workflow): switch Raspberry Pi ARM64 deployment to `raspberry4` environment&#10;&#10;Updated `.github/workflows/deploy-raspi-arm64.yml` to use the new `raspberry4` environment&#10;instead of the previous `raspberry` environment. This ensures the workflow pulls environment-specific&#10;secrets and variables for the ARM64 Pi deployment.&#10;&#10;- Old ARMv7 Pi continues using `raspberry` environment.&#10;- New ARM64 Pi uses `raspberry4` environment with its own credentials and configuration.">
-      <change afterPath="$PROJECT_DIR$/.ai/mcp/mcp.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CLAUDE.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Providers/NutgramServiceProvider.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Telegram/Middleware/DebugTelegramData.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/354ac40b-36d3-44a6-bed1-bf1f8714d504.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/354ac40b-36d3-44a6-bed1-bf1f8714d504.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4027f6bb-730c-433c-a338-4c69a1e42e5c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4027f6bb-730c-433c-a338-4c69a1e42e5c.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Telegram/Conversations/ConfessionConversation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Telegram/Conversations/ConfessionConversation.php" afterDir="false" />
+    <list default="true" id="9ffce8e0-82c7-48f7-b876-3fe216f734a7" name="Changes" comment="🇧🇱feat(telegram): switch bot from polling to webhook-based updates&#10;&#10;Enable Telegram webhook delivery to remove polling dependency.&#10;&#10;- Configure webhook endpoint for incoming updates&#10;- Register ngrok-based webhook URL with Telegram&#10;- Support full update set via allowed_updates&#10;- Eliminate need for nutgram polling command">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/deploy-raspi-arm64.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/deploy-raspi-arm64.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/deploy-raspi.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/deploy-raspi.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/lint.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/lint.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -332,7 +324,7 @@
       <workItem from="1764336679674" duration="5641000" />
       <workItem from="1764616282584" duration="1701000" />
       <workItem from="1764772481042" duration="648000" />
-      <workItem from="1766759642947" duration="2039000" />
+      <workItem from="1766759642947" duration="2762000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -670,7 +662,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764617241147</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="🇧🇱feat(telegram): switch bot from polling to webhook-based updates&#10;&#10;Enable Telegram webhook delivery to remove polling dependency.&#10;&#10;- Configure webhook endpoint for incoming updates&#10;- Register ngrok-based webhook URL with Telegram&#10;- Support full update set via allowed_updates&#10;- Eliminate need for nutgram polling command">
+      <option name="closed" value="true" />
+      <created>1766761730098</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1766761730098</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -711,7 +711,8 @@
     <MESSAGE value="  feat: add Donation model with database structure and seeder&#10;&#10;  Add comprehensive donation management system to support various church donation types:&#10;&#10;  - Create donations table migration with translatable fields (name, description)&#10;  - Add Donation model with HasTranslations trait and relationships to Confession/Branch&#10;  - Implement DonationFactory for generating test data&#10;  - Create DonationSeeder with 5 donation types across all confessions:&#10;    * Light a Candle (️)&#10;    * Sorokoust ()&#10;    * General Support (⛪)&#10;    * Memorial Service (✝️)&#10;    * Unceasing Psalter ()&#10;  - Add static helper methods to DonateConversation for fetching donation data:&#10;    * getDonations() - fetch by confession/branch&#10;    * getDonationById() - fetch specific donation&#10;    * getDonationsByPurpose() - filter by purpose type" />
     <MESSAGE value="ci(workflows): add ARM64 deploy workflow trigger and update build-push.yml&#10;&#10;- Added new raspberry ARM64 deployment workflow file&#10;- Updated build-push.yml to trigger ARM deploy workflow using github-script&#10;- Renamed step to “Trigger raspberry deploy workflow (ARM)”&#10;- Added 18 new lines for version forwarding, tag extraction, and dispatch call&#10;- Removed old unused deploy trigger block" />
     <MESSAGE value="ci(workflow): switch Raspberry Pi ARM64 deployment to `raspberry4` environment&#10;&#10;Updated `.github/workflows/deploy-raspi-arm64.yml` to use the new `raspberry4` environment&#10;instead of the previous `raspberry` environment. This ensures the workflow pulls environment-specific&#10;secrets and variables for the ARM64 Pi deployment.&#10;&#10;- Old ARMv7 Pi continues using `raspberry` environment.&#10;- New ARM64 Pi uses `raspberry4` environment with its own credentials and configuration." />
-    <option name="LAST_COMMIT_MESSAGE" value="ci(workflow): switch Raspberry Pi ARM64 deployment to `raspberry4` environment&#10;&#10;Updated `.github/workflows/deploy-raspi-arm64.yml` to use the new `raspberry4` environment&#10;instead of the previous `raspberry` environment. This ensures the workflow pulls environment-specific&#10;secrets and variables for the ARM64 Pi deployment.&#10;&#10;- Old ARMv7 Pi continues using `raspberry` environment.&#10;- New ARM64 Pi uses `raspberry4` environment with its own credentials and configuration." />
+    <MESSAGE value="feat(telegram): switch bot from polling to webhook-based updates&#10;&#10;Enable Telegram webhook delivery to remove polling dependency.&#10;&#10;- Configure webhook endpoint for incoming updates&#10;- Register ngrok-based webhook URL with Telegram&#10;- Support full update set via allowed_updates&#10;- Eliminate need for nutgram polling command" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(telegram): switch bot from polling to webhook-based updates&#10;&#10;Enable Telegram webhook delivery to remove polling dependency.&#10;&#10;- Configure webhook endpoint for incoming updates&#10;- Register ngrok-based webhook URL with Telegram&#10;- Support full update set via allowed_updates&#10;- Eliminate need for nutgram polling command" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
