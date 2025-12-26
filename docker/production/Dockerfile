@@ -32,6 +32,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libpq-dev \
     dnsutils \
     software-properties-common \
+    nginx \
     && mkdir -p /etc/apt/keyrings \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
@@ -86,6 +87,13 @@ COPY docker/production/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Copy PHP config
 COPY docker/production/php.ini /etc/php/8.4/cli/conf.d/99-custom.ini
+COPY docker/production/php.ini /etc/php/8.4/fpm/conf.d/99-custom.ini
+
+# Copy PHP-FPM pool config
+COPY docker/production/www.conf /etc/php/8.4/fpm/pool.d/www.conf
+
+# Copy nginx config
+COPY docker/production/nginx.conf /etc/nginx/sites-available/default
 
 # Copy and set up entrypoint
 COPY docker/production/entrypoint.sh /usr/local/bin/entrypoint.sh
