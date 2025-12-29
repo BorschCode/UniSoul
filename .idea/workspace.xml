@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ffce8e0-82c7-48f7-b876-3fe216f734a7" name="Changes" comment="🇧🇸ci(github-actions): define explicit workflow permissions to satisfy CodeQL&#10;&#10;Apply least-privilege permissions to GitHub Actions workflows.&#10;&#10;- Add explicit permissions block to avoid inherited read-write access&#10;- Restrict contents to read-only&#10;- Grant write access only where required (e.g. pull-requests)&#10;- Resolve CodeQL actions/missing-workflow-permissions warning">
-      <change afterPath="$PROJECT_DIR$/.idea/laravel-idea.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker/production/nginx.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker/production/www.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/production/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/docker/production/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/production/entrypoint.sh" beforeDir="false" afterPath="$PROJECT_DIR$/docker/production/entrypoint.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/production/supervisord.conf" beforeDir="false" afterPath="$PROJECT_DIR$/docker/production/supervisord.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-    </list>
+    <list default="true" id="9ffce8e0-82c7-48f7-b876-3fe216f734a7" name="Changes" comment="feat(telegram): switch bot supervisor to Nutgram polling command&#10;&#10;Run Telegram bot using Nutgram’s built-in long polling.&#10;&#10;- Replace custom polling command with nutgram:run in supervisord&#10;- Auto-start and restart bot via supervisor&#10;- Document polling vs webhook modes in .env.example&#10;- Align setup with Nutgram “Getting Updates” guidelines" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -329,6 +321,7 @@
       <workItem from="1764616282584" duration="1701000" />
       <workItem from="1764772481042" duration="648000" />
       <workItem from="1766759642947" duration="4676000" />
+      <workItem from="1766994320752" duration="930000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -690,7 +683,15 @@
       <option name="project" value="LOCAL" />
       <updated>1766763044752</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="feat(telegram): switch bot supervisor to Nutgram polling command&#10;&#10;Run Telegram bot using Nutgram’s built-in long polling.&#10;&#10;- Replace custom polling command with nutgram:run in supervisord&#10;- Auto-start and restart bot via supervisor&#10;- Document polling vs webhook modes in .env.example&#10;- Align setup with Nutgram “Getting Updates” guidelines">
+      <option name="closed" value="true" />
+      <created>1766994341907</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1766994341907</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -708,7 +709,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Initial commit" />
     <MESSAGE value="Raw code for start project" />
     <MESSAGE value="Add new middlewares and refactor Nutgram Conversations to fix context initialization" />
     <MESSAGE value="Lint fixes" />
@@ -733,7 +733,8 @@
     <MESSAGE value="ci(workflow): switch Raspberry Pi ARM64 deployment to `raspberry4` environment&#10;&#10;Updated `.github/workflows/deploy-raspi-arm64.yml` to use the new `raspberry4` environment&#10;instead of the previous `raspberry` environment. This ensures the workflow pulls environment-specific&#10;secrets and variables for the ARM64 Pi deployment.&#10;&#10;- Old ARMv7 Pi continues using `raspberry` environment.&#10;- New ARM64 Pi uses `raspberry4` environment with its own credentials and configuration." />
     <MESSAGE value="feat(telegram): switch bot from polling to webhook-based updates&#10;&#10;Enable Telegram webhook delivery to remove polling dependency.&#10;&#10;- Configure webhook endpoint for incoming updates&#10;- Register ngrok-based webhook URL with Telegram&#10;- Support full update set via allowed_updates&#10;- Eliminate need for nutgram polling command" />
     <MESSAGE value="ci(github-actions): define explicit workflow permissions to satisfy CodeQL&#10;&#10;Apply least-privilege permissions to GitHub Actions workflows.&#10;&#10;- Add explicit permissions block to avoid inherited read-write access&#10;- Restrict contents to read-only&#10;- Grant write access only where required (e.g. pull-requests)&#10;- Resolve CodeQL actions/missing-workflow-permissions warning" />
-    <option name="LAST_COMMIT_MESSAGE" value="ci(github-actions): define explicit workflow permissions to satisfy CodeQL&#10;&#10;Apply least-privilege permissions to GitHub Actions workflows.&#10;&#10;- Add explicit permissions block to avoid inherited read-write access&#10;- Restrict contents to read-only&#10;- Grant write access only where required (e.g. pull-requests)&#10;- Resolve CodeQL actions/missing-workflow-permissions warning" />
+    <MESSAGE value="feat(telegram): switch bot supervisor to Nutgram polling command&#10;&#10;Run Telegram bot using Nutgram’s built-in long polling.&#10;&#10;- Replace custom polling command with nutgram:run in supervisord&#10;- Auto-start and restart bot via supervisor&#10;- Document polling vs webhook modes in .env.example&#10;- Align setup with Nutgram “Getting Updates” guidelines" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(telegram): switch bot supervisor to Nutgram polling command&#10;&#10;Run Telegram bot using Nutgram’s built-in long polling.&#10;&#10;- Replace custom polling command with nutgram:run in supervisord&#10;- Auto-start and restart bot via supervisor&#10;- Document polling vs webhook modes in .env.example&#10;- Align setup with Nutgram “Getting Updates” guidelines" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
