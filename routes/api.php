@@ -19,9 +19,9 @@ Route::post('/telegram/webhook', function (Nutgram $bot) {
         ]);
 
         // Explicitly set webhook mode
-//        $bot->setRunningMode(Webhook::class);
-//
-//        $bot->run();
+        //        $bot->setRunningMode(Webhook::class);
+        //
+        //        $bot->run();
 
         return response()->json(['ok' => true]);
     } catch (\Throwable $e) {
