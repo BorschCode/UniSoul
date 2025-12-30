@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ffce8e0-82c7-48f7-b876-3fe216f734a7" name="Changes" comment="fix(telegram): preserve callback_data structure and fix pagination parsing&#10;&#10;Fix callback data corruption caused by array_filter reindexing.&#10;&#10;- Preserve positional fields in callback_data by using empty placeholders&#10;- Correctly parse empty parts back to null values&#10;- Fix page number shifting that broke pagination&#10;- Add missing telegram.available_priests translation" />
+    <list default="true" id="9ffce8e0-82c7-48f7-b876-3fe216f734a7" name="Changes" comment="fix(telegram): preserve callback_data structure and fix pagination parsing&#10;&#10;Fix callback data corruption caused by array_filter reindexing.&#10;&#10;- Preserve positional fields in callback_data by using empty placeholders&#10;- Correctly parse empty parts back to null values&#10;- Fix page number shifting that broke pagination&#10;- Add missing telegram.available_priests translation">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -326,6 +328,7 @@
       <workItem from="1767082065391" duration="6023000" />
       <workItem from="1767098394954" duration="4133000" />
       <workItem from="1767103943955" duration="3588000" />
+      <workItem from="1767114184428" duration="601000" />
     </task>
     <task id="LOCAL-00007" summary="Lint fixes">
       <option name="closed" value="true" />
