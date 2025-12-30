@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ffce8e0-82c7-48f7-b876-3fe216f734a7" name="Changes" comment="fix(telegram): handle enum vs string callback_data and add deep diagnostics&#10;&#10;Fix parent button lookup failures caused by enum-cast callback_data.&#10;&#10;- Attempt to convert callback action string to BotCallback enum&#10;- Retry button lookup using enum value when string match fails&#10;- Add detailed logging for callback parsing and lookup criteria&#10;- Log raw database values to debug cast and data mismatches&#10;- Improve error visibility for missing or inactive buttons">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Telegram/Conversations/ConfessionConversation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Telegram/Conversations/ConfessionConversation.php" afterDir="false" />
-    </list>
+    <list default="true" id="9ffce8e0-82c7-48f7-b876-3fe216f734a7" name="Changes" comment="fix(telegram): handle enum vs string callback_data and add deep diagnostics&#10;&#10;Fix parent button lookup failures caused by enum-cast callback_data.&#10;&#10;- Attempt to convert callback action string to BotCallback enum&#10;- Retry button lookup using enum value when string match fails&#10;- Add detailed logging for callback parsing and lookup criteria&#10;- Log raw database values to debug cast and data mismatches&#10;- Improve error visibility for missing or inactive buttons" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -327,15 +324,7 @@
       <workItem from="1766994320752" duration="930000" />
       <workItem from="1767027805774" duration="3315000" />
       <workItem from="1767082065391" duration="6023000" />
-      <workItem from="1767098394954" duration="334000" />
-    </task>
-    <task id="LOCAL-00003" summary="Raw code for start project">
-      <option name="closed" value="true" />
-      <created>1761517550672</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1761517550672</updated>
+      <workItem from="1767098394954" duration="1108000" />
     </task>
     <task id="LOCAL-00004" summary="Raw code for start project">
       <option name="closed" value="true" />
@@ -721,7 +710,15 @@
       <option name="project" value="LOCAL" />
       <updated>1767093829979</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="fix(telegram): handle enum vs string callback_data and add deep diagnostics&#10;&#10;Fix parent button lookup failures caused by enum-cast callback_data.&#10;&#10;- Attempt to convert callback action string to BotCallback enum&#10;- Retry button lookup using enum value when string match fails&#10;- Add detailed logging for callback parsing and lookup criteria&#10;- Log raw database values to debug cast and data mismatches&#10;- Improve error visibility for missing or inactive buttons">
+      <option name="closed" value="true" />
+      <created>1767098922655</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1767098922656</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
