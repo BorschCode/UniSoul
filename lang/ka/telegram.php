@@ -7,6 +7,8 @@ return [
     'button_settings_menu' => '⚙️ პარამეტრები',
     'settings_message_placeholder' => '⚙️ პარამეტრების მენიუ ჯერ არ არის მზად.',
     'button_back' => '⬅️ უკან',
+    'previous' => 'წინა',
+    'next' => 'შემდეგი',
     'select_confession' => '🙏 აირჩიეთ თქვენი კონფესია:',
     'main_menu' => '🏠 მთავარი მენიუ',
     'learn_about_confession' => '📚 კონფესიის შესახებ',
@@ -19,6 +21,9 @@ return [
     'close' => '❌ დახურვა',
     'error_invalid_confession' => '⚠️ კონფესია დროებით მიუწვდომელია.',
     'error_invalid_action' => '⚠️ მოქმედება მიუწვდომელია.',
+    'no_priests_available' => '❌ ამჟამად მღვდლები არ არიან ხელმისაწვდომი.',
+    'available_priests' => '👥 ხელმისაწვდომი მღვდლები',
+    'no_branches_found' => '❌ ამ კონფესიისთვის ფილიალები ვერ მოიძებნა.',
 
     'gender' => [
         'male' => '👨 მამაკაცი',

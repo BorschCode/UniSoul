@@ -27,26 +27,27 @@ class CallbackData
         $parts = explode(':', $callbackPart);
 
         Log::info('CallbackData parse', $parts);
+        Log::debug('Page number', [isset($parts[4]) && $parts[4] !== '' ? (int) $parts[4] : 1]);
 
         return new self(
-            confession: $parts[0],
-            action: $parts[2] ?? null,
-            actionId: isset($parts[3]) ? (int) $parts[3] : null,
-            confessionId: isset($parts[1]) ? (int) $parts[1] : null,
+            confession: $parts[0] !== '' ? $parts[0] : null,
+            action: isset($parts[2]) && $parts[2] !== '' ? $parts[2] : null,
+            actionId: isset($parts[3]) && $parts[3] !== '' ? (int) $parts[3] : null,
+            confessionId: isset($parts[1]) && $parts[1] !== '' ? (int) $parts[1] : null,
             method: $method,
-            page: isset($parts[4]) ? (int) $parts[4] : 1,
+            page: isset($parts[4]) && $parts[4] !== '' ? (int) $parts[4] : 1,
         );
     }
 
     public function build(): string
     {
-        $parts = array_filter([
-            $this->confession,
-            $this->confessionId,
-            $this->action,
-            $this->actionId,
-            $this->page,
-        ], fn ($v) => $v !== null);
+        $parts = [
+            $this->confession ?? '',
+            $this->confessionId ?? '',
+            $this->action ?? '',
+            $this->actionId ?? '',
+            $this->page ?? '',
+        ];
 
         $result = implode(':', $parts);
 

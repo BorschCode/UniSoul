@@ -7,6 +7,8 @@ return [
     'button_settings_menu' => '⚙️ Setări',
     'settings_message_placeholder' => '⚙️ Meniul de setări nu este încă disponibil.',
     'button_back' => '⬅️ Înapoi',
+    'previous' => 'Anterior',
+    'next' => 'Următor',
     'select_confession' => '🙏 Selectează confesiunea ta:',
     'main_menu' => '🏠 Meniu Principal',
     'learn_about_confession' => '📚 Află despre confesiune',
@@ -19,6 +21,9 @@ return [
     'close' => '❌ Închide',
     'error_invalid_confession' => '⚠️ Confesiunea nu este disponibilă.',
     'error_invalid_action' => '⚠️ Acțiune nedisponibilă.',
+    'no_priests_available' => '❌ Momentan nu sunt preoți disponibili.',
+    'available_priests' => '👥 Preoți disponibili',
+    'no_branches_found' => '❌ Nu s-au găsit filiale pentru această confesiune.',
 
     'gender' => [
         'male' => '👨 Bărbat',

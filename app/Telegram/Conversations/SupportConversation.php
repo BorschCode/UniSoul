@@ -2,6 +2,7 @@
 
 namespace App\Telegram\Conversations;
 
+use App\Enums\State;
 use App\Models\Employee;
 use App\Models\SupportManager;
 use App\Models\SupportSession;
@@ -52,11 +53,11 @@ class SupportConversation extends BaseConversation
         }
 
         // 2. Перевіряємо, чи клієнт вже має активну сесію
-        if (SupportSession::where('user_id', $bot->userId())->where('status', 'ACTIVE')->exists()) {
+        if (SupportSession::where('user_id', $bot->userId())->where('status', State::ActiveConversation)->exists()) {
             $bot->sendMessage(__('telegram.support.already_active_wait'));
             // Якщо сесія є, перевіряємо режим і маршрутизуємо відповідно
             /** @var SupportSession|null $session */
-            $session = SupportSession::where('user_id', $bot->userId())->where('status', 'ACTIVE')->first();
+            $session = SupportSession::where('user_id', $bot->userId())->where('status', State::ActiveConversation)->first();
 
             if ($session && $session->getAttribute('mode') === 'HUMAN') {
                 $this->next('routeMessage');
@@ -110,7 +111,7 @@ class SupportConversation extends BaseConversation
                 'manager_id' => $manager->getAttribute('employee_id'), // manager_id - це ID Employee
                 'user_chat_id' => $bot->chatId(),
                 'manager_chat_id' => $manager->getAttribute('telegram_chat_id'),
-                'status' => 'ACTIVE',
+                'status' => State::ActiveConversation,
                 'mode' => 'HUMAN',
             ]);
 
@@ -162,7 +163,7 @@ class SupportConversation extends BaseConversation
             'manager_id' => null, // Немає менеджера-людини
             'user_chat_id' => $bot->chatId(),
             'manager_chat_id' => null, // Немає чату менеджера
-            'status' => 'ACTIVE',
+            'status' => State::ActiveConversation,
             'mode' => 'AI', // Режим ШІ
             'ai_thread_id' => $threadId,
             'ai_handoff_at' => now(),
@@ -190,7 +191,7 @@ class SupportConversation extends BaseConversation
     {
         // Оновлюємо, щоб використовувати chatId() для пошуку
         $session = SupportSession::where('user_chat_id', $bot->chatId())
-            ->where('status', 'ACTIVE')
+            ->where('status', State::ActiveConversation)
             ->where('mode', 'HUMAN')
             ->first();
 
@@ -217,7 +218,7 @@ class SupportConversation extends BaseConversation
     {
         /** @var SupportSession|null $session */
         $session = SupportSession::where('user_chat_id', $bot->chatId())
-            ->where('status', 'ACTIVE')
+            ->where('status', State::ActiveConversation)
             ->where('mode', 'AI')
             ->first();
 

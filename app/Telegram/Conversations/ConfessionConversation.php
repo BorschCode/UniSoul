@@ -247,46 +247,46 @@ class ConfessionConversation extends BaseConversation
         ]);
 
         // Try to convert action string to BotCallback enum if possible
+        // The action comes as enum NAME (PascalCase), but DB stores enum VALUE (camelCase)
         $callbackEnum = null;
+        $searchValue = $callbackDataDTO->action;
+
         try {
             if ($callbackDataDTO->action) {
-                $callbackEnum = BotCallback::from($callbackDataDTO->action);
-                Log::info('handleConfessionMenuAction - Converted action to enum', [
-                    'action_string' => $callbackDataDTO->action,
-                    'enum_value' => $callbackEnum->value,
-                    'enum_name' => $callbackEnum->name,
-                ]);
+                // First try to get enum by name (since action is the enum name)
+                $enumCase = constant(BotCallback::class.'::'.$callbackDataDTO->action);
+                if ($enumCase instanceof BotCallback) {
+                    $callbackEnum = $enumCase;
+                    $searchValue = $callbackEnum->value; // Use the camelCase value for search
+                    Log::info('handleConfessionMenuAction - Converted action name to enum', [
+                        'action_name' => $callbackDataDTO->action,
+                        'enum_value' => $callbackEnum->value,
+                        'enum_name' => $callbackEnum->name,
+                    ]);
+                }
             }
-        } catch (\ValueError $e) {
+        } catch (\Throwable $e) {
             Log::warning('handleConfessionMenuAction - Could not convert action to BotCallback enum', [
                 'action' => $callbackDataDTO->action,
                 'error' => $e->getMessage(),
             ]);
+            // Fallback: convert PascalCase to camelCase manually
+            $searchValue = lcfirst($callbackDataDTO->action);
         }
 
         Log::info('handleConfessionMenuAction - Searching for parent button', [
-            'callback_data_searching_for' => $callbackDataDTO->action,
-            'callback_enum' => $callbackEnum?->value,
+            'original_action' => $callbackDataDTO->action,
+            'search_value' => $searchValue,
             'entity_type_searching_for' => Confession::class,
             'entity_id_searching_for' => $callbackDataDTO->confessionId,
         ]);
 
         /** @var BotButton|null $parent */
-        $parent = BotButton::whereCallbackData($callbackDataDTO->action)
+        $parent = BotButton::whereCallbackData($searchValue)
             ->where('entity_type', Confession::class)
             ->where('entity_id', $callbackDataDTO->confessionId)
             ->where('active', true)
             ->first();
-
-        // If not found with string, try with enum
-        if (! $parent && $callbackEnum) {
-            Log::info('handleConfessionMenuAction - Trying again with enum');
-            $parent = BotButton::whereCallbackData($callbackEnum)
-                ->where('entity_type', Confession::class)
-                ->where('entity_id', $callbackDataDTO->confessionId)
-                ->where('active', true)
-                ->first();
-        }
 
         if (! $parent) {
             /** @var BotButton $rawButtons */
