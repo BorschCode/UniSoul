@@ -14,6 +14,7 @@ return [
     'confession_menu_sub_action' => '🕰 Servicii suplimentare',
     'coming_soon' => '⏳ În curând…',
     'error_confession_not_found' => '❌ Eroare: Confesiune negăsită.',
+    'error_action' => '❌ Eroare: Acțiune negăsită sau nedisponibilă.',
     'chat_not_found' => '❌ Eroare: Chat negăsit.',
     'close' => '❌ Închide',
     'error_invalid_confession' => '⚠️ Confesiunea nu este disponibilă.',

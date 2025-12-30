@@ -14,6 +14,7 @@ return [
     'confession_menu_sub_action' => '🕰 Additional Services',
     'coming_soon' => '⏳ Coming soon…',
     'error_confession_not_found' => '❌ Error: Confession not found.',
+    'error_action' => '❌ Error: Action not found or unavailable.',
     'chat_not_found' => '❌ Error: Chat not found.',
     'close' => '❌ Close',
     'error_invalid_confession' => '⚠️ Confession is unavailable (being updated or blocked).',

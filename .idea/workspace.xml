@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ffce8e0-82c7-48f7-b876-3fe216f734a7" name="Changes" comment="feat(telegram): switch bot supervisor to Nutgram polling command&#10;&#10;Run Telegram bot using Nutgram’s built-in long polling.&#10;&#10;- Replace custom polling command with nutgram:run in supervisord&#10;- Auto-start and restart bot via supervisor&#10;- Document polling vs webhook modes in .env.example&#10;- Align setup with Nutgram “Getting Updates” guidelines" />
+    <list default="true" id="9ffce8e0-82c7-48f7-b876-3fe216f734a7" name="Changes" comment="fix(telegram): handle enum vs string callback_data and add deep diagnostics&#10;&#10;Fix parent button lookup failures caused by enum-cast callback_data.&#10;&#10;- Attempt to convert callback action string to BotCallback enum&#10;- Retry button lookup using enum value when string match fails&#10;- Add detailed logging for callback parsing and lookup criteria&#10;- Log raw database values to debug cast and data mismatches&#10;- Improve error visibility for missing or inactive buttons">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -224,31 +226,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/mnt/256-m2/projects/UniSoul&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;php.override.implement.member.chooser.php.doc&quot;: &quot;NONE&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "git-widget-placeholder": "develop",
+    "last_opened_file_path": "/mnt/256-m2/projects/chats-crm-system",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "php.override.implement.member.chooser.php.doc": "NONE",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/readme" />
@@ -322,15 +324,8 @@
       <workItem from="1764772481042" duration="648000" />
       <workItem from="1766759642947" duration="4676000" />
       <workItem from="1766994320752" duration="930000" />
-      <workItem from="1767027805774" duration="938000" />
-    </task>
-    <task id="LOCAL-00001" summary="Initial commit">
-      <option name="closed" value="true" />
-      <created>1761435689862</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1761435689862</updated>
+      <workItem from="1767027805774" duration="3315000" />
+      <workItem from="1767082065391" duration="3106000" />
     </task>
     <task id="LOCAL-00002" summary="Initial commit">
       <option name="closed" value="true" />
@@ -700,7 +695,31 @@
       <option name="project" value="LOCAL" />
       <updated>1767028138614</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="feat(telegram): switch bot supervisor to Nutgram polling command&#10;&#10;Run Telegram bot using Nutgram’s built-in long polling.&#10;&#10;- Replace custom polling command with nutgram:run in supervisord&#10;- Auto-start and restart bot via supervisor&#10;- Document polling vs webhook modes in .env.example&#10;- Align setup with Nutgram “Getting Updates” guidelines">
+      <option name="closed" value="true" />
+      <created>1767029577346</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1767029577346</updated>
+    </task>
+    <task id="LOCAL-00049" summary="fix(telegram): handle enum vs string callback_data and add deep diagnostics&#10;&#10;Fix parent button lookup failures caused by enum-cast callback_data.&#10;&#10;- Attempt to convert callback action string to BotCallback enum&#10;- Retry button lookup using enum value when string match fails&#10;- Add detailed logging for callback parsing and lookup criteria&#10;- Log raw database values to debug cast and data mismatches&#10;- Improve error visibility for missing or inactive buttons">
+      <option name="closed" value="true" />
+      <created>1767091645479</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1767091645479</updated>
+    </task>
+    <task id="LOCAL-00050" summary="fix(telegram): handle enum vs string callback_data and add deep diagnostics&#10;&#10;Fix parent button lookup failures caused by enum-cast callback_data.&#10;&#10;- Attempt to convert callback action string to BotCallback enum&#10;- Retry button lookup using enum value when string match fails&#10;- Add detailed logging for callback parsing and lookup criteria&#10;- Log raw database values to debug cast and data mismatches&#10;- Improve error visibility for missing or inactive buttons">
+      <option name="closed" value="true" />
+      <created>1767092488261</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1767092488261</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -718,7 +737,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Raw code for start project" />
     <MESSAGE value="Add new middlewares and refactor Nutgram Conversations to fix context initialization" />
     <MESSAGE value="Lint fixes" />
     <MESSAGE value="feat(i18n): Add new error and &quot;coming soon&quot; keys with translations&#10;&#10;Adds the following new localization strings to the settings/telegram language files:&#10;- `error_invalid_confession`: Custom error message for unavailable/blocked confessions.&#10;- `error_invalid_action`: Generic error message for unavailable/blocked actions.&#10;- `coming_soon`: String used to mark features that are not yet active.&#10;&#10;Includes translations for: Ukrainian (uk), Russian (ru), German (de), Romanian (ro), and Georgian (ka)." />
@@ -743,7 +761,8 @@
     <MESSAGE value="feat(telegram): switch bot from polling to webhook-based updates&#10;&#10;Enable Telegram webhook delivery to remove polling dependency.&#10;&#10;- Configure webhook endpoint for incoming updates&#10;- Register ngrok-based webhook URL with Telegram&#10;- Support full update set via allowed_updates&#10;- Eliminate need for nutgram polling command" />
     <MESSAGE value="ci(github-actions): define explicit workflow permissions to satisfy CodeQL&#10;&#10;Apply least-privilege permissions to GitHub Actions workflows.&#10;&#10;- Add explicit permissions block to avoid inherited read-write access&#10;- Restrict contents to read-only&#10;- Grant write access only where required (e.g. pull-requests)&#10;- Resolve CodeQL actions/missing-workflow-permissions warning" />
     <MESSAGE value="feat(telegram): switch bot supervisor to Nutgram polling command&#10;&#10;Run Telegram bot using Nutgram’s built-in long polling.&#10;&#10;- Replace custom polling command with nutgram:run in supervisord&#10;- Auto-start and restart bot via supervisor&#10;- Document polling vs webhook modes in .env.example&#10;- Align setup with Nutgram “Getting Updates” guidelines" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(telegram): switch bot supervisor to Nutgram polling command&#10;&#10;Run Telegram bot using Nutgram’s built-in long polling.&#10;&#10;- Replace custom polling command with nutgram:run in supervisord&#10;- Auto-start and restart bot via supervisor&#10;- Document polling vs webhook modes in .env.example&#10;- Align setup with Nutgram “Getting Updates” guidelines" />
+    <MESSAGE value="fix(telegram): handle enum vs string callback_data and add deep diagnostics&#10;&#10;Fix parent button lookup failures caused by enum-cast callback_data.&#10;&#10;- Attempt to convert callback action string to BotCallback enum&#10;- Retry button lookup using enum value when string match fails&#10;- Add detailed logging for callback parsing and lookup criteria&#10;- Log raw database values to debug cast and data mismatches&#10;- Improve error visibility for missing or inactive buttons" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix(telegram): handle enum vs string callback_data and add deep diagnostics&#10;&#10;Fix parent button lookup failures caused by enum-cast callback_data.&#10;&#10;- Attempt to convert callback action string to BotCallback enum&#10;- Retry button lookup using enum value when string match fails&#10;- Add detailed logging for callback parsing and lookup criteria&#10;- Log raw database values to debug cast and data mismatches&#10;- Improve error visibility for missing or inactive buttons" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
