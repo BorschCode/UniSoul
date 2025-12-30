@@ -14,6 +14,7 @@ return [
     'confession_menu_sub_action' => '🕰 დამატებითი მომსახურება',
     'coming_soon' => '⏳ მალე…',
     'error_confession_not_found' => '❌ შეცდომა: კონფესია ვერ მოიძებნა.',
+    'error_action' => '❌ შეცდომა: მოქმედება ვერ მოიძებნა ან მიუწვდომელია.',
     'chat_not_found' => '❌ შეცდომა: ჩატი ვერ მოიძებნა.',
     'close' => '❌ დახურვა',
     'error_invalid_confession' => '⚠️ კონფესია დროებით მიუწვდომელია.',

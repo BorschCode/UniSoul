@@ -14,6 +14,7 @@ return [
     'confession_menu_sub_action' => '🕰 Zusätzliche Dienste',
     'coming_soon' => '⏳ Bald verfügbar…',
     'error_confession_not_found' => '❌ Fehler: Konfession nicht gefunden.',
+    'error_action' => '❌ Fehler: Aktion nicht gefunden oder nicht verfügbar.',
     'chat_not_found' => '❌ Fehler: Chat nicht gefunden.',
     'close' => '❌ Schließen',
     'error_invalid_confession' => '⚠️ Konfession nicht verfügbar.',
