@@ -30,8 +30,8 @@ class CallbackData
         Log::debug('Page number', [isset($parts[4]) && $parts[4] !== '' ? (int) $parts[4] : 1]);
 
         return new self(
-            confession: ($parts[0] ?? '') !== '' ? $parts[0] : null,
-            action: ($parts[2] ?? '') !== '' ? $parts[2] : null,
+            confession: $parts[0] !== '' ? $parts[0] : null,
+            action: isset($parts[2]) && $parts[2] !== '' ? $parts[2] : null,
             actionId: isset($parts[3]) && $parts[3] !== '' ? (int) $parts[3] : null,
             confessionId: isset($parts[1]) && $parts[1] !== '' ? (int) $parts[1] : null,
             method: $method,

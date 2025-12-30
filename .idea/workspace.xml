@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ffce8e0-82c7-48f7-b876-3fe216f734a7" name="Changes" comment="fix(telegram): stabilize conversation handler and enable Nutgram file logging&#10;&#10;Fix conversation handler flow and add dedicated Nutgram logging.&#10;&#10;- Resolve conversation handler execution issues&#10;- Add logger configuration to persist Nutgram logs to file&#10;- Improve observability and debugging for bot interactions">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Telegram/Conversations/ConfessionConversation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Telegram/Conversations/ConfessionConversation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Telegram/DTOs/CallbackData.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Telegram/DTOs/CallbackData.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/BotButtonForConfessionSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/BotButtonForConfessionSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lang/de/telegram.php" beforeDir="false" afterPath="$PROJECT_DIR$/lang/de/telegram.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lang/en/telegram.php" beforeDir="false" afterPath="$PROJECT_DIR$/lang/en/telegram.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lang/ka/telegram.php" beforeDir="false" afterPath="$PROJECT_DIR$/lang/ka/telegram.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lang/ro/telegram.php" beforeDir="false" afterPath="$PROJECT_DIR$/lang/ro/telegram.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lang/ru/telegram.php" beforeDir="false" afterPath="$PROJECT_DIR$/lang/ru/telegram.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lang/uk/telegram.php" beforeDir="false" afterPath="$PROJECT_DIR$/lang/uk/telegram.php" afterDir="false" />
-    </list>
+    <list default="true" id="9ffce8e0-82c7-48f7-b876-3fe216f734a7" name="Changes" comment="fix(telegram): preserve callback_data structure and fix pagination parsing&#10;&#10;Fix callback data corruption caused by array_filter reindexing.&#10;&#10;- Preserve positional fields in callback_data by using empty placeholders&#10;- Correctly parse empty parts back to null values&#10;- Fix page number shifting that broke pagination&#10;- Add missing telegram.available_priests translation" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -336,15 +325,7 @@
       <workItem from="1767027805774" duration="3315000" />
       <workItem from="1767082065391" duration="6023000" />
       <workItem from="1767098394954" duration="4133000" />
-      <workItem from="1767103943955" duration="3272000" />
-    </task>
-    <task id="LOCAL-00006" summary="Lint fixes">
-      <option name="closed" value="true" />
-      <created>1761757934325</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1761757934325</updated>
+      <workItem from="1767103943955" duration="3588000" />
     </task>
     <task id="LOCAL-00007" summary="Lint fixes">
       <option name="closed" value="true" />
@@ -730,7 +711,15 @@
       <option name="project" value="LOCAL" />
       <updated>1767107347855</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="fix(telegram): preserve callback_data structure and fix pagination parsing&#10;&#10;Fix callback data corruption caused by array_filter reindexing.&#10;&#10;- Preserve positional fields in callback_data by using empty placeholders&#10;- Correctly parse empty parts back to null values&#10;- Fix page number shifting that broke pagination&#10;- Add missing telegram.available_priests translation">
+      <option name="closed" value="true" />
+      <created>1767109140210</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1767109140210</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -748,7 +737,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Lint fixes" />
     <MESSAGE value="feat(i18n): Add new error and &quot;coming soon&quot; keys with translations&#10;&#10;Adds the following new localization strings to the settings/telegram language files:&#10;- `error_invalid_confession`: Custom error message for unavailable/blocked confessions.&#10;- `error_invalid_action`: Generic error message for unavailable/blocked actions.&#10;- `coming_soon`: String used to mark features that are not yet active.&#10;&#10;Includes translations for: Ukrainian (uk), Russian (ru), German (de), Romanian (ro), and Georgian (ka)." />
     <MESSAGE value="feat: add multi-language support for Bot Buttons &amp; Confessions&#10;&#10;Converted bot buttons text to translatable JSON structure&#10;&#10;Updated BotButtonSeeder and ConfessionBotButtonSeeder to seed labels for all config('app.supported_languages') locales&#10;&#10;Removed hard-coded text values and replaced with enum-based translation generator&#10;&#10;Enforced callback_data as required (removed nullable and comments)&#10;&#10;Updated Confession model to dynamically load available actions from BotButtons enum&#10;&#10;Added translation tabs in Filament form for all supported languages&#10;&#10;Refactored seeders to use reusable translation helper&#10;&#10;Ensured consistent enum-driven structure across button system&#10;&#10;Result: Full multilingual Telegram bot buttons system, dynamic Confession actions loading, and improved database integrity." />
     <MESSAGE value="refactor(bot): organize BotCallback enum into logical sections with comments&#10;&#10;- Grouped enum cases by domain (navigation, confession flow, actions)&#10;- Added descriptive section headers above enum values&#10;- Improved readability and structure without changing behavior" />
@@ -773,7 +761,8 @@
     <MESSAGE value="feat(telegram): switch bot supervisor to Nutgram polling command&#10;&#10;Run Telegram bot using Nutgram’s built-in long polling.&#10;&#10;- Replace custom polling command with nutgram:run in supervisord&#10;- Auto-start and restart bot via supervisor&#10;- Document polling vs webhook modes in .env.example&#10;- Align setup with Nutgram “Getting Updates” guidelines" />
     <MESSAGE value="fix(telegram): handle enum vs string callback_data and add deep diagnostics&#10;&#10;Fix parent button lookup failures caused by enum-cast callback_data.&#10;&#10;- Attempt to convert callback action string to BotCallback enum&#10;- Retry button lookup using enum value when string match fails&#10;- Add detailed logging for callback parsing and lookup criteria&#10;- Log raw database values to debug cast and data mismatches&#10;- Improve error visibility for missing or inactive buttons" />
     <MESSAGE value="fix(telegram): stabilize conversation handler and enable Nutgram file logging&#10;&#10;Fix conversation handler flow and add dedicated Nutgram logging.&#10;&#10;- Resolve conversation handler execution issues&#10;- Add logger configuration to persist Nutgram logs to file&#10;- Improve observability and debugging for bot interactions" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix(telegram): stabilize conversation handler and enable Nutgram file logging&#10;&#10;Fix conversation handler flow and add dedicated Nutgram logging.&#10;&#10;- Resolve conversation handler execution issues&#10;- Add logger configuration to persist Nutgram logs to file&#10;- Improve observability and debugging for bot interactions" />
+    <MESSAGE value="fix(telegram): preserve callback_data structure and fix pagination parsing&#10;&#10;Fix callback data corruption caused by array_filter reindexing.&#10;&#10;- Preserve positional fields in callback_data by using empty placeholders&#10;- Correctly parse empty parts back to null values&#10;- Fix page number shifting that broke pagination&#10;- Add missing telegram.available_priests translation" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix(telegram): preserve callback_data structure and fix pagination parsing&#10;&#10;Fix callback data corruption caused by array_filter reindexing.&#10;&#10;- Preserve positional fields in callback_data by using empty placeholders&#10;- Correctly parse empty parts back to null values&#10;- Fix page number shifting that broke pagination&#10;- Add missing telegram.available_priests translation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
