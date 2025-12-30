@@ -7,6 +7,7 @@ use App\Models\BotButton;
 use App\Models\Branch;
 use App\Models\Confession;
 use App\Models\Employee;
+use Illuminate\Database\Connection;
 use Illuminate\Support\Facades\Log;
 use Psr\SimpleCache\InvalidArgumentException;
 use SergiX44\Nutgram\Nutgram;
@@ -203,7 +204,7 @@ class ConfessionConversation extends BaseConversation
         $this->showMenu();
     }
 
-    public function handleConfessionMenuAction(Nutgram $bot): void
+    public function handleConfessionMenuAction(Nutgram $bot, Connection $connectionDB): void
     {
         $data = $bot->callbackQuery()->data ?? '';
         Log::info('handleConfessionMenuAction - Raw callback data', ['raw_data' => $data]);
@@ -237,11 +238,10 @@ class ConfessionConversation extends BaseConversation
         Log::info('handleConfessionMenuAction - All buttons for confession', [
             'confessionId' => $callbackDataDTO->confessionId,
             'buttons_count' => $allButtons->count(),
-            'buttons' => $allButtons->map(fn ($b) => [
+            'buttons' => $allButtons->map(fn (BotButton $b) => [
                 'id' => $b->id,
                 'callback_data' => $b->callback_data,
                 'entity_type' => $b->entity_type,
-                'active' => $b->active,
                 'parent_id' => $b->parent_id,
             ])->toArray(),
         ]);
@@ -289,8 +289,9 @@ class ConfessionConversation extends BaseConversation
         }
 
         if (! $parent) {
+            /** @var BotButton $rawButtons */
             // Get raw DB values to see exactly what's stored
-            $rawButtons = \DB::table('bot_buttons')
+            $rawButtons = $connectionDB->table('bot_buttons')
                 ->where('entity_type', Confession::class)
                 ->where('entity_id', $callbackDataDTO->confessionId)
                 ->get(['id', 'callback_data', 'entity_type', 'entity_id', 'active']);
@@ -310,13 +311,12 @@ class ConfessionConversation extends BaseConversation
 
             return;
         }
-
+        /** @var BotButton $parent */
         Log::info('handleConfessionMenuAction - Parent button found', [
             'parent_id' => $parent->id,
             'parent_callback_data' => $parent->callback_data,
         ]);
 
-        /** @var BotButton $parent */
         $childrenButtons = BotButton::where('parent_id', $parent->id)->orderBy('order')->get();
         Log::info('Children buttons', ['count' => $childrenButtons->count()]);
 
