@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ffce8e0-82c7-48f7-b876-3fe216f734a7" name="Changes" comment="fix(telegram): handle enum vs string callback_data and add deep diagnostics&#10;&#10;Fix parent button lookup failures caused by enum-cast callback_data.&#10;&#10;- Attempt to convert callback action string to BotCallback enum&#10;- Retry button lookup using enum value when string match fails&#10;- Add detailed logging for callback parsing and lookup criteria&#10;- Log raw database values to debug cast and data mismatches&#10;- Improve error visibility for missing or inactive buttons" />
+    <list default="true" id="9ffce8e0-82c7-48f7-b876-3fe216f734a7" name="Changes" comment="fix(telegram): handle enum vs string callback_data and add deep diagnostics&#10;&#10;Fix parent button lookup failures caused by enum-cast callback_data.&#10;&#10;- Attempt to convert callback action string to BotCallback enum&#10;- Retry button lookup using enum value when string match fails&#10;- Add detailed logging for callback parsing and lookup criteria&#10;- Log raw database values to debug cast and data mismatches&#10;- Improve error visibility for missing or inactive buttons">
+      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/deploy-raspi-arm64.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/deploy-raspi-arm64.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/deploy-raspi.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/deploy-raspi.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Telegram/Conversations/SupportConversation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Telegram/Conversations/SupportConversation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/logging.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/logging.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -324,15 +331,8 @@
       <workItem from="1766994320752" duration="930000" />
       <workItem from="1767027805774" duration="3315000" />
       <workItem from="1767082065391" duration="6023000" />
-      <workItem from="1767098394954" duration="1108000" />
-    </task>
-    <task id="LOCAL-00004" summary="Raw code for start project">
-      <option name="closed" value="true" />
-      <created>1761608199048</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1761608199048</updated>
+      <workItem from="1767098394954" duration="4133000" />
+      <workItem from="1767103943955" duration="1575000" />
     </task>
     <task id="LOCAL-00005" summary="Add new middlewares and refactor Nutgram Conversations to fix context initialization">
       <option name="closed" value="true" />
@@ -718,7 +718,15 @@
       <option name="project" value="LOCAL" />
       <updated>1767098922656</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="fix(telegram): handle enum vs string callback_data and add deep diagnostics&#10;&#10;Fix parent button lookup failures caused by enum-cast callback_data.&#10;&#10;- Attempt to convert callback action string to BotCallback enum&#10;- Retry button lookup using enum value when string match fails&#10;- Add detailed logging for callback parsing and lookup criteria&#10;- Log raw database values to debug cast and data mismatches&#10;- Improve error visibility for missing or inactive buttons">
+      <option name="closed" value="true" />
+      <created>1767099952999</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1767099952999</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
