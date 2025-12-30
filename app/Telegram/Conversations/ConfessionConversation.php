@@ -206,9 +206,21 @@ class ConfessionConversation extends BaseConversation
     public function handleConfessionMenuAction(Nutgram $bot): void
     {
         $data = $bot->callbackQuery()->data ?? '';
+        Log::info('handleConfessionMenuAction - Raw callback data', ['raw_data' => $data]);
+
         $callbackDataDTO = $this->parseCallbackData($data);
+        Log::info('handleConfessionMenuAction - Parsed callback', [
+            'confession' => $callbackDataDTO->confession,
+            'action' => $callbackDataDTO->action,
+            'confessionId' => $callbackDataDTO->confessionId,
+            'actionId' => $callbackDataDTO->actionId,
+            'method' => $callbackDataDTO->method,
+        ]);
 
         if (Confession::whereId($callbackDataDTO->confessionId)->exists() === false) {
+            Log::warning('handleConfessionMenuAction - Confession not found', [
+                'confessionId' => $callbackDataDTO->confessionId,
+            ]);
             $bot->answerCallbackQuery(text: __('telegram.error_confession_not_found'), show_alert: true);
             MainMenuConversation::begin($bot);
 
@@ -216,6 +228,49 @@ class ConfessionConversation extends BaseConversation
         }
 
         $locale = app()->getLocale();
+
+        // Debug: Check what buttons exist for this confession
+        $allButtons = BotButton::where('entity_type', Confession::class)
+            ->where('entity_id', $callbackDataDTO->confessionId)
+            ->get(['id', 'callback_data', 'entity_type', 'entity_id', 'active', 'parent_id']);
+
+        Log::info('handleConfessionMenuAction - All buttons for confession', [
+            'confessionId' => $callbackDataDTO->confessionId,
+            'buttons_count' => $allButtons->count(),
+            'buttons' => $allButtons->map(fn ($b) => [
+                'id' => $b->id,
+                'callback_data' => $b->callback_data,
+                'entity_type' => $b->entity_type,
+                'active' => $b->active,
+                'parent_id' => $b->parent_id,
+            ])->toArray(),
+        ]);
+
+        // Try to convert action string to BotCallback enum if possible
+        $callbackEnum = null;
+        try {
+            if ($callbackDataDTO->action) {
+                $callbackEnum = BotCallback::from($callbackDataDTO->action);
+                Log::info('handleConfessionMenuAction - Converted action to enum', [
+                    'action_string' => $callbackDataDTO->action,
+                    'enum_value' => $callbackEnum->value,
+                    'enum_name' => $callbackEnum->name,
+                ]);
+            }
+        } catch (\ValueError $e) {
+            Log::warning('handleConfessionMenuAction - Could not convert action to BotCallback enum', [
+                'action' => $callbackDataDTO->action,
+                'error' => $e->getMessage(),
+            ]);
+        }
+
+        Log::info('handleConfessionMenuAction - Searching for parent button', [
+            'callback_data_searching_for' => $callbackDataDTO->action,
+            'callback_enum' => $callbackEnum?->value,
+            'entity_type_searching_for' => Confession::class,
+            'entity_id_searching_for' => $callbackDataDTO->confessionId,
+        ]);
+
         /** @var BotButton|null $parent */
         $parent = BotButton::whereCallbackData($callbackDataDTO->action)
             ->where('entity_type', Confession::class)
@@ -223,12 +278,43 @@ class ConfessionConversation extends BaseConversation
             ->where('active', true)
             ->first();
 
+        // If not found with string, try with enum
+        if (! $parent && $callbackEnum) {
+            Log::info('handleConfessionMenuAction - Trying again with enum');
+            $parent = BotButton::whereCallbackData($callbackEnum)
+                ->where('entity_type', Confession::class)
+                ->where('entity_id', $callbackDataDTO->confessionId)
+                ->where('active', true)
+                ->first();
+        }
+
         if (! $parent) {
+            // Get raw DB values to see exactly what's stored
+            $rawButtons = \DB::table('bot_buttons')
+                ->where('entity_type', Confession::class)
+                ->where('entity_id', $callbackDataDTO->confessionId)
+                ->get(['id', 'callback_data', 'entity_type', 'entity_id', 'active']);
+
+            Log::error('handleConfessionMenuAction - Parent button not found', [
+                'searched_callback_data' => $callbackDataDTO->action,
+                'searched_callback_data_type' => gettype($callbackDataDTO->action),
+                'searched_entity_type' => Confession::class,
+                'searched_entity_id' => $callbackDataDTO->confessionId,
+                'available_callback_data_values' => $allButtons->pluck('callback_data')->toArray(),
+                'raw_db_callback_data_values' => $rawButtons->pluck('callback_data')->toArray(),
+                'raw_db_entity_types' => $rawButtons->pluck('entity_type')->unique()->toArray(),
+            ]);
+
             $bot->answerCallbackQuery(text: __('telegram.error_action'), show_alert: true);
             MainMenuConversation::begin($bot);
 
             return;
         }
+
+        Log::info('handleConfessionMenuAction - Parent button found', [
+            'parent_id' => $parent->id,
+            'parent_callback_data' => $parent->callback_data,
+        ]);
 
         /** @var BotButton $parent */
         $childrenButtons = BotButton::where('parent_id', $parent->id)->orderBy('order')->get();

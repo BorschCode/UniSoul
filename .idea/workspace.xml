@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ffce8e0-82c7-48f7-b876-3fe216f734a7" name="Changes" comment="feat(telegram): switch bot supervisor to Nutgram polling command&#10;&#10;Run Telegram bot using Nutgram’s built-in long polling.&#10;&#10;- Replace custom polling command with nutgram:run in supervisord&#10;- Auto-start and restart bot via supervisor&#10;- Document polling vs webhook modes in .env.example&#10;- Align setup with Nutgram “Getting Updates” guidelines" />
+    <list default="true" id="9ffce8e0-82c7-48f7-b876-3fe216f734a7" name="Changes" comment="feat(telegram): switch bot supervisor to Nutgram polling command&#10;&#10;Run Telegram bot using Nutgram’s built-in long polling.&#10;&#10;- Replace custom polling command with nutgram:run in supervisord&#10;- Auto-start and restart bot via supervisor&#10;- Document polling vs webhook modes in .env.example&#10;- Align setup with Nutgram “Getting Updates” guidelines">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Telegram/Conversations/ConfessionConversation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Telegram/Conversations/ConfessionConversation.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -322,7 +325,8 @@
       <workItem from="1764772481042" duration="648000" />
       <workItem from="1766759642947" duration="4676000" />
       <workItem from="1766994320752" duration="930000" />
-      <workItem from="1767027805774" duration="938000" />
+      <workItem from="1767027805774" duration="3315000" />
+      <workItem from="1767082065391" duration="1608000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -700,7 +704,15 @@
       <option name="project" value="LOCAL" />
       <updated>1767028138614</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="feat(telegram): switch bot supervisor to Nutgram polling command&#10;&#10;Run Telegram bot using Nutgram’s built-in long polling.&#10;&#10;- Replace custom polling command with nutgram:run in supervisord&#10;- Auto-start and restart bot via supervisor&#10;- Document polling vs webhook modes in .env.example&#10;- Align setup with Nutgram “Getting Updates” guidelines">
+      <option name="closed" value="true" />
+      <created>1767029577346</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1767029577346</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
