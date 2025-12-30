@@ -7,6 +7,8 @@ return [
     'button_settings_menu' => '⚙️ Einstellungen',
     'settings_message_placeholder' => '⚙️ Einstellungsmenü ist noch nicht verfügbar.',
     'button_back' => '⬅️ Zurück',
+    'previous' => 'Zurück',
+    'next' => 'Weiter',
     'select_confession' => '🙏 Wähle deine Konfession:',
     'main_menu' => '🏠 Hauptmenü',
     'learn_about_confession' => '📚 Über die Konfession lernen',
@@ -19,6 +21,9 @@ return [
     'close' => '❌ Schließen',
     'error_invalid_confession' => '⚠️ Konfession nicht verfügbar.',
     'error_invalid_action' => '⚠️ Aktion nicht verfügbar.',
+    'no_priests_available' => '❌ Derzeit sind keine Priester verfügbar.',
+    'available_priests' => '👥 Verfügbare Priester',
+    'no_branches_found' => '❌ Keine Filialen für diese Konfession gefunden.',
 
     'gender' => [
         'male' => '👨 Männlich',

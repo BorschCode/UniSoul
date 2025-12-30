@@ -105,7 +105,7 @@ class BotButtonForConfessionSeeder extends Seeder
 
         // Back to Main menu
         BotButton::create([
-            'parent_id' => $confessionId,
+            'parent_id' => $confessionRootButtonId,
             'entity_type' => Confession::class,
             'entity_id' => $confessionId,
             'text' => $this->trans(BotCallback::BackButton),
@@ -113,12 +113,12 @@ class BotButtonForConfessionSeeder extends Seeder
             'order' => 998,
         ]);
         BotButton::create([
-            'parent_id' => $confessionId,
+            'parent_id' => $confessionRootButtonId,
             'entity_type' => Confession::class,
             'entity_id' => $confessionId,
             'text' => $this->trans(BotCallback::MainMenu),
             'callback_data' => BotCallback::MainMenu->value,
-            'order' => 998,
+            'order' => 999,
         ]);
 
         BotButton::create([
