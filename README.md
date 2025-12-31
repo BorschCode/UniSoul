@@ -73,6 +73,22 @@ This demo showcases:
 
 ---
 
+## 🎥 Demo Video
+
+<details open>
+<summary>Click to view demo</summary>
+
+<video src="https://github.com/user-attachments/assets/ab4a5b7c-170c-4278-8b12-b0789c12cf7c"
+controls
+muted
+playsinline
+style="max-width:100%; border-radius:8px;">
+</video>
+
+</details>
+
+
+
 ### 🛠️ Admin Panel (Filament)
 
 | Bot Buttons Management | Confessions Management |
