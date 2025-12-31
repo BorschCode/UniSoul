@@ -1,10 +1,14 @@
 # 🕊️ UniSoul — Spiritual Guide Telegram Bot
 
 ![Laravel](https://img.shields.io/badge/Laravel-12-red)
-![PHP](https://img.shields.io/badge/PHP-8.2-blue)
+![PHP](https://img.shields.io/badge/PHP-8.4-green)
 ![Docker](https://img.shields.io/badge/Docker-Sail-blue)
 ![Telegram](https://img.shields.io/badge/Telegram-Bot-2CA5E0)
 ![License](https://img.shields.io/badge/License-MIT-green)
+
+![Tests](https://github.com/BorschCode/UniSoul/actions/workflows/build-push.yml/badge.svg)
+![Last Release](https://img.shields.io/github/v/release/BorschCode/UniSoul)
+
 
 **UniSoul** is a modern Telegram bot built with **Laravel 12** and **PHP 8.2**, designed as a spiritual guide with confession flows, configuration menus, and an admin panel powered by **Filament**.
 
@@ -21,6 +25,19 @@
   https://youtu.be/hal26y43olA
 
 ---
+
+## 🚀 Try This Bot
+
+You can interact with the live demo bot directly on Telegram:
+
+👉 https://t.me/unis1oul_bot
+
+This demo showcases:
+- Main menu navigation
+- User configuration flows
+- Confession and message handling
+- Real production bot behavior
+
 
 ## ✨ Features
 
