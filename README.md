@@ -1,29 +1,104 @@
-# 🕊️ UniSoul: Spiritual Guide (Telegram Bot)
+# 🕊️ UniSoul — Spiritual Guide Telegram Bot
 
-## 🚨 PROJECT STATUS: Testing Mode
+![Laravel](https://img.shields.io/badge/Laravel-12-red)
+![PHP](https://img.shields.io/badge/PHP-8.4-green)
+![Docker](https://img.shields.io/badge/Docker-Sail-blue)
+![Telegram](https://img.shields.io/badge/Telegram-Bot-2CA5E0)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-**Laravel 12 Telegram Bot (PHP 8.2 / Sail Ready)**
+![Tests](https://github.com/BorschCode/UniSoul/actions/workflows/build-push.yml/badge.svg)
+![Last Release](https://img.shields.io/github/v/release/BorschCode/UniSoul)
 
-This project is a modern Telegram bot implementation built on **Laravel 12** and designed to run easily using **Laravel Sail** (Docker). It leverages the `irazasyed/telegram-bot-sdk` (v3.x) for seamless update handling and messaging.
+
+**UniSoul** is a modern Telegram bot built with **Laravel 12** and **PHP 8.2**, designed as a spiritual guide with confession flows, configuration menus, and an admin panel powered by **Filament**.
+
+> ⚠️ Project status: **Testing / Demo-ready**
 
 ---
 
-![main](./readme/chat.png)
+## 🎥 Demo Videos
+
+- **Bot Demo (User Flow):**  
+  https://youtu.be/zdwysA-RAVQ
+
+- **Admin Panel & Management Demo:**  
+  https://youtu.be/hal26y43olA
+
+---
+
+## 🚀 Try This Bot
+
+You can interact with the live demo bot directly on Telegram:
+
+👉 https://t.me/unis1oul_bot
+
+This demo showcases:
+- Main menu navigation
+- User configuration flows
+- Confession and message handling
+- Real production bot behavior
 
 
-## 1. Setup and Installation
+## ✨ Features
 
-This guide assumes you have **Docker** and **Docker Compose** installed and running on your system.
+- Telegram bot with structured conversational flows
+- User configuration (language, notifications, gender, etc.)
+- Confession and message storage
+- Filament admin panel for moderation and statistics
+- Docker-first setup with Laravel Sail
+- Prepared for polling **and** webhook modes
+- Laravel 12 & PHP 8.2 compatible architecture
 
-### A. Environment Variables
+---
 
-Copy the contents of the provided `.env.additions.txt` into your main `.env` file, ensuring you replace the placeholder with your actual bot token obtained from BotFather.
+## 🧱 Tech Stack
+
+- **Backend:** Laravel 12, PHP 8.2
+- **Bot Framework:** Nutgram
+- **Admin Panel:** Filament
+- **Database:** MySQL
+- **Infrastructure:** Docker, Laravel Sail
+- **Cache / Queue Ready:** Redis (optional)
+
+---
+
+## 📸 Screenshots
+
+### 🤖 Bot Interface
+
+| Confession Actions | Contact & Chat Form |
+|-------------------|---------------------|
+| ![Confession Actions](readme/confession-actions.png) | ![Contact Chat Form](readme/contact-chat-form.png) |
+| Main menu and confession flow | User contact and chat interaction |
+
+---
+
+### 🛠️ Admin Panel (Filament)
+
+| Bot Buttons Management | Confessions Management |
+|-----------------------|------------------------|
+| ![Manage Buttons](readme/manage-buttons.png) | ![Manage Confessions](readme/manage-confession.png) |
+| Configure bot keyboards and actions | Moderate and review user confessions |
+
+---
+
+## 🚀 Installation & Setup
+
+### Requirements
+
+- Docker
+- Docker Compose
+
+---
+
+### 1. Environment Configuration
+
+Copy `.env.example` to `.env` and configure:
 
 ```env
-# .env additions
-TELEGRAM_BOT_TOKEN="<YOUR_BOT_TOKEN_FROM_BOTFATHER>"
+APP_ENV=local
+TELEGRAM_BOT_TOKEN=YOUR_BOT_TOKEN
 
-# Standard MySQL DB Config (Sail default)
 DB_CONNECTION=mysql
 DB_HOST=mysql
 DB_PORT=3306
@@ -32,196 +107,155 @@ DB_USERNAME=sail
 DB_PASSWORD=password
 ````
 
-### B. Running with Docker Compose (First Run)
+---
 
-To handle the dependencies and setup without relying on the local `./vendor/` directory, we use direct `docker compose` commands.
+### 2. First Run (Docker)
 
-1.  **Build and Start the Environment:**
-    The following command builds the images, starts the necessary services (App, MySQL), and runs `composer install` inside the application container to fetch all dependencies, including the `sail` executable.
+```bash
+docker compose up -d
+docker compose exec laravel.test composer install
+docker compose exec laravel.test php artisan migrate
+```
 
-    ```bash
-    docker compose up -d
-    docker compose exec laravel.test composer install
-    ```
+---
 
-    *(The application container is typically named `laravel.test` by Laravel Sail.)*
+### 3. Daily Usage (Sail)
 
-2.  **Run Database Migrations:**
-    Execute migrations to create the required tables (`user_configs` and `user_messages`).
+```bash
+./vendor/bin/sail up -d
+./vendor/bin/sail down
+```
 
-    ```bash
-    docker compose exec laravel.test php artisan migrate
-    ```
+---
 
-### C. Subsequent Commands (Using Sail Helper)
+## 🤖 Bot Execution Modes
 
-Now that `composer install` has run, the `./vendor/bin/sail` executable is available and can be used for convenience.
+### Polling Mode (Default — Dev & Prod)
 
-* **Standard Up/Down:**
-  ```bash
-  ./vendor/bin/sail up -d # Start services
-  ./vendor/bin/sail down  # Stop services
-  ```
+Configured via `supervisord`:
 
------
+* `docker/8.4/supervisord.conf` (local)
+* `docker/production/supervisord.conf` (production)
 
-## 2\. Bot Setup: Development vs Production
+Run manually if needed:
 
-This project uses **Nutgram** for Telegram bot integration, which supports two modes of operation.
-
-### Development Mode (Polling)
-
-For local development, the bot uses **polling mode** to fetch updates from Telegram.
-
-**Start the bot:**
 ```bash
 ./vendor/bin/sail artisan nutgram:run
 ```
 
-The bot will continuously poll Telegram for updates. Keep this command running while developing.
+---
 
-### Production Mode (Webhook)
+### Webhook Mode (Optional)
 
-In production, the bot uses **webhooks** for receiving updates from Telegram. This is more efficient and doesn't require a continuously running process.
+Prepared but **disabled by default**.
 
-#### Environment Configuration
-
-Your `.env` file in production should have:
-```env
-APP_ENV=production
-TELEGRAM_TOKEN=your_actual_bot_token
-```
-
-The `safe_mode` in `config/nutgram.php:10` will automatically enable webhook validation in production.
-
-#### Initial Webhook Setup
-
-After deploying your application to production, **run this command ONCE**:
+Enable webhook after deployment:
 
 ```bash
 php artisan nutgram:hook:set https://yourdomain.com/api/telegram/webhook
 ```
 
-Replace `yourdomain.com` with your actual production domain.
-
-**Note:** The webhook endpoint is already configured at `/api/telegram/webhook` and excludes CSRF protection.
-
-#### Verify Webhook Status
-
-Check if the webhook is properly registered:
+Check status:
 
 ```bash
 php artisan nutgram:hook:info
 ```
 
-#### Development vs Production Workflow
-
-| Environment | Mode    | Command                                                      |
-|-------------|---------|--------------------------------------------------------------|
-| Development | Polling | `./vendor/bin/sail artisan nutgram:run` (run manually)      |
-| Production  | Webhook | No command needed after initial setup                        |
-
-**How It Works:**
-- **Development:** You manually run `nutgram:run` when working locally. The bot polls Telegram for updates.
-- **Production:** Telegram sends updates directly to your webhook URL. No manual command needed after deployment.
-
-#### CI/CD Integration (Optional)
-
-If you want to automate webhook registration in your deployment pipeline, add this to your deployment script:
-
-```bash
-if [ "$APP_ENV" = "production" ]; then
-    php artisan nutgram:hook:set https://yourdomain.com/api/telegram/webhook
-fi
-```
-
-#### Remove Webhook
-
-To switch back to polling or remove the webhook:
+Remove webhook:
 
 ```bash
 php artisan nutgram:hook:remove
 ```
 
-**Important:** Once the webhook is set in production, you don't need to run any artisan commands after each deploy. The webhook stays active until you explicitly remove it.
+Webhook endpoint:
 
-### Local Testing with ngrok (Optional)
+```
+POST /api/telegram/webhook
+```
 
-If you want to test webhook mode locally:
+(CSRF excluded)
 
-1.  **Start ngrok:**
-    ```bash
-    ngrok http 80
-    ```
+---
 
-2.  **Set the webhook:**
-    ```bash
-    ./vendor/bin/sail artisan nutgram:hook:set https://<your-ngrok-id>.ngrok-free.app/api/telegram/webhook
-    ```
-
-3.  **Test the Bot:**
-    Open Telegram, find your bot, and send the `/start` command.
-
------
-
-## 3\. Testing the Code
-
-The project includes a feature test to verify webhook functionality and database persistence.
-
-Run the tests inside the Sail container:
+## 🧪 Testing
 
 ```bash
 ./vendor/bin/sail artisan test
 ```
 
-This runs `tests/Feature/TelegramWebhookTest.php`, confirming that incoming updates are correctly handled, stored in the database, and that a reply is attempted (by mocking the Telegram API client).
+Includes feature tests for webhook handling and database persistence.
 
------
+---
 
-## 4\. Admin Panel (Filament)
+## 🛠️ Admin Panel (Filament)
 
-The project includes a Filament admin panel for managing users, confessions, bot buttons, and viewing statistics.
+**URL:**
+[http://localhost:8050/management](http://localhost:8050/management)
 
-**Access the admin panel at:** [http://localhost:8050/management](http://localhost:8050/management)
+### Default Admin Users (Seeded)
 
-Available resources:
-- **Users** - Manage bot users
-- **Confessions** - View and manage user confessions
-- **Bot Buttons** - Configure bot keyboard buttons
-- **Statistics** - View application statistics
+| Email                                           | Password |
+| ----------------------------------------------- | -------- |
+| [default@admin.test](mailto:default@admin.test) | password |
+| [test@admin.test](mailto:test@admin.test)       | password |
 
-Login credentials should be created using:
+Resources:
+
+* Users
+* Confessions
+* Bot Buttons
+* Statistics
+
+Create new admin:
+
 ```bash
 ./vendor/bin/sail artisan make:filament-user
 ```
 
------
+---
 
-## 5\. Compatibility Fixes Summary
+## 🔄 Core Bot Flows
 
-The following files were replaced/updated to ensure full **Laravel 12** compatibility and **PHP 8.2** type-hinting:
+| Action               | Behavior          | Persistence              |
+| -------------------- | ----------------- | ------------------------ |
+| `/start`             | Show main menu    | UserConfig + UserMessage |
+| Ask Question         | Prompt input      | UserMessage              |
+| My Config            | Show settings     | UserConfig               |
+| Free text            | Acknowledgement   | UserMessage              |
+| Change language      | Update preference | UserConfig               |
+| Toggle notifications | Update flag       | UserConfig               |
 
-| Outdated File | Laravel 12 Replacement/Change |
-| :--- | :--- |
-| `app/Http/Middleware/*` | Replaced with modern Laravel 12 versions, ensuring correct namespaces, use statements, and return type declarations. |
-| `app/Http/Kernel.php` | Updated to the Laravel 12 structure, including correct middleware registration. `TrustProxies` is configured to trust all proxies (`*`), essential for Docker/Sail and ngrok. |
-| `routes/api.php` | The webhook route `POST /telegram/webhook` was added using the modern `[Controller::class, 'method']` array syntax. |
-| `app/Http/Middleware/VerifyCsrfToken.php` | The webhook route `/telegram/webhook` was added to the `$except` array to bypass CSRF protection for external API calls. |
-| **New Files** | New files like `app/Models/UserConfig.php`, `app/Services/TelegramBotService.php`, and `app/Console/Commands/TelegramSetWebhook.php` were created following Laravel 12 idioms. |
+Logic is centralized in:
 
------
+```
+app/Services/TelegramBotService.php
+```
 
-## 6\. Main Flow Examples
+---
 
-The `TelegramBotService` implements the following core user flows:
+## 🧩 Laravel 12 Compatibility Fixes
 
-| User Action | Bot Response | Persistence |
-| :--- | :--- | :--- |
-| `/start` or "Main Menu" | Greets user, shows main menu keyboard. | Creates `UserConfig` if new. Stores message in `UserMessage`. |
-| "1. Ask a question" | Prompts user to type a question. | Stores message in `UserMessage`. |
-| "2. My config" | Displays current config (language, notifications). | Stores message in `UserMessage`. |
-| Free-text message | Acknowledges the query with a standard reply. | Stores message in `UserMessage`. |
-| `set language es` (in config menu) | Updates the user's language preference. | Updates `UserConfig` record. |
-| `toggle notifications` (in config menu) | Toggles the notification setting. | Updates `UserConfig` record. |
+* Updated middleware signatures
+* Modern `Http\Kernel.php`
+* Webhook route using controller array syntax
+* CSRF exclusion for Telegram webhook
+* Strong typing for PHP 8.2
+* Service-based bot architecture
 
-The core logic is contained within `app/Services/TelegramBotService.php`, which manages update parsing, database records, and sending replies using the injected `Telegram\Bot\Api` client.
+---
+
+## 📄 License
+
+MIT License
+
+---
+
+## 📬 Contact
+
+This project is suitable as:
+
+* Portfolio demo
+* SaaS Telegram bot base
+* Client-ready bot foundation
+
+For customization or integration — open an issue or contact the author.
