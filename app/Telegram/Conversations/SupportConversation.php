@@ -283,9 +283,12 @@ class SupportConversation extends BaseConversation
      */
     protected function findAvailableManagerByBranch(int $branchId): ?SupportManager
     {
-        return SupportManager::where('branch_id', $branchId)
+        /** @var SupportManager|null $manager */
+        $manager = SupportManager::where('branch_id', $branchId)
             ->where('is_available', true)
             ->inRandomOrder()
             ->first();
+
+        return $manager;
     }
 }
