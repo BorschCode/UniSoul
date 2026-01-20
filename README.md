@@ -228,24 +228,58 @@ Create new admin:
 ./vendor/bin/sail artisan make:filament-user
 ```
 
----
-
 ## 🔄 Core Bot Flows
 
-| Action               | Behavior          | Persistence              |
-| -------------------- | ----------------- | ------------------------ |
-| `/start`             | Show main menu    | UserConfig + UserMessage |
-| Ask Question         | Prompt input      | UserMessage              |
-| My Config            | Show settings     | UserConfig               |
-| Free text            | Acknowledgement   | UserMessage              |
-| Change language      | Update preference | UserConfig               |
-| Toggle notifications | Update flag       | UserConfig               |
+The bot supports a minimal, command-driven interaction model.
+All user actions are handled via explicit Telegram commands or free-text input.
 
-Logic is centralized in:
+### Supported Commands
 
-```
+| Command     | Purpose                                    |
+| ----------- | ------------------------------------------ |
+| `/start`    | Initialize user session and show main menu |
+| `/help`     | Display help and available commands        |
+| `/settings` | Open user settings menu                    |
+
+---
+
+### Behavior Matrix
+
+| Action / Input       | Bot Behavior                        | Persistence Layer           |
+| -------------------- | ----------------------------------- | --------------------------- |
+| `/start`             | Initialize user, show main menu     | `UserConfig`, `UserMessage` |
+| `/help`              | Show help text and command list     | —                           |
+| `/settings`          | Show current user configuration     | `UserConfig`                |
+| Change language      | Update language preference          | `UserConfig`                |
+| Toggle notifications | Enable / disable notifications      | `UserConfig`                |
+| Free text message    | Acknowledge or route based on state | `UserMessage`               |
+
+---
+
+### Flow Notes
+
+* `/start` is **idempotent** — safe to call multiple times
+* `/help` is **stateless** — does not modify user data
+* `/settings` operates only on existing users (created via `/start`)
+* Free text messages are handled based on the **current user state**, not blindly echoed
+
+---
+
+### Architecture
+
+All Telegram interaction logic is centralized in:
+
+```text
 app/Services/TelegramBotService.php
 ```
+
+This service is responsible for:
+
+* Command routing
+* State resolution
+* Message dispatch
+* Persistence coordination (`UserConfig`, `UserMessage`)
+
 
 ---
 

@@ -4,22 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ffce8e0-82c7-48f7-b876-3fe216f734a7" name="Changes" comment="docs(readme): replace stacked screenshots with table layout">
-      <change beforePath="$PROJECT_DIR$/.idea/UniSoul.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/UniSoul.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/354ac40b-36d3-44a6-bed1-bf1f8714d504.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/354ac40b-36d3-44a6-bed1-bf1f8714d504/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/354ac40b-36d3-44a6-bed1-bf1f8714d504/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" beforeDir="false" />
+    <list default="true" id="9ffce8e0-82c7-48f7-b876-3fe216f734a7" name="Changes" comment="fix(phpstan): correct return type in SupportConversation manager lookup&#10;&#10;Resolve static analysis error in support manager selection.&#10;&#10;- Fix findAvailableManagerByBranch() to return SupportManager|null&#10;- Remove stdClass leakage from query result&#10;- Ensure full PHPStan level compliance">
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Telegram/Conversations/SupportConversation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Telegram/Conversations/SupportConversation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/filament/filament/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/filament/filament/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/filament/filament/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/filament/filament/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/filament/forms/components/code-editor.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/filament/forms/components/code-editor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/filament/forms/components/date-time-picker.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/filament/forms/components/date-time-picker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/filament/forms/components/file-upload.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/filament/forms/components/file-upload.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/filament/forms/components/rich-editor.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/filament/forms/components/rich-editor.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/filament/forms/components/select.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/filament/forms/components/select.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/filament/forms/components/textarea.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/filament/forms/components/textarea.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/filament/schemas/components/tabs.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/filament/schemas/components/tabs.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/filament/tables/components/columns/select.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/filament/tables/components/columns/select.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/filament/tables/tables.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/filament/tables/tables.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/filament/widgets/components/chart.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/filament/widgets/components/chart.js" afterDir="false" />
@@ -81,170 +76,170 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="/bin/php">
     <include_path>
-      <path value="$PROJECT_DIR$/vendor/composer" />
-      <path value="$PROJECT_DIR$/vendor/fakerphp/faker" />
-      <path value="$PROJECT_DIR$/vendor/doctrine/lexer" />
-      <path value="$PROJECT_DIR$/vendor/doctrine/inflector" />
-      <path value="$PROJECT_DIR$/vendor/filament/infolists" />
-      <path value="$PROJECT_DIR$/vendor/filament/forms" />
-      <path value="$PROJECT_DIR$/vendor/filament/filament" />
-      <path value="$PROJECT_DIR$/vendor/filament/actions" />
-      <path value="$PROJECT_DIR$/vendor/filament/support" />
-      <path value="$PROJECT_DIR$/vendor/filament/schemas" />
-      <path value="$PROJECT_DIR$/vendor/filament/query-builder" />
-      <path value="$PROJECT_DIR$/vendor/filament/notifications" />
-      <path value="$PROJECT_DIR$/vendor/livewire/livewire" />
-      <path value="$PROJECT_DIR$/vendor/hamcrest/hamcrest-php" />
-      <path value="$PROJECT_DIR$/vendor/filament/widgets" />
-      <path value="$PROJECT_DIR$/vendor/filament/tables" />
-      <path value="$PROJECT_DIR$/vendor/carbonphp/carbon-doctrine-types" />
-      <path value="$PROJECT_DIR$/vendor/sergix44/container" />
-      <path value="$PROJECT_DIR$/vendor/pragmarx/google2fa-qrcode" />
-      <path value="$PROJECT_DIR$/vendor/pragmarx/google2fa" />
-      <path value="$PROJECT_DIR$/vendor/openspout/openspout" />
-      <path value="$PROJECT_DIR$/vendor/fruitcake/php-cors" />
-      <path value="$PROJECT_DIR$/vendor/danharrin/livewire-rate-limiting" />
-      <path value="$PROJECT_DIR$/vendor/danharrin/date-format-converter" />
-      <path value="$PROJECT_DIR$/vendor/sebastian/cli-parser" />
-      <path value="$PROJECT_DIR$/vendor/ralouphie/getallheaders" />
-      <path value="$PROJECT_DIR$/vendor/phpoption/phpoption" />
-      <path value="$PROJECT_DIR$/vendor/paragonie/constant_time_encoding" />
-      <path value="$PROJECT_DIR$/vendor/sebastian/complexity" />
-      <path value="$PROJECT_DIR$/vendor/sebastian/comparator" />
-      <path value="$PROJECT_DIR$/vendor/sebastian/code-unit-reverse-lookup" />
-      <path value="$PROJECT_DIR$/vendor/sebastian/code-unit" />
-      <path value="$PROJECT_DIR$/vendor/sebastian/global-state" />
-      <path value="$PROJECT_DIR$/vendor/sebastian/exporter" />
-      <path value="$PROJECT_DIR$/vendor/sebastian/environment" />
-      <path value="$PROJECT_DIR$/vendor/sebastian/diff" />
-      <path value="$PROJECT_DIR$/vendor/sebastian/recursion-context" />
-      <path value="$PROJECT_DIR$/vendor/sebastian/object-reflector" />
-      <path value="$PROJECT_DIR$/vendor/sebastian/object-enumerator" />
-      <path value="$PROJECT_DIR$/vendor/sebastian/lines-of-code" />
-      <path value="$PROJECT_DIR$/vendor/webpatser/laravel-countries" />
-      <path value="$PROJECT_DIR$/vendor/squizlabs/php_codesniffer" />
-      <path value="$PROJECT_DIR$/vendor/sebastian/version" />
-      <path value="$PROJECT_DIR$/vendor/sebastian/type" />
-      <path value="$PROJECT_DIR$/vendor/psr/clock" />
-      <path value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" />
-      <path value="$PROJECT_DIR$/vendor/chillerlan/php-settings-container" />
-      <path value="$PROJECT_DIR$/vendor/chillerlan/php-qrcode" />
-      <path value="$PROJECT_DIR$/vendor/anourvalar/eloquent-serialize" />
-      <path value="$PROJECT_DIR$/vendor/psr/http-factory" />
-      <path value="$PROJECT_DIR$/vendor/nunomaduro/collision" />
-      <path value="$PROJECT_DIR$/vendor/psr/http-client" />
-      <path value="$PROJECT_DIR$/vendor/guzzlehttp/uri-template" />
-      <path value="$PROJECT_DIR$/vendor/psr/event-dispatcher" />
-      <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
-      <path value="$PROJECT_DIR$/vendor/psr/container" />
-      <path value="$PROJECT_DIR$/vendor/guzzlehttp/promises" />
-      <path value="$PROJECT_DIR$/vendor/psy/psysh" />
-      <path value="$PROJECT_DIR$/vendor/blade-ui-kit/blade-heroicons" />
-      <path value="$PROJECT_DIR$/vendor/psr/simple-cache" />
-      <path value="$PROJECT_DIR$/vendor/masterminds/html5" />
-      <path value="$PROJECT_DIR$/vendor/psr/log" />
-      <path value="$PROJECT_DIR$/vendor/ueberdosis/tiptap-php" />
-      <path value="$PROJECT_DIR$/vendor/psr/http-message" />
-      <path value="$PROJECT_DIR$/vendor/nunomaduro/termwind" />
-      <path value="$PROJECT_DIR$/vendor/nette/php-generator" />
-      <path value="$PROJECT_DIR$/vendor/dragonmantank/cron-expression" />
-      <path value="$PROJECT_DIR$/vendor/brick/math" />
-      <path value="$PROJECT_DIR$/vendor/tijsverkoyen/css-to-inline-styles" />
-      <path value="$PROJECT_DIR$/vendor/voku/portable-ascii" />
-      <path value="$PROJECT_DIR$/vendor/php-debugbar/php-debugbar" />
-      <path value="$PROJECT_DIR$/vendor/filp/whoops" />
-      <path value="$PROJECT_DIR$/vendor/blade-ui-kit/blade-icons" />
-      <path value="$PROJECT_DIR$/vendor/league/commonmark" />
-      <path value="$PROJECT_DIR$/vendor/kirschbaum-development/eloquent-power-joins" />
-      <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
-      <path value="$PROJECT_DIR$/vendor/graham-campbell/result-type" />
-      <path value="$PROJECT_DIR$/vendor/nette/utils" />
-      <path value="$PROJECT_DIR$/vendor/ryangjchandler/blade-capture-directive" />
-      <path value="$PROJECT_DIR$/vendor/nette/schema" />
-      <path value="$PROJECT_DIR$/vendor/laracraft-tech/laravel-date-scopes" />
-      <path value="$PROJECT_DIR$/vendor/league/flysystem-local" />
-      <path value="$PROJECT_DIR$/vendor/league/flysystem" />
-      <path value="$PROJECT_DIR$/vendor/league/csv" />
-      <path value="$PROJECT_DIR$/vendor/league/config" />
-      <path value="$PROJECT_DIR$/vendor/league/uri-interfaces" />
-      <path value="$PROJECT_DIR$/vendor/league/uri-components" />
-      <path value="$PROJECT_DIR$/vendor/league/uri" />
-      <path value="$PROJECT_DIR$/vendor/league/mime-type-detection" />
+      <path value="$PROJECT_DIR$/vendor/spatie/invade" />
       <path value="$PROJECT_DIR$/vendor/scrivo/highlight.php" />
       <path value="$PROJECT_DIR$/vendor/ramsey/uuid" />
       <path value="$PROJECT_DIR$/vendor/ramsey/collection" />
-      <path value="$PROJECT_DIR$/vendor/nesbot/carbon" />
+      <path value="$PROJECT_DIR$/vendor/staabm/side-effects-detector" />
       <path value="$PROJECT_DIR$/vendor/spatie/shiki-php" />
       <path value="$PROJECT_DIR$/vendor/spatie/laravel-translatable" />
       <path value="$PROJECT_DIR$/vendor/spatie/laravel-package-tools" />
-      <path value="$PROJECT_DIR$/vendor/spatie/invade" />
+      <path value="$PROJECT_DIR$/vendor/glorand/laravel-model-settings" />
       <path value="$PROJECT_DIR$/vendor/egulias/email-validator" />
       <path value="$PROJECT_DIR$/vendor/dflydev/dot-access-data" />
       <path value="$PROJECT_DIR$/vendor/vlucas/phpdotenv" />
-      <path value="$PROJECT_DIR$/vendor/staabm/side-effects-detector" />
+      <path value="$PROJECT_DIR$/vendor/laravel/pail" />
       <path value="$PROJECT_DIR$/vendor/laravel/mcp" />
       <path value="$PROJECT_DIR$/vendor/laravel/framework" />
       <path value="$PROJECT_DIR$/vendor/laravel/boost" />
-      <path value="$PROJECT_DIR$/vendor/glorand/laravel-model-settings" />
+      <path value="$PROJECT_DIR$/vendor/laravel/sail" />
       <path value="$PROJECT_DIR$/vendor/laravel/roster" />
       <path value="$PROJECT_DIR$/vendor/laravel/prompts" />
       <path value="$PROJECT_DIR$/vendor/laravel/pint" />
-      <path value="$PROJECT_DIR$/vendor/laravel/pail" />
+      <path value="$PROJECT_DIR$/vendor/mockery/mockery" />
       <path value="$PROJECT_DIR$/vendor/laravel/tinker" />
       <path value="$PROJECT_DIR$/vendor/laravel/serializable-closure" />
       <path value="$PROJECT_DIR$/vendor/laravel/sanctum" />
-      <path value="$PROJECT_DIR$/vendor/laravel/sail" />
+      <path value="$PROJECT_DIR$/vendor/nutgram/laravel" />
       <path value="$PROJECT_DIR$/vendor/nutgram/hydrator" />
       <path value="$PROJECT_DIR$/vendor/myclabs/deep-copy" />
       <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
-      <path value="$PROJECT_DIR$/vendor/mockery/mockery" />
+      <path value="$PROJECT_DIR$/vendor/phpstan/phpstan" />
       <path value="$PROJECT_DIR$/vendor/phar-io/version" />
       <path value="$PROJECT_DIR$/vendor/phar-io/manifest" />
       <path value="$PROJECT_DIR$/vendor/nutgram/nutgram" />
-      <path value="$PROJECT_DIR$/vendor/nutgram/laravel" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-text-template" />
       <path value="$PROJECT_DIR$/vendor/phpunit/php-invoker" />
       <path value="$PROJECT_DIR$/vendor/phpunit/php-file-iterator" />
       <path value="$PROJECT_DIR$/vendor/phpunit/php-code-coverage" />
-      <path value="$PROJECT_DIR$/vendor/phpstan/phpstan" />
+      <path value="$PROJECT_DIR$/vendor/symfony/console" />
       <path value="$PROJECT_DIR$/vendor/symfony/clock" />
       <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
       <path value="$PROJECT_DIR$/vendor/phpunit/php-timer" />
-      <path value="$PROJECT_DIR$/vendor/phpunit/php-text-template" />
+      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher" />
       <path value="$PROJECT_DIR$/vendor/symfony/error-handler" />
       <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
       <path value="$PROJECT_DIR$/vendor/symfony/css-selector" />
-      <path value="$PROJECT_DIR$/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-foundation" />
       <path value="$PROJECT_DIR$/vendor/symfony/html-sanitizer" />
       <path value="$PROJECT_DIR$/vendor/symfony/finder" />
       <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher-contracts" />
-      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-ctype" />
       <path value="$PROJECT_DIR$/vendor/symfony/mime" />
       <path value="$PROJECT_DIR$/vendor/symfony/mailer" />
       <path value="$PROJECT_DIR$/vendor/symfony/http-kernel" />
-      <path value="$PROJECT_DIR$/vendor/symfony/http-foundation" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-normalizer" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-grapheme" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php85" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php84" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php83" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/vendor/symfony/service-contracts" />
       <path value="$PROJECT_DIR$/vendor/symfony/routing" />
       <path value="$PROJECT_DIR$/vendor/symfony/process" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-uuid" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php85" />
+      <path value="$PROJECT_DIR$/vendor/symfony/uid" />
       <path value="$PROJECT_DIR$/vendor/symfony/translation-contracts" />
       <path value="$PROJECT_DIR$/vendor/symfony/translation" />
       <path value="$PROJECT_DIR$/vendor/symfony/string" />
-      <path value="$PROJECT_DIR$/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-debugbar" />
       <path value="$PROJECT_DIR$/vendor/theseer/tokenizer" />
       <path value="$PROJECT_DIR$/vendor/symfony/yaml" />
       <path value="$PROJECT_DIR$/vendor/symfony/var-dumper" />
-      <path value="$PROJECT_DIR$/vendor/symfony/uid" />
       <path value="$PROJECT_DIR$/vendor/barryvdh/reflection-docblock" />
       <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-ide-helper" />
-      <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-debugbar" />
+      <path value="$PROJECT_DIR$/vendor/filament/actions" />
+      <path value="$PROJECT_DIR$/vendor/fakerphp/faker" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/vendor/filament/notifications" />
+      <path value="$PROJECT_DIR$/vendor/filament/infolists" />
+      <path value="$PROJECT_DIR$/vendor/filament/forms" />
+      <path value="$PROJECT_DIR$/vendor/filament/filament" />
+      <path value="$PROJECT_DIR$/vendor/filament/tables" />
+      <path value="$PROJECT_DIR$/vendor/filament/support" />
+      <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/filament/schemas" />
+      <path value="$PROJECT_DIR$/vendor/filament/query-builder" />
+      <path value="$PROJECT_DIR$/vendor/pragmarx/google2fa" />
+      <path value="$PROJECT_DIR$/vendor/livewire/livewire" />
+      <path value="$PROJECT_DIR$/vendor/hamcrest/hamcrest-php" />
+      <path value="$PROJECT_DIR$/vendor/filament/widgets" />
+      <path value="$PROJECT_DIR$/vendor/danharrin/date-format-converter" />
+      <path value="$PROJECT_DIR$/vendor/carbonphp/carbon-doctrine-types" />
+      <path value="$PROJECT_DIR$/vendor/sergix44/container" />
+      <path value="$PROJECT_DIR$/vendor/pragmarx/google2fa-qrcode" />
+      <path value="$PROJECT_DIR$/vendor/paragonie/constant_time_encoding" />
+      <path value="$PROJECT_DIR$/vendor/openspout/openspout" />
+      <path value="$PROJECT_DIR$/vendor/fruitcake/php-cors" />
+      <path value="$PROJECT_DIR$/vendor/danharrin/livewire-rate-limiting" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/code-unit" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/cli-parser" />
+      <path value="$PROJECT_DIR$/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/vendor/phpoption/phpoption" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/diff" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/complexity" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/comparator" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/code-unit-reverse-lookup" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/lines-of-code" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/global-state" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/exporter" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/environment" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/type" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/recursion-context" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/object-reflector" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/object-enumerator" />
+      <path value="$PROJECT_DIR$/vendor/anourvalar/eloquent-serialize" />
+      <path value="$PROJECT_DIR$/vendor/webpatser/laravel-countries" />
+      <path value="$PROJECT_DIR$/vendor/squizlabs/php_codesniffer" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/version" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/vendor/chillerlan/php-settings-container" />
+      <path value="$PROJECT_DIR$/vendor/chillerlan/php-qrcode" />
+      <path value="$PROJECT_DIR$/vendor/nunomaduro/termwind" />
+      <path value="$PROJECT_DIR$/vendor/nunomaduro/collision" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/uri-template" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/vendor/blade-ui-kit/blade-icons" />
+      <path value="$PROJECT_DIR$/vendor/blade-ui-kit/blade-heroicons" />
+      <path value="$PROJECT_DIR$/vendor/masterminds/html5" />
+      <path value="$PROJECT_DIR$/vendor/ueberdosis/tiptap-php" />
+      <path value="$PROJECT_DIR$/vendor/laracraft-tech/laravel-date-scopes" />
+      <path value="$PROJECT_DIR$/vendor/dragonmantank/cron-expression" />
+      <path value="$PROJECT_DIR$/vendor/tijsverkoyen/css-to-inline-styles" />
+      <path value="$PROJECT_DIR$/vendor/php-debugbar/php-debugbar" />
+      <path value="$PROJECT_DIR$/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/vendor/psr/clock" />
+      <path value="$PROJECT_DIR$/vendor/kirschbaum-development/eloquent-power-joins" />
+      <path value="$PROJECT_DIR$/vendor/graham-campbell/result-type" />
+      <path value="$PROJECT_DIR$/vendor/ryangjchandler/blade-capture-directive" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-factory" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-client" />
+      <path value="$PROJECT_DIR$/vendor/psr/event-dispatcher" />
+      <path value="$PROJECT_DIR$/vendor/filp/whoops" />
+      <path value="$PROJECT_DIR$/vendor/psy/psysh" />
+      <path value="$PROJECT_DIR$/vendor/psr/simple-cache" />
+      <path value="$PROJECT_DIR$/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/vendor/nette/schema" />
+      <path value="$PROJECT_DIR$/vendor/nette/php-generator" />
+      <path value="$PROJECT_DIR$/vendor/brick/math" />
+      <path value="$PROJECT_DIR$/vendor/voku/portable-ascii" />
+      <path value="$PROJECT_DIR$/vendor/league/config" />
+      <path value="$PROJECT_DIR$/vendor/league/commonmark" />
+      <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/vendor/nette/utils" />
+      <path value="$PROJECT_DIR$/vendor/league/mime-type-detection" />
+      <path value="$PROJECT_DIR$/vendor/league/flysystem-local" />
+      <path value="$PROJECT_DIR$/vendor/league/flysystem" />
+      <path value="$PROJECT_DIR$/vendor/league/csv" />
+      <path value="$PROJECT_DIR$/vendor/nesbot/carbon" />
+      <path value="$PROJECT_DIR$/vendor/league/uri-interfaces" />
+      <path value="$PROJECT_DIR$/vendor/league/uri-components" />
+      <path value="$PROJECT_DIR$/vendor/league/uri" />
     </include_path>
   </component>
   <component name="ProjectColorInfo">{
@@ -370,15 +365,15 @@
       <workItem from="1767684823005" duration="697000" />
       <workItem from="1767698383449" duration="599000" />
       <workItem from="1767703760119" duration="1084000" />
-      <workItem from="1768206231403" duration="949000" />
-    </task>
-    <task id="LOCAL-00010" summary="refactor(bot): organize BotCallback enum into logical sections with comments&#10;&#10;- Grouped enum cases by domain (navigation, confession flow, actions)&#10;- Added descriptive section headers above enum values&#10;- Improved readability and structure without changing behavior">
-      <option name="closed" value="true" />
-      <created>1762269531017</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1762269531017</updated>
+      <workItem from="1768206231403" duration="3117000" />
+      <workItem from="1768210100126" duration="487000" />
+      <workItem from="1768235407739" duration="900000" />
+      <workItem from="1768291787432" duration="1870000" />
+      <workItem from="1768316583327" duration="598000" />
+      <workItem from="1768371627662" duration="599000" />
+      <workItem from="1768392375516" duration="101000" />
+      <workItem from="1768460890780" duration="1896000" />
+      <workItem from="1768901895810" duration="601000" />
     </task>
     <task id="LOCAL-00011" summary="I can create a great commit message for that\! It clearly outlines the new continuous integration setup and the tools used.&#10;&#10;Here is the detailed, emoji-friendly commit message:&#10;&#10;```&#10;✨ feat: Setup GitHub Actions workflow for PHP linting&#10;&#10;Introduces the initial CI/CD workflow (`.github/workflows/lint.yml`) to automatically enforce code quality and style standards on push and pull requests to the `main` and `develop` branches.&#10;&#10;The workflow includes the following tools:&#10;&#10;- 🧹 **PHP CS Fixer:** Automated code style fixing.&#10;- 🔬 **PHPStan:** Static analysis for bug detection and type validation.&#10;- 🎨 **Pint:** Laravel code style checking.&#10;&#10;The job runs on PHP 8.2 and utilizes caching for faster dependency installation.&#10;```">
       <option name="closed" value="true" />
@@ -764,7 +759,15 @@
       <option name="project" value="LOCAL" />
       <updated>1767178677258</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="fix(phpstan): correct return type in SupportConversation manager lookup&#10;&#10;Resolve static analysis error in support manager selection.&#10;&#10;- Fix findAvailableManagerByBranch() to return SupportManager|null&#10;- Remove stdClass leakage from query result&#10;- Ensure full PHPStan level compliance">
+      <option name="closed" value="true" />
+      <created>1768207235178</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1768207235179</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -782,7 +785,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: add multi-language support for Bot Buttons &amp; Confessions&#10;&#10;Converted bot buttons text to translatable JSON structure&#10;&#10;Updated BotButtonSeeder and ConfessionBotButtonSeeder to seed labels for all config('app.supported_languages') locales&#10;&#10;Removed hard-coded text values and replaced with enum-based translation generator&#10;&#10;Enforced callback_data as required (removed nullable and comments)&#10;&#10;Updated Confession model to dynamically load available actions from BotButtons enum&#10;&#10;Added translation tabs in Filament form for all supported languages&#10;&#10;Refactored seeders to use reusable translation helper&#10;&#10;Ensured consistent enum-driven structure across button system&#10;&#10;Result: Full multilingual Telegram bot buttons system, dynamic Confession actions loading, and improved database integrity." />
     <MESSAGE value="refactor(bot): organize BotCallback enum into logical sections with comments&#10;&#10;- Grouped enum cases by domain (navigation, confession flow, actions)&#10;- Added descriptive section headers above enum values&#10;- Improved readability and structure without changing behavior" />
     <MESSAGE value="I can create a great commit message for that\! It clearly outlines the new continuous integration setup and the tools used.&#10;&#10;Here is the detailed, emoji-friendly commit message:&#10;&#10;```&#10;✨ feat: Setup GitHub Actions workflow for PHP linting&#10;&#10;Introduces the initial CI/CD workflow (`.github/workflows/lint.yml`) to automatically enforce code quality and style standards on push and pull requests to the `main` and `develop` branches.&#10;&#10;The workflow includes the following tools:&#10;&#10;-  **PHP CS Fixer:** Automated code style fixing.&#10;-  **PHPStan:** Static analysis for bug detection and type validation.&#10;-  **Pint:** Laravel code style checking.&#10;&#10;The job runs on PHP 8.2 and utilizes caching for faster dependency installation.&#10;```" />
     <MESSAGE value="✨ feat: Setup GitHub Actions workflow for PHP linting&#10;&#10;Introduces the initial CI/CD workflow (`.github/workflows/lint.yml`) to automatically enforce code quality and style standards on push and pull requests to the `main` and `develop` branches.&#10;&#10;The workflow includes the following tools:&#10;&#10;-  **PHP CS Fixer:** Automated code style fixing.&#10;-  **PHPStan:** Static analysis for bug detection and type validation.&#10;-  **Pint:** Laravel code style checking." />
@@ -807,7 +809,8 @@
     <MESSAGE value="fix(telegram): stabilize conversation handler and enable Nutgram file logging&#10;&#10;Fix conversation handler flow and add dedicated Nutgram logging.&#10;&#10;- Resolve conversation handler execution issues&#10;- Add logger configuration to persist Nutgram logs to file&#10;- Improve observability and debugging for bot interactions" />
     <MESSAGE value="fix(telegram): preserve callback_data structure and fix pagination parsing&#10;&#10;Fix callback data corruption caused by array_filter reindexing.&#10;&#10;- Preserve positional fields in callback_data by using empty placeholders&#10;- Correctly parse empty parts back to null values&#10;- Fix page number shifting that broke pagination&#10;- Add missing telegram.available_priests translation" />
     <MESSAGE value="docs(readme): replace stacked screenshots with table layout" />
-    <option name="LAST_COMMIT_MESSAGE" value="docs(readme): replace stacked screenshots with table layout" />
+    <MESSAGE value="fix(phpstan): correct return type in SupportConversation manager lookup&#10;&#10;Resolve static analysis error in support manager selection.&#10;&#10;- Fix findAvailableManagerByBranch() to return SupportManager|null&#10;- Remove stdClass leakage from query result&#10;- Ensure full PHPStan level compliance" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix(phpstan): correct return type in SupportConversation manager lookup&#10;&#10;Resolve static analysis error in support manager selection.&#10;&#10;- Fix findAvailableManagerByBranch() to return SupportManager|null&#10;- Remove stdClass leakage from query result&#10;- Ensure full PHPStan level compliance" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
