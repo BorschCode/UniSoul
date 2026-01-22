@@ -2227,16 +2227,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v12.47.0",
+            "version": "v12.48.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "ab8114c2e78f32e64eb238fc4b495bea3f8b80ec"
+                "reference": "0f0974a9769378ccd9c9935c09b9927f3a606830"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/ab8114c2e78f32e64eb238fc4b495bea3f8b80ec",
-                "reference": "ab8114c2e78f32e64eb238fc4b495bea3f8b80ec",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/0f0974a9769378ccd9c9935c09b9927f3a606830",
+                "reference": "0f0974a9769378ccd9c9935c09b9927f3a606830",
                 "shasum": ""
             },
             "require": {
@@ -2349,7 +2349,7 @@
                 "league/flysystem-sftp-v3": "^3.25.1",
                 "mockery/mockery": "^1.6.10",
                 "opis/json-schema": "^2.4.1",
-                "orchestra/testbench-core": "^10.8.1",
+                "orchestra/testbench-core": "^10.9.0",
                 "pda/pheanstalk": "^5.0.6|^7.0.0",
                 "php-http/discovery": "^1.15",
                 "phpstan/phpstan": "^2.0",
@@ -2445,7 +2445,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-01-13T15:29:06+00:00"
+            "time": "2026-01-20T16:12:36+00:00"
         },
         {
             "name": "laravel/prompts",
@@ -4155,16 +4155,16 @@
         },
         {
             "name": "nutgram/hydrator",
-            "version": "7.0.1",
+            "version": "7.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nutgram/hydrator.git",
-                "reference": "653704d99ef5f3b8868cbb3ed572d391ef701b96"
+                "reference": "06bf4182112fd3f917c019e0529e1a8f0aa700f3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nutgram/hydrator/zipball/653704d99ef5f3b8868cbb3ed572d391ef701b96",
-                "reference": "653704d99ef5f3b8868cbb3ed572d391ef701b96",
+                "url": "https://api.github.com/repos/nutgram/hydrator/zipball/06bf4182112fd3f917c019e0529e1a8f0aa700f3",
+                "reference": "06bf4182112fd3f917c019e0529e1a8f0aa700f3",
                 "shasum": ""
             },
             "require": {
@@ -4209,33 +4209,33 @@
             ],
             "support": {
                 "issues": "https://github.com/nutgram/hydrator/issues",
-                "source": "https://github.com/nutgram/hydrator/tree/7.0.1"
+                "source": "https://github.com/nutgram/hydrator/tree/7.0.2"
             },
-            "time": "2025-08-30T16:00:03+00:00"
+            "time": "2025-11-23T18:23:30+00:00"
         },
         {
             "name": "nutgram/laravel",
-            "version": "1.5.0",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nutgram/laravel.git",
-                "reference": "eb33b2e30f0a6e264f9fe2b10fc07076012efc42"
+                "reference": "58d8bc7e1a1422796f96d243de141f1859e71692"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nutgram/laravel/zipball/eb33b2e30f0a6e264f9fe2b10fc07076012efc42",
-                "reference": "eb33b2e30f0a6e264f9fe2b10fc07076012efc42",
+                "url": "https://api.github.com/repos/nutgram/laravel/zipball/58d8bc7e1a1422796f96d243de141f1859e71692",
+                "reference": "58d8bc7e1a1422796f96d243de141f1859e71692",
                 "shasum": ""
             },
             "require": {
                 "nunomaduro/termwind": "^1.0|^2.0",
-                "nutgram/nutgram": "^4.17.0",
+                "nutgram/nutgram": "^4.39.2",
                 "php": "^8.2"
             },
             "require-dev": {
                 "illuminate/testing": "^9.0|^10.0|^11.0|^12.0",
                 "orchestra/testbench": "^7.0|^8.0|^9.0|^10.0",
-                "pestphp/pest": "^1.1|^2.0|^3.0",
+                "pestphp/pest": "^1.1|^2.0|^3.0|^4.0",
                 "vimeo/psalm": "^6.0"
             },
             "type": "library",
@@ -4282,7 +4282,7 @@
                 "telegram"
             ],
             "support": {
-                "source": "https://github.com/nutgram/laravel/tree/1.5.0"
+                "source": "https://github.com/nutgram/laravel/tree/1.6.0"
             },
             "funding": [
                 {
@@ -4294,20 +4294,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-03-05T21:47:56+00:00"
+            "time": "2025-11-29T19:21:26+00:00"
         },
         {
             "name": "nutgram/nutgram",
-            "version": "4.39.0",
+            "version": "4.40.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nutgram/nutgram.git",
-                "reference": "4ef2c48dc83815a831e42bccafea4a28f5cb31ee"
+                "reference": "dd820afcdf41cd07e3a80506e545e5eaecd04aea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nutgram/nutgram/zipball/4ef2c48dc83815a831e42bccafea4a28f5cb31ee",
-                "reference": "4ef2c48dc83815a831e42bccafea4a28f5cb31ee",
+                "url": "https://api.github.com/repos/nutgram/nutgram/zipball/dd820afcdf41cd07e3a80506e545e5eaecd04aea",
+                "reference": "dd820afcdf41cd07e3a80506e545e5eaecd04aea",
                 "shasum": ""
             },
             "require": {
@@ -4315,7 +4315,7 @@
                 "guzzlehttp/guzzle": "^7.2",
                 "illuminate/macroable": ">=9.0",
                 "laravel/serializable-closure": "^1.0|^2.0",
-                "nutgram/hydrator": "^7.0",
+                "nutgram/hydrator": "^7.0.2",
                 "php": "^8.2",
                 "psr/log": "^1.0|^2.0|^3.0",
                 "psr/simple-cache": "^1.0|^2.0|^3.0",
@@ -4324,7 +4324,7 @@
             "require-dev": {
                 "ext-reflection": "*",
                 "mockery/mockery": "^1.6",
-                "pestphp/pest": "^3.0",
+                "pestphp/pest": "^3.0|^4.0",
                 "roave/security-advisories": "dev-latest",
                 "vimeo/psalm": "^6.1.0"
             },
@@ -4369,7 +4369,7 @@
             ],
             "support": {
                 "issues": "https://github.com/nutgram/nutgram/issues",
-                "source": "https://github.com/nutgram/nutgram/tree/4.39.0"
+                "source": "https://github.com/nutgram/nutgram/tree/4.40.1"
             },
             "funding": [
                 {
@@ -4381,7 +4381,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-08-19T08:36:09+00:00"
+            "time": "2026-01-14T16:56:14+00:00"
         },
         {
             "name": "openspout/openspout",
