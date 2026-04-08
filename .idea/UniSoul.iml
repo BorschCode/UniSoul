@@ -8,9 +8,6 @@
       <sourceFolder url="file://$MODULE_DIR$/telegram-mermaid-master/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/telegram-stickeroptimizer-master/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" packagePrefix="Tests\" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/boost" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/mcp" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/roster" />
       <excludeFolder url="file://$MODULE_DIR$/storage/app" />
       <excludeFolder url="file://$MODULE_DIR$/storage/debugbar" />
       <excludeFolder url="file://$MODULE_DIR$/storage/framework" />
@@ -54,10 +51,13 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/hamcrest/hamcrest-php" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/kirschbaum-development/eloquent-power-joins" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/laracraft-tech/laravel-date-scopes" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/boost" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/framework" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/mcp" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/pail" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/pint" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/prompts" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/roster" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/sail" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/sanctum" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/serializable-closure" />
