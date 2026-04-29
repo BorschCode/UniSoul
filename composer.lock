@@ -4159,16 +4159,16 @@
         },
         {
             "name": "nutgram/hydrator",
-            "version": "7.0.1",
+            "version": "7.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nutgram/hydrator.git",
-                "reference": "653704d99ef5f3b8868cbb3ed572d391ef701b96"
+                "reference": "06bf4182112fd3f917c019e0529e1a8f0aa700f3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nutgram/hydrator/zipball/653704d99ef5f3b8868cbb3ed572d391ef701b96",
-                "reference": "653704d99ef5f3b8868cbb3ed572d391ef701b96",
+                "url": "https://api.github.com/repos/nutgram/hydrator/zipball/06bf4182112fd3f917c019e0529e1a8f0aa700f3",
+                "reference": "06bf4182112fd3f917c019e0529e1a8f0aa700f3",
                 "shasum": ""
             },
             "require": {
@@ -4213,33 +4213,33 @@
             ],
             "support": {
                 "issues": "https://github.com/nutgram/hydrator/issues",
-                "source": "https://github.com/nutgram/hydrator/tree/7.0.1"
+                "source": "https://github.com/nutgram/hydrator/tree/7.0.2"
             },
-            "time": "2025-08-30T16:00:03+00:00"
+            "time": "2025-11-23T18:23:30+00:00"
         },
         {
             "name": "nutgram/laravel",
-            "version": "1.5.0",
+            "version": "1.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nutgram/laravel.git",
-                "reference": "eb33b2e30f0a6e264f9fe2b10fc07076012efc42"
+                "reference": "17ea5e550f9cb7bc162f9c93d979ce1c11e022f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nutgram/laravel/zipball/eb33b2e30f0a6e264f9fe2b10fc07076012efc42",
-                "reference": "eb33b2e30f0a6e264f9fe2b10fc07076012efc42",
+                "url": "https://api.github.com/repos/nutgram/laravel/zipball/17ea5e550f9cb7bc162f9c93d979ce1c11e022f1",
+                "reference": "17ea5e550f9cb7bc162f9c93d979ce1c11e022f1",
                 "shasum": ""
             },
             "require": {
                 "nunomaduro/termwind": "^1.0|^2.0",
-                "nutgram/nutgram": "^4.17.0",
+                "nutgram/nutgram": "^4.39.2",
                 "php": "^8.2"
             },
             "require-dev": {
-                "illuminate/testing": "^9.0|^10.0|^11.0|^12.0",
-                "orchestra/testbench": "^7.0|^8.0|^9.0|^10.0",
-                "pestphp/pest": "^1.1|^2.0|^3.0",
+                "illuminate/testing": "^9.0|^10.0|^11.0|^12.0|^13.0",
+                "orchestra/testbench": "^7.0|^8.0|^9.0|^10.0|^11.0",
+                "pestphp/pest": "^1.1|^2.0|^3.0|^4.0",
                 "vimeo/psalm": "^6.0"
             },
             "type": "library",
@@ -4286,7 +4286,7 @@
                 "telegram"
             ],
             "support": {
-                "source": "https://github.com/nutgram/laravel/tree/1.5.0"
+                "source": "https://github.com/nutgram/laravel/tree/1.7.1"
             },
             "funding": [
                 {
@@ -4298,20 +4298,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-03-05T21:47:56+00:00"
+            "time": "2026-03-22T17:16:10+00:00"
         },
         {
             "name": "nutgram/nutgram",
-            "version": "4.39.0",
+            "version": "4.45.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nutgram/nutgram.git",
-                "reference": "4ef2c48dc83815a831e42bccafea4a28f5cb31ee"
+                "reference": "07ee76ed02e67b16aa66f74c1c52cf7ecedd9bce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nutgram/nutgram/zipball/4ef2c48dc83815a831e42bccafea4a28f5cb31ee",
-                "reference": "4ef2c48dc83815a831e42bccafea4a28f5cb31ee",
+                "url": "https://api.github.com/repos/nutgram/nutgram/zipball/07ee76ed02e67b16aa66f74c1c52cf7ecedd9bce",
+                "reference": "07ee76ed02e67b16aa66f74c1c52cf7ecedd9bce",
                 "shasum": ""
             },
             "require": {
@@ -4319,7 +4319,7 @@
                 "guzzlehttp/guzzle": "^7.2",
                 "illuminate/macroable": ">=9.0",
                 "laravel/serializable-closure": "^1.0|^2.0",
-                "nutgram/hydrator": "^7.0",
+                "nutgram/hydrator": "^7.0.2",
                 "php": "^8.2",
                 "psr/log": "^1.0|^2.0|^3.0",
                 "psr/simple-cache": "^1.0|^2.0|^3.0",
@@ -4328,7 +4328,7 @@
             "require-dev": {
                 "ext-reflection": "*",
                 "mockery/mockery": "^1.6",
-                "pestphp/pest": "^3.0",
+                "pestphp/pest": "^3.0|^4.0",
                 "roave/security-advisories": "dev-latest",
                 "vimeo/psalm": "^6.1.0"
             },
@@ -4373,7 +4373,7 @@
             ],
             "support": {
                 "issues": "https://github.com/nutgram/nutgram/issues",
-                "source": "https://github.com/nutgram/nutgram/tree/4.39.0"
+                "source": "https://github.com/nutgram/nutgram/tree/4.45.1"
             },
             "funding": [
                 {
@@ -4385,7 +4385,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-08-19T08:36:09+00:00"
+            "time": "2026-04-08T17:07:50+00:00"
         },
         {
             "name": "openspout/openspout",
