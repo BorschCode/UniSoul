@@ -129,8 +129,8 @@ DB_PASSWORD=password
 
 ```bash
 docker compose up -d
-docker compose exec laravel.test composer install
-docker compose exec laravel.test php artisan migrate
+docker compose exec bot.backend composer install
+docker compose exec bot.backend php artisan migrate
 ```
 
 ---
