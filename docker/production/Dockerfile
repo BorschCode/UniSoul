@@ -57,11 +57,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # PHP 8.4 install
 # ---------------------------
 # Bypass add-apt-repository (calls Launchpad REST API which times out in CI).
-# Import the ondrej/php PPA signing key directly and add the source manually.
-RUN gpg --no-default-keyring \
-        --keyring /usr/share/keyrings/ondrej-php.gpg \
-        --keyserver hkp://keyserver.ubuntu.com:80 \
-        --recv-keys 14AA40EC0831756756D7F66C4F4EA0AAE5267A6C \
+# gpg --recv-keys also fails in BuildKit (no dirmngr daemon). Fetch key via curl instead.
+RUN curl -fsSL "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x14AA40EC0831756756D7F66C4F4EA0AAE5267A6C" \
+        | gpg --dearmor -o /usr/share/keyrings/ondrej-php.gpg \
     && echo "deb [signed-by=/usr/share/keyrings/ondrej-php.gpg] https://ppa.launchpadcontent.net/ondrej/php/ubuntu noble main" \
         > /etc/apt/sources.list.d/ondrej-php.list \
     && apt-get update \
