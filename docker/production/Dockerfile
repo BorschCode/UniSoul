@@ -1,25 +1,39 @@
-# Stage 1: Frontend Build
+# ---------------------------
+# Stage 1: Frontend build
+# ---------------------------
 FROM node:22-slim AS frontend-builder
+
 WORKDIR /app
+
 COPY package*.json ./
 RUN npm install
+
 COPY resources ./resources
 COPY public ./public
-COPY vite.config.js ./
+COPY vite.config.* ./
+
 RUN npm run build
 
-# Stage 2: Application
+
+# ---------------------------
+# Stage 2: Application runtime
+# ---------------------------
 FROM ubuntu:24.04
 
 WORKDIR /var/www/html
 
-# Fix timezone
-RUN ln -snf /usr/share/zoneinfo/UTC /etc/localtime && echo UTC > /etc/timezone
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=UTC
 
-# Install base dependencies first
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
+    && echo $TZ > /etc/timezone
+
+
+# ---------------------------
+# System dependencies
+# ---------------------------
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    gnupg \
-    gosu \
+    software-properties-common \
     curl \
     ca-certificates \
     zip \
@@ -27,86 +41,127 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     supervisor \
     sqlite3 \
-    libcap2-bin \
     libpng-dev \
     libpq-dev \
     dnsutils \
-    software-properties-common \
     nginx \
+    gnupg \
+    gosu \
+    libcap2-bin \
     && mkdir -p /etc/apt/keyrings \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-# Add ondrej/php repository for PHP 8.4
-RUN LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php -y \
-    && apt-get update
 
-# Install PHP 8.4 with all required extensions
-RUN apt-get install -y --no-install-recommends \
-    php8.4-cli \
-    php8.4-fpm \
-    php8.4-pgsql \
-    php8.4-mysql \
-    php8.4-sqlite3 \
-    php8.4-curl \
-    php8.4-gd \
-    php8.4-mbstring \
-    php8.4-xml \
-    php8.4-zip \
-    php8.4-bcmath \
-    php8.4-soap \
-    php8.4-intl \
-    php8.4-readline \
-    php8.4-ldap \
-    php8.4-msgpack \
-    php8.4-igbinary \
-    php8.4-redis \
-    && php -r "readfile('https://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer \
-    && apt-get -y autoremove \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/apt/archives/*
+# ---------------------------
+# PHP 8.4 install
+# ---------------------------
+RUN add-apt-repository ppa:ondrej/php -y \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends \
+        php8.4-cli \
+        php8.4-fpm \
+        php8.4-pgsql \
+        php8.4-mysql \
+        php8.4-sqlite3 \
+        php8.4-curl \
+        php8.4-gd \
+        php8.4-mbstring \
+        php8.4-xml \
+        php8.4-zip \
+        php8.4-bcmath \
+        php8.4-soap \
+        php8.4-intl \
+        php8.4-readline \
+        php8.4-ldap \
+        php8.4-msgpack \
+        php8.4-igbinary \
+        php8.4-redis
 
-# Copy Frontend Build
-COPY --from=frontend-builder /app/public/build public/build
 
-# Copy composer files first for better layer caching
+# ---------------------------
+# Composer
+# ---------------------------
+RUN curl -sS https://getcomposer.org/installer \
+    | php -- --install-dir=/usr/bin --filename=composer
+
+
+# ---------------------------
+# Copy composer first (cache layer)
+# ---------------------------
 COPY composer.json composer.lock ./
 
-# Install PHP Dependencies (cache this layer)
-RUN composer install --no-interaction --optimize-autoloader --no-dev --no-scripts \
+RUN composer install \
+    --no-dev \
+    --optimize-autoloader \
+    --no-interaction \
+    --no-scripts \
     && rm -rf /root/.composer/cache
 
-# Copy App Files
+
+# ---------------------------
+# Copy application source
+# ---------------------------
 COPY . .
 
-# Run post-install scripts
-RUN composer run-script post-autoload-dump
 
-# Copy supervisor config
-COPY docker/production/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+# ---------------------------
+# Copy frontend assets
+# ---------------------------
+COPY --from=frontend-builder /app/public/build public/build
 
-# Copy PHP config
-COPY docker/production/php.ini /etc/php/8.4/cli/conf.d/99-custom.ini
-COPY docker/production/php.ini /etc/php/8.4/fpm/conf.d/99-custom.ini
 
-# Copy PHP-FPM pool config
-COPY docker/production/www.conf /etc/php/8.4/fpm/pool.d/www.conf
+# ---------------------------
+# Run Laravel optimizations
+# ---------------------------
+RUN composer dump-autoload --optimize \
+    && php artisan config:cache \
+    && php artisan route:cache \
+    && php artisan view:cache || true
 
-# Copy nginx config
-COPY docker/production/nginx.conf /etc/nginx/sites-available/default
 
-# Copy and set up entrypoint
-COPY docker/production/entrypoint.sh /usr/local/bin/entrypoint.sh
+# ---------------------------
+# Configs
+# ---------------------------
+COPY docker/production/supervisord.conf \
+    /etc/supervisor/conf.d/supervisord.conf
+
+COPY docker/production/php.ini \
+    /etc/php/8.4/cli/conf.d/99-custom.ini
+
+COPY docker/production/php.ini \
+    /etc/php/8.4/fpm/conf.d/99-custom.ini
+
+COPY docker/production/www.conf \
+    /etc/php/8.4/fpm/pool.d/www.conf
+
+COPY docker/production/nginx.conf \
+    /etc/nginx/sites-available/default
+
+
+# ---------------------------
+# Entrypoint
+# ---------------------------
+COPY docker/production/entrypoint.sh \
+    /usr/local/bin/entrypoint.sh
+
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
-# Create PHP-FPM log file with proper permissions
-RUN install -o www-data -g www-data -m 664 /dev/null /var/log/php8.4-fpm.log
 
-# Permissions
+# ---------------------------
+# Logs + permissions
+# ---------------------------
+RUN install -o www-data -g www-data -m 664 \
+    /dev/null /var/log/php8.4-fpm.log
+
 RUN chown -R www-data:www-data /var/www/html \
-    && chmod -R 775 /var/www/html/storage \
-    && chmod -R 775 /var/www/html/bootstrap/cache
+    && chmod -R 775 storage bootstrap/cache
 
+
+# ---------------------------
+# Expose
+# ---------------------------
 EXPOSE 80
+
 
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
