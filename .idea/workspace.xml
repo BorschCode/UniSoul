@@ -4,30 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ffce8e0-82c7-48f7-b876-3fe216f734a7" name="Changes" comment="fix(docker): stabilize multi-arch production build and frontend asset pipeline for Raspberry Pi deployment&#10;&#10;* fix Vite build stage by copying correct config files (vite.config.*)&#10;* correct frontend asset copy order to prevent overwrite after source copy&#10;* cache composer dependencies using layered install strategy&#10;* add Laravel production optimizations (config, route, view cache)&#10;* ensure proper permissions for storage and bootstrap/cache&#10;* improve compatibility with buildx (amd64, arm64, armv7)&#10;* clean apt cache layers to reduce image size&#10;* make entrypoint executable during build&#10;* prepare image for stable nginx + php-fpm + supervisor runtime">
-      <change beforePath="$PROJECT_DIR$/.github/dependabot.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/dependabot.yml" afterDir="false" />
+    <list default="true" id="9ffce8e0-82c7-48f7-b876-3fe216f734a7" name="Changes" comment="docs: clarify Telegram command flow and core bot behavior&#10;&#10;- Document supported Telegram commands (/start, /help, /settings)&#10;- Add explicit behavior and persistence mapping for each action&#10;- Clarify idempotent and stateless command behavior&#10;- Describe free-text handling based on user state&#10;- Reference centralized bot logic in TelegramBotService">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/db-forest-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/db-forest-config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/filament/filament/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/filament/filament/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/filament/actions/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/filament/actions/actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/filament/filament/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/filament/filament/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/filament/forms/components/checkbox-list.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/filament/forms/components/checkbox-list.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/filament/forms/components/file-upload.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/filament/forms/components/file-upload.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/filament/forms/components/key-value.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/filament/forms/components/key-value.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/filament/forms/components/rich-editor.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/filament/forms/components/rich-editor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/filament/forms/components/select.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/filament/forms/components/select.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/filament/notifications/notifications.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/filament/notifications/notifications.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/filament/schemas/components/tabs.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/filament/schemas/components/tabs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/filament/schemas/components/wizard.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/filament/schemas/components/wizard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/filament/schemas/schemas.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/filament/schemas/schemas.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/filament/support/support.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/filament/support/support.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/filament/tables/components/columns/checkbox.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/filament/tables/components/columns/checkbox.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/filament/tables/components/columns/select.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/filament/tables/components/columns/select.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/filament/tables/components/columns/text-input.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/filament/tables/components/columns/text-input.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/filament/tables/components/columns/toggle.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/filament/tables/components/columns/toggle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/filament/tables/tables.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/filament/tables/tables.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/filament/widgets/components/chart.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/filament/widgets/components/chart.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +26,7 @@
     <execution />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="352" />
+    <option name="cachedIndexableFilesCount" value="357" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -392,7 +373,15 @@
       <workItem from="1768902870406" duration="1890000" />
       <workItem from="1769507591264" duration="1373000" />
       <workItem from="1775639587466" duration="1171000" />
-      <workItem from="1777617791779" duration="4279000" />
+      <workItem from="1777647401694" duration="1699000" />
+    </task>
+    <task id="LOCAL-00012" summary="✨ feat: Setup GitHub Actions workflow for PHP linting&#10;&#10;Introduces the initial CI/CD workflow (`.github/workflows/lint.yml`) to automatically enforce code quality and style standards on push and pull requests to the `main` and `develop` branches.&#10;&#10;The workflow includes the following tools:&#10;&#10;- 🧹 **PHP CS Fixer:** Automated code style fixing.&#10;- 🔬 **PHPStan:** Static analysis for bug detection and type validation.&#10;- 🎨 **Pint:** Laravel code style checking.">
+      <option name="closed" value="true" />
+      <created>1762981740453</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1762981740453</updated>
     </task>
     <task id="LOCAL-00013" summary="🐛 fix(phpstan): Add explicit type hint to resolve undefined property warning 🛡️&#10;&#10;Resolved a PHPStan warning (`Access to an undefined property App\Models\BotButton::$id`) in `BotButtonsRelationManager.php`.&#10;&#10;The issue was fixed by adding an explicit type hint (`\App\Models\BotButton`) to the `$button` argument within the `mapWithKeys` closure, allowing static analysis to correctly infer the model's properties.">
       <option name="closed" value="true" />
@@ -778,15 +767,7 @@
       <option name="project" value="LOCAL" />
       <updated>1768902537614</updated>
     </task>
-    <task id="LOCAL-00061" summary="fix(docker): stabilize multi-arch production build and frontend asset pipeline for Raspberry Pi deployment&#10;&#10;* fix Vite build stage by copying correct config files (vite.config.*)&#10;* correct frontend asset copy order to prevent overwrite after source copy&#10;* cache composer dependencies using layered install strategy&#10;* add Laravel production optimizations (config, route, view cache)&#10;* ensure proper permissions for storage and bootstrap/cache&#10;* improve compatibility with buildx (amd64, arm64, armv7)&#10;* clean apt cache layers to reduce image size&#10;* make entrypoint executable during build&#10;* prepare image for stable nginx + php-fpm + supervisor runtime">
-      <option name="closed" value="true" />
-      <created>1777620170061</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1777620170062</updated>
-    </task>
-    <option name="localTasksCounter" value="62" />
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -804,6 +785,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="I can create a great commit message for that\! It clearly outlines the new continuous integration setup and the tools used.&#10;&#10;Here is the detailed, emoji-friendly commit message:&#10;&#10;```&#10;✨ feat: Setup GitHub Actions workflow for PHP linting&#10;&#10;Introduces the initial CI/CD workflow (`.github/workflows/lint.yml`) to automatically enforce code quality and style standards on push and pull requests to the `main` and `develop` branches.&#10;&#10;The workflow includes the following tools:&#10;&#10;-  **PHP CS Fixer:** Automated code style fixing.&#10;-  **PHPStan:** Static analysis for bug detection and type validation.&#10;-  **Pint:** Laravel code style checking.&#10;&#10;The job runs on PHP 8.2 and utilizes caching for faster dependency installation.&#10;```" />
     <MESSAGE value="✨ feat: Setup GitHub Actions workflow for PHP linting&#10;&#10;Introduces the initial CI/CD workflow (`.github/workflows/lint.yml`) to automatically enforce code quality and style standards on push and pull requests to the `main` and `develop` branches.&#10;&#10;The workflow includes the following tools:&#10;&#10;-  **PHP CS Fixer:** Automated code style fixing.&#10;-  **PHPStan:** Static analysis for bug detection and type validation.&#10;-  **Pint:** Laravel code style checking." />
     <MESSAGE value=" fix(phpstan): Add explicit type hint to resolve undefined property warning ️&#10;&#10;Resolved a PHPStan warning (`Access to an undefined property App\Models\BotButton::$id`) in `BotButtonsRelationManager.php`.&#10;&#10;The issue was fixed by adding an explicit type hint (`\App\Models\BotButton`) to the `$button` argument within the `mapWithKeys` closure, allowing static analysis to correctly infer the model's properties." />
     <MESSAGE value="ci: add new GitHub Actions workflow for automated testing and build&#10;&#10;- Introduced GitHub Actions CI pipeline&#10;- Added workflow file to run tests on push and pull requests&#10;- Included steps for setting up PHP, Composer, and Laravel environment&#10;- Added Sail/Docker service configuration (MySQL) for integration tests&#10;- Ensured caching for Composer dependencies to speed up builds&#10;- Updated README with initial CI instructions (if applicable)&#10;- Verified compatibility with Laravel 12 and Telegram bot components" />
@@ -828,8 +810,7 @@
     <MESSAGE value="docs(readme): replace stacked screenshots with table layout" />
     <MESSAGE value="fix(phpstan): correct return type in SupportConversation manager lookup&#10;&#10;Resolve static analysis error in support manager selection.&#10;&#10;- Fix findAvailableManagerByBranch() to return SupportManager|null&#10;- Remove stdClass leakage from query result&#10;- Ensure full PHPStan level compliance" />
     <MESSAGE value="docs: clarify Telegram command flow and core bot behavior&#10;&#10;- Document supported Telegram commands (/start, /help, /settings)&#10;- Add explicit behavior and persistence mapping for each action&#10;- Clarify idempotent and stateless command behavior&#10;- Describe free-text handling based on user state&#10;- Reference centralized bot logic in TelegramBotService" />
-    <MESSAGE value="fix(docker): stabilize multi-arch production build and frontend asset pipeline for Raspberry Pi deployment&#10;&#10;* fix Vite build stage by copying correct config files (vite.config.*)&#10;* correct frontend asset copy order to prevent overwrite after source copy&#10;* cache composer dependencies using layered install strategy&#10;* add Laravel production optimizations (config, route, view cache)&#10;* ensure proper permissions for storage and bootstrap/cache&#10;* improve compatibility with buildx (amd64, arm64, armv7)&#10;* clean apt cache layers to reduce image size&#10;* make entrypoint executable during build&#10;* prepare image for stable nginx + php-fpm + supervisor runtime" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix(docker): stabilize multi-arch production build and frontend asset pipeline for Raspberry Pi deployment&#10;&#10;* fix Vite build stage by copying correct config files (vite.config.*)&#10;* correct frontend asset copy order to prevent overwrite after source copy&#10;* cache composer dependencies using layered install strategy&#10;* add Laravel production optimizations (config, route, view cache)&#10;* ensure proper permissions for storage and bootstrap/cache&#10;* improve compatibility with buildx (amd64, arm64, armv7)&#10;* clean apt cache layers to reduce image size&#10;* make entrypoint executable during build&#10;* prepare image for stable nginx + php-fpm + supervisor runtime" />
+    <option name="LAST_COMMIT_MESSAGE" value="docs: clarify Telegram command flow and core bot behavior&#10;&#10;- Document supported Telegram commands (/start, /help, /settings)&#10;- Add explicit behavior and persistence mapping for each action&#10;- Clarify idempotent and stateless command behavior&#10;- Describe free-text handling based on user state&#10;- Reference centralized bot logic in TelegramBotService" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
