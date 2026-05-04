@@ -9,6 +9,7 @@ fi
 chmod -R ugo+rw /.composer
 
 # Run migrations and cache optimization
+php artisan config:clear
 php artisan migrate --force --no-interaction
 php artisan config:cache
 php artisan view:cache
