@@ -10,7 +10,7 @@ use LaracraftTech\LaravelDateScopes\DateScopes;
 /**
  * App\Models\Statistic
  *
- * @property-read \App\Models\Chat|null $chat
+ * @property-read Chat|null $chat
  *
  * @method static Builder<static>|Statistic centuryToDate(?string $column = null)
  * @method static Builder<static>|Statistic dayToNow(?string $column = null)
@@ -78,7 +78,7 @@ use LaracraftTech\LaravelDateScopes\DateScopes;
  * @method static Builder<static>|Statistic weekToDate(?string $column = null)
  * @method static Builder<static>|Statistic yearToDate(?string $column = null)
  *
- * @mixin \Illuminate\Database\Eloquent\Builder
+ * @mixin Builder
  */
 class Statistic extends Model
 {

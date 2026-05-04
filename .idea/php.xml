@@ -161,7 +161,6 @@
       <path value="$PROJECT_DIR$/vendor/sebastian/complexity" />
       <path value="$PROJECT_DIR$/vendor/sebastian/comparator" />
       <path value="$PROJECT_DIR$/vendor/chillerlan/php-qrcode" />
-      <path value="$PROJECT_DIR$/vendor/anourvalar/eloquent-serialize" />
       <path value="$PROJECT_DIR$/vendor/webpatser/laravel-countries" />
       <path value="$PROJECT_DIR$/vendor/squizlabs/php_codesniffer" />
       <path value="$PROJECT_DIR$/vendor/sebastian/version" />

@@ -4,11 +4,47 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ffce8e0-82c7-48f7-b876-3fe216f734a7" name="Changes" comment="docs: clarify Telegram command flow and core bot behavior&#10;&#10;- Document supported Telegram commands (/start, /help, /settings)&#10;- Add explicit behavior and persistence mapping for each action&#10;- Clarify idempotent and stateless command behavior&#10;- Describe free-text handling based on user state&#10;- Reference centralized bot logic in TelegramBotService">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/db-forest-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/db-forest-config.xml" afterDir="false" />
+    <list default="true" id="9ffce8e0-82c7-48f7-b876-3fe216f734a7" name="Changes" comment=" Fixing Docker build failures caused by ppa.launchpadcontent.net being unreachable. Production Dockerfile was rewritten to use the official PHP image; dev Dockerfile was        &#10;  switched to Debian Bookworm with NodeSource for Node.js. Try `docker compose build --no-cache` next.">
+      <change beforePath="$PROJECT_DIR$/.idea/UniSoul.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/UniSoul.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Filament/Resources/Confessions/RelationManagers/BotButtonsRelationManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Filament/Resources/Confessions/RelationManagers/BotButtonsRelationManager.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/BotButton.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/BotButton.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Branch.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Branch.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Chat.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Chat.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Confession.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Confession.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Donation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Donation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Employee.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Employee.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Statistic.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Statistic.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/SupportManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/SupportManager.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/SupportSession.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/SupportSession.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/GeminiAIService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/GeminiAIService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Telegram/Conversations/MainMenuConversation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Telegram/Conversations/MainMenuConversation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Telegram/Conversations/SettingsConversation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Telegram/Conversations/SettingsConversation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bootstrap/providers.php" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/providers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/auth.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/sanctum.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/sanctum.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/DonationFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/DonationFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/UserFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/UserFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/filament/filament/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/filament/filament/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/filament/filament/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/filament/filament/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/filament/forms/components/color-picker.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/filament/forms/components/color-picker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/filament/forms/components/file-upload.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/filament/forms/components/file-upload.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/filament/forms/components/markdown-editor.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/filament/forms/components/markdown-editor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/filament/forms/components/rich-editor.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/filament/forms/components/rich-editor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/filament/forms/components/select.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/filament/forms/components/select.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/filament/notifications/notifications.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/filament/notifications/notifications.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/filament/schemas/components/tabs.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/filament/schemas/components/tabs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/filament/schemas/components/wizard.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/filament/schemas/components/wizard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/filament/support/support.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/filament/support/support.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/filament/tables/components/columns/select.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/filament/tables/components/columns/select.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/filament/widgets/components/chart.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/filament/widgets/components/chart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +62,7 @@
     <execution />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="357" />
+    <option name="cachedIndexableFilesCount" value="359" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -38,7 +74,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="dependabot/composer/filament/filament-5.2.0" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -209,7 +245,6 @@
       <path value="$PROJECT_DIR$/vendor/sebastian/complexity" />
       <path value="$PROJECT_DIR$/vendor/sebastian/comparator" />
       <path value="$PROJECT_DIR$/vendor/chillerlan/php-qrcode" />
-      <path value="$PROJECT_DIR$/vendor/anourvalar/eloquent-serialize" />
       <path value="$PROJECT_DIR$/vendor/webpatser/laravel-countries" />
       <path value="$PROJECT_DIR$/vendor/squizlabs/php_codesniffer" />
       <path value="$PROJECT_DIR$/vendor/sebastian/version" />
@@ -245,36 +280,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/mnt/256-m2/projects/UniSoul&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;php.override.implement.member.chooser.php.doc&quot;: &quot;NONE&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "dependabot/composer/laravel/pint-1.29.1",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "/mnt/256-m2/projects/saas-crm",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "php.override.implement.member.chooser.php.doc": "NONE",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;,
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql",
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/readme" />
@@ -374,14 +409,8 @@
       <workItem from="1769507591264" duration="1373000" />
       <workItem from="1775639587466" duration="1171000" />
       <workItem from="1777647401694" duration="1699000" />
-    </task>
-    <task id="LOCAL-00012" summary="✨ feat: Setup GitHub Actions workflow for PHP linting&#10;&#10;Introduces the initial CI/CD workflow (`.github/workflows/lint.yml`) to automatically enforce code quality and style standards on push and pull requests to the `main` and `develop` branches.&#10;&#10;The workflow includes the following tools:&#10;&#10;- 🧹 **PHP CS Fixer:** Automated code style fixing.&#10;- 🔬 **PHPStan:** Static analysis for bug detection and type validation.&#10;- 🎨 **Pint:** Laravel code style checking.">
-      <option name="closed" value="true" />
-      <created>1762981740453</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1762981740453</updated>
+      <workItem from="1777756573992" duration="438000" />
+      <workItem from="1777880552123" duration="1429000" />
     </task>
     <task id="LOCAL-00013" summary="🐛 fix(phpstan): Add explicit type hint to resolve undefined property warning 🛡️&#10;&#10;Resolved a PHPStan warning (`Access to an undefined property App\Models\BotButton::$id`) in `BotButtonsRelationManager.php`.&#10;&#10;The issue was fixed by adding an explicit type hint (`\App\Models\BotButton`) to the `$button` argument within the `mapWithKeys` closure, allowing static analysis to correctly infer the model's properties.">
       <option name="closed" value="true" />
@@ -767,7 +796,15 @@
       <option name="project" value="LOCAL" />
       <updated>1768902537614</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary=" Fixing Docker build failures caused by ppa.launchpadcontent.net being unreachable. Production Dockerfile was rewritten to use the official PHP image; dev Dockerfile was        &#10;  switched to Debian Bookworm with NodeSource for Node.js. Try `docker compose build --no-cache` next.">
+      <option name="closed" value="true" />
+      <created>1777756625698</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1777756625698</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -785,7 +822,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="I can create a great commit message for that\! It clearly outlines the new continuous integration setup and the tools used.&#10;&#10;Here is the detailed, emoji-friendly commit message:&#10;&#10;```&#10;✨ feat: Setup GitHub Actions workflow for PHP linting&#10;&#10;Introduces the initial CI/CD workflow (`.github/workflows/lint.yml`) to automatically enforce code quality and style standards on push and pull requests to the `main` and `develop` branches.&#10;&#10;The workflow includes the following tools:&#10;&#10;-  **PHP CS Fixer:** Automated code style fixing.&#10;-  **PHPStan:** Static analysis for bug detection and type validation.&#10;-  **Pint:** Laravel code style checking.&#10;&#10;The job runs on PHP 8.2 and utilizes caching for faster dependency installation.&#10;```" />
     <MESSAGE value="✨ feat: Setup GitHub Actions workflow for PHP linting&#10;&#10;Introduces the initial CI/CD workflow (`.github/workflows/lint.yml`) to automatically enforce code quality and style standards on push and pull requests to the `main` and `develop` branches.&#10;&#10;The workflow includes the following tools:&#10;&#10;-  **PHP CS Fixer:** Automated code style fixing.&#10;-  **PHPStan:** Static analysis for bug detection and type validation.&#10;-  **Pint:** Laravel code style checking." />
     <MESSAGE value=" fix(phpstan): Add explicit type hint to resolve undefined property warning ️&#10;&#10;Resolved a PHPStan warning (`Access to an undefined property App\Models\BotButton::$id`) in `BotButtonsRelationManager.php`.&#10;&#10;The issue was fixed by adding an explicit type hint (`\App\Models\BotButton`) to the `$button` argument within the `mapWithKeys` closure, allowing static analysis to correctly infer the model's properties." />
     <MESSAGE value="ci: add new GitHub Actions workflow for automated testing and build&#10;&#10;- Introduced GitHub Actions CI pipeline&#10;- Added workflow file to run tests on push and pull requests&#10;- Included steps for setting up PHP, Composer, and Laravel environment&#10;- Added Sail/Docker service configuration (MySQL) for integration tests&#10;- Ensured caching for Composer dependencies to speed up builds&#10;- Updated README with initial CI instructions (if applicable)&#10;- Verified compatibility with Laravel 12 and Telegram bot components" />
@@ -810,14 +846,15 @@
     <MESSAGE value="docs(readme): replace stacked screenshots with table layout" />
     <MESSAGE value="fix(phpstan): correct return type in SupportConversation manager lookup&#10;&#10;Resolve static analysis error in support manager selection.&#10;&#10;- Fix findAvailableManagerByBranch() to return SupportManager|null&#10;- Remove stdClass leakage from query result&#10;- Ensure full PHPStan level compliance" />
     <MESSAGE value="docs: clarify Telegram command flow and core bot behavior&#10;&#10;- Document supported Telegram commands (/start, /help, /settings)&#10;- Add explicit behavior and persistence mapping for each action&#10;- Clarify idempotent and stateless command behavior&#10;- Describe free-text handling based on user state&#10;- Reference centralized bot logic in TelegramBotService" />
-    <option name="LAST_COMMIT_MESSAGE" value="docs: clarify Telegram command flow and core bot behavior&#10;&#10;- Document supported Telegram commands (/start, /help, /settings)&#10;- Add explicit behavior and persistence mapping for each action&#10;- Clarify idempotent and stateless command behavior&#10;- Describe free-text handling based on user state&#10;- Reference centralized bot logic in TelegramBotService" />
+    <MESSAGE value=" Fixing Docker build failures caused by ppa.launchpadcontent.net being unreachable. Production Dockerfile was rewritten to use the official PHP image; dev Dockerfile was        &#10;  switched to Debian Bookworm with NodeSource for Node.js. Try `docker compose build --no-cache` next." />
+    <option name="LAST_COMMIT_MESSAGE" value=" Fixing Docker build failures caused by ppa.launchpadcontent.net being unreachable. Production Dockerfile was rewritten to use the official PHP image; dev Dockerfile was        &#10;  switched to Debian Bookworm with NodeSource for Node.js. Try `docker compose build --no-cache` next." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Models/Confession.php</url>
-          <line>41</line>
+          <line>43</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

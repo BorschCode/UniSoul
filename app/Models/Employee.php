@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -21,8 +23,8 @@ use Spatie\Translatable\HasTranslations;
  * @property string|null $telegram_nickname
  * @property array|null $address
  * @property array|null $other_info
- * @property-read \App\Models\Branch|null $branch
- * @property-read \Illuminate\Database\Eloquent\Collection<int, Employee> $colleagues
+ * @property-read Branch|null $branch
+ * @property-read Collection<int, Employee> $colleagues
  * @property-read int|null $colleagues_count
  * @property-read mixed $translations
  *
@@ -37,7 +39,7 @@ use Spatie\Translatable\HasTranslations;
  * @method static \Illuminate\Database\Eloquent\Builder|Employee whereLocale(string $column, string $locale)
  * @method static \Illuminate\Database\Eloquent\Builder|Employee whereLocales(string $column, array $locales)
  *
- * @mixin \Illuminate\Database\Eloquent\Builder
+ * @mixin Builder
  */
 class Employee extends Model
 {

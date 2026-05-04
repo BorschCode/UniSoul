@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\Gender;
+use Glorand\Model\Settings\Models\ModelSettings;
 use Glorand\Model\Settings\Traits\HasSettingsTable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -10,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 use LaracraftTech\LaravelDateScopes\DateScopes;
 
 /**
- * @property-read \Glorand\Model\Settings\Models\ModelSettings|null $modelSettings
+ * @property-read ModelSettings|null $modelSettings
  *
  * @method static Builder<static>|Chat centuryToDate(?string $column = null)
  * @method static Builder<static>|Chat dayToNow(?string $column = null)
@@ -79,7 +80,7 @@ use LaracraftTech\LaravelDateScopes\DateScopes;
  * @method static Builder<static>|Chat whereSettings(string $setting, string $operator, $value, ?bool $filterOnMissing = null)
  * @method static Builder<static>|Chat yearToDate(?string $column = null)
  *
- * @mixin \Illuminate\Database\Eloquent\Builder
+ * @mixin Builder
  */
 class Chat extends Model
 {
@@ -125,7 +126,7 @@ class Chat extends Model
         }
 
         // We explicitly type-hint the result to satisfy PHPStan.
-        /** @var \App\Models\Chat|null $chat */
+        /** @var Chat|null $chat */
         $chat = self::find($user->id);
 
         return $chat ?? null;

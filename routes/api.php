@@ -24,7 +24,7 @@ Route::post('/telegram/webhook', function (Nutgram $bot) {
         //        $bot->run();
 
         return response()->json(['ok' => true]);
-    } catch (\Throwable $e) {
+    } catch (Throwable $e) {
         Log::error('Telegram webhook error', [
             'error' => $e->getMessage(),
             'trace' => $e->getTraceAsString(),

@@ -6,6 +6,7 @@ use App\Enums\Gender;
 use App\Enums\SettingsKeys;
 use App\Models\Chat;
 use App\Models\Confession;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\App;
 use SergiX44\Nutgram\Conversations\InlineMenu;
 use SergiX44\Nutgram\Nutgram;
@@ -210,7 +211,7 @@ class SettingsConversation extends InlineMenu
             ]);
 
         // Explicitly type the collection for better static analysis
-        /** @var \Illuminate\Database\Eloquent\Collection<Confession> $confessions */
+        /** @var Collection<Confession> $confessions */
         $confessions = Confession::query()
             ->where('active', true)
             ->get();

@@ -2,19 +2,20 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
- * @property-read \App\Models\Branch|null $branch
- * @property-read \App\Models\Employee|null $employee
+ * @property-read Branch|null $branch
+ * @property-read Employee|null $employee
  *
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SupportManager newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SupportManager newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|SupportManager query()
  *
- * @mixin \Illuminate\Database\Eloquent\Builder
+ * @mixin Builder
  */
 class SupportManager extends Model
 {
