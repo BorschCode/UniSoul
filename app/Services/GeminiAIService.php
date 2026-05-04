@@ -4,6 +4,7 @@ namespace App\Services;
 
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 
 /**
  * Сервіс для взаємодії з API Google Gemini (або іншим LLM).
@@ -36,7 +37,7 @@ class GeminiAIService
         // У більшості чат-API (як-от Google AI) 'потік' створюється автоматично при першому
         // повідомленні, або ми можемо використовувати ID сесії як ідентифікатор потоку.
         // Тут ми використовуємо простий UUID як імітацію.
-        return (string) \Illuminate\Support\Str::uuid();
+        return (string) Str::uuid();
     }
 
     /**

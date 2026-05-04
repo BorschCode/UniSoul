@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Carbon;
 
 /**
  * @property int $id
@@ -15,14 +16,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int|null $manager_id
  * @property string|null $user_chat_id
  * @property string|null $manager_chat_id
- * @property \App\Enums\State $status
+ * @property State $status
  * @property string|null $mode
  * @property string|null $ai_thread_id
- * @property \Illuminate\Support\Carbon|null $ai_handoff_at
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\Employee|null $manager
- * @property-read \App\Models\SupportManager|null $supportManagerProfile
+ * @property Carbon|null $ai_handoff_at
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property-read Employee|null $manager
+ * @property-read SupportManager|null $supportManagerProfile
  *
  * @method static Builder|SupportSession active()
  * @method static Builder|SupportSession whereId(mixed $value)
@@ -37,7 +38,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static Builder|SupportSession newQuery()
  * @method static Builder|SupportSession query()
  *
- * @mixin \Illuminate\Database\Eloquent\Builder
+ * @mixin Builder
  */
 class SupportSession extends Model
 {

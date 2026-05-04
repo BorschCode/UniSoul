@@ -2,10 +2,12 @@
 
 namespace Database\Factories;
 
+use App\Models\Confession;
+use App\Models\Donation;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Donation>
+ * @extends Factory<Donation>
  */
 class DonationFactory extends Factory
 {
@@ -20,7 +22,7 @@ class DonationFactory extends Factory
         $emojis = ['🕯️', '🙏', '❤️', '✝️', '⛪', '📿'];
 
         return [
-            'confession_id' => \App\Models\Confession::factory(),
+            'confession_id' => Confession::factory(),
             'branch_id' => null,
             'name' => [
                 'en' => $this->faker->words(3, true),

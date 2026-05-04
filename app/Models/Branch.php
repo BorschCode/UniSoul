@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -10,7 +11,7 @@ use Spatie\Translatable\HasTranslations;
 /**
  * @property int $id
  * @property string $phone
- * @property-read \App\Models\Confession|null $confession
+ * @property-read Confession|null $confession
  * @property-read mixed $translations
  *
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Branch newModelQuery()
@@ -25,7 +26,7 @@ use Spatie\Translatable\HasTranslations;
  * @method self setTranslation(string $key, string $locale, string $value)
  * @method array getTranslations(string $key)
  *
- * @mixin \Illuminate\Database\Eloquent\Builder
+ * @mixin Builder
  */
 class Branch extends Model
 {

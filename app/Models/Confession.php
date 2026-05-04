@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use App\Enums\BotCallback;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -17,11 +19,11 @@ use Webpatser\Countries\Countries;
  * @property array|null $description
  * @property string|null $emoji
  * @property bool $active
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\BotButton> $botButtons
+ * @property-read Collection<int, BotButton> $botButtons
  * @property-read int|null $bot_buttons_count
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Branch> $branches
+ * @property-read Collection<int, Branch> $branches
  * @property-read int|null $branches_count
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \Webpatser\Countries\Countries> $countries
+ * @property-read Collection<int, Countries> $countries
  * @property-read int|null $countries_count
  * @property-read array $available_action_enums
  * @property-read mixed $translations
@@ -37,7 +39,7 @@ use Webpatser\Countries\Countries;
  * @method static \Illuminate\Database\Eloquent\Builder|Confession whereLocale(string $column, string $locale)
  * @method static \Illuminate\Database\Eloquent\Builder|Confession whereLocales(string $column, array $locales)
  *
- * @mixin \Illuminate\Database\Eloquent\Builder
+ * @mixin Builder
  */
 class Confession extends Model
 {

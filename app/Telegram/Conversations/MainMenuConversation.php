@@ -21,7 +21,7 @@ class MainMenuConversation extends BaseConversation
         $this->menuText(trans('telegram.welcome_message'));
 
         foreach ($buttons as $button) {
-            /** @var \App\Models\BotButton $button */
+            /** @var BotButton $button */
             $label = $button->getTranslation('text', $locale);
 
             $callbackKey = $button->callback_data->value;

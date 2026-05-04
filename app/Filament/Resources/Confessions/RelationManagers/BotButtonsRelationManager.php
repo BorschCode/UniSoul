@@ -3,6 +3,8 @@
 namespace App\Filament\Resources\Confessions\RelationManagers;
 
 use App\Enums\BotCallback;
+use App\Models\BotButton;
+use App\Models\Confession;
 use Filament\Actions\CreateAction;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\EditAction;
@@ -31,13 +33,13 @@ class BotButtonsRelationManager extends RelationManager
                     ->options(function () {
                         $owner = $this->getOwnerRecord();
 
-                        /** @var \App\Models\Confession $owner */
-                        return \App\Models\BotButton::query()
+                        /** @var Confession $owner */
+                        return BotButton::query()
                             ->where('entity_type', $owner::class)
                             ->where('entity_id', $owner->id)
                             ->get()
                             // Fix applied here: Explicitly define the type for $button argument
-                            ->mapWithKeys(function (\App\Models\BotButton $button) {
+                            ->mapWithKeys(function (BotButton $button) {
                                 $label = $button->getTranslation('text', app()->getLocale()) ?: '[No label]';
 
                                 return [$button->id => $label];
@@ -89,7 +91,7 @@ class BotButtonsRelationManager extends RelationManager
                             return null;
                         }
 
-                        /** @var \App\Models\BotButton $parent */
+                        /** @var BotButton $parent */
                         $parent = $record->parent;
 
                         return $parent->getTranslation('text', app()->getLocale()) ?: '[No label]';
