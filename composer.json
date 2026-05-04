@@ -13,7 +13,7 @@
         "laracraft-tech/laravel-date-scopes": "^2.4",
         "laravel/framework": "^12.0",
         "laravel/sanctum": "^4.2",
-        "laravel/tinker": "^2.10.1",
+        "laravel/tinker": "^3.0.2",
         "monolog/monolog": "^3.0",
         "nutgram/laravel": "^1.5",
         "spatie/laravel-translatable": "^6.11",
